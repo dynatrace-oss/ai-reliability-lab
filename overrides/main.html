@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+  <script type="text/javascript" src="https://js-cdn.dynatrace.com/jstag/145e12d594f/bf64904yne/b175ab41768b057d_complete.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block content %}
+  {{ super() }}
+  <div id="badge-sentinel" style="height:1px;"></div>
+{% endblock %}
