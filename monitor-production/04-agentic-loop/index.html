@@ -964,6 +964,56 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="What you&#39;ll see in Dynatrace">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-triage-outcomes-and-turns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check triage outcomes and turns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#see-which-tools-the-model-chose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See which tools the model chose
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compare-orchestrator-vs-sub-agent-token-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compare orchestrator vs sub-agent token usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-the-escalation-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check the escalation rate
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1529,6 +1579,56 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="What you&#39;ll see in Dynatrace">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-triage-outcomes-and-turns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check triage outcomes and turns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#see-which-tools-the-model-chose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See which tools the model chose
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compare-orchestrator-vs-sub-agent-token-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compare orchestrator vs sub-agent token usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-the-escalation-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check the escalation rate
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1836,6 +1936,7 @@
 </table>
 <p>The agentic loop shines when complaints are diverse and the model can skip unnecessary steps (e.g. not checking policy if it decides to escalate immediately). But because behaviour is variable, observability is no longer optional. It's how you know what the model is actually doing in production.</p>
 <h2 id="what-youll-see-in-dynatrace">What you'll see in Dynatrace<a class="headerlink" href="#what-youll-see-in-dynatrace" title="Permanent link">&para;</a></h2>
+<p>After running, wait about <strong>60 seconds</strong> for data to arrive, then query from the terminal.</p>
 <p>Open a trace for a complaint and you'll see something like:</p>
 <ul>
 <li>The root <code>triage</code> span with <code>triage.outcome</code> set to <code>responded</code> or <code>escalated</code>, and <code>triage.turns</code> showing how many orchestrator turns it took</li>
@@ -1848,6 +1949,44 @@
 - A complex or borderline one might have <code>triage.turns=3</code> and 4–5 tool calls (including a retry or clarification)
 - An obvious escalation might skip policy and draft entirely</p>
 <p>This variance is exactly what you're paying for with an agentic architecture, and exactly why you need traces to understand it.</p>
+<h3 id="check-triage-outcomes-and-turns">Check triage outcomes and turns<a class="headerlink" href="#check-triage-outcomes-and-turns" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dtctl<span class="w"> </span>query<span class="w"> </span><span class="s1">'fetch spans</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="s1">| filter service.name == "support-triage-loop"</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="s1">| filter transaction.is_root_span == true</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="s1">| fieldsAdd dur_ns = toLong(duration)</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="s1">| fieldsAdd duration_readable = concat(toString(tolong(dur_ns / 60000000000)), "m ", toString(round((dur_ns / 1000000000) - (tolong(dur_ns / 60000000000) * 60), decimals:1)), "s")</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="s1">| fields start_time, complaint.id, complaint.customer, triage.outcome, triage.turns, duration_readable</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="s1">| sort start_time desc</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="s1">| limit 10'</span>
+</span></code></pre></div>
+<p><code>triage.turns</code> tells you how many orchestrator iterations the model needed before it stopped. A higher number means more back-and-forth before a decision.</p>
+<h3 id="see-which-tools-the-model-chose">See which tools the model chose<a class="headerlink" href="#see-which-tools-the-model-chose" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dtctl<span class="w"> </span>query<span class="w"> </span><span class="s1">'fetch spans</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="s1">| filter service.name == "support-triage-loop"</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="s1">| filter gen_ai.operation.name == "execute_tool"</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="s1">| fields start_time, trace.id, tool.name, tool.result_length</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="s1">| sort start_time desc</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="s1">| limit 20'</span>
+</span></code></pre></div>
+<p>This shows you the exact sequence of tool calls the model requested. All spans sharing the same <code>trace.id</code> belong to one run, so if you run C001 twice you can compare the two traces side by side. Look for complaints where the model skipped tools (e.g. escalating without calling <code>check_policy</code>) or called them in an unexpected order.</p>
+<h3 id="compare-orchestrator-vs-sub-agent-token-usage">Compare orchestrator vs sub-agent token usage<a class="headerlink" href="#compare-orchestrator-vs-sub-agent-token-usage" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dtctl<span class="w"> </span>query<span class="w"> </span><span class="s1">'fetch spans</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="s1">| filter service.name == "support-triage-loop"</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="s1">| filter gen_ai.operation.name == "chat"</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="s1">| summarize</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="s1">    calls = count(),</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="s1">    avg_input_tokens = round(avg(gen_ai.usage.input_tokens), decimals:0),</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="s1">    avg_output_tokens = round(avg(gen_ai.usage.output_tokens), decimals:0),</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="s1">    by: {gen_ai.agent.name}</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="s1">| sort avg_input_tokens desc'</span>
+</span></code></pre></div>
+<p>The orchestrator's <code>gen_ai.agent.name</code> will be null (it is not a sub-agent). Sub-agents appear by name. Orchestrator input tokens grow each turn because the full conversation history is sent every iteration — this is where loop costs can creep up.</p>
+<h3 id="check-the-escalation-rate">Check the escalation rate<a class="headerlink" href="#check-the-escalation-rate" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dtctl<span class="w"> </span>query<span class="w"> </span><span class="s1">'fetch spans</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="s1">| filter service.name == "support-triage-loop"</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="s1">| filter transaction.is_root_span == true</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="s1">| summarize count(), by: {triage.outcome}'</span>
+</span></code></pre></div>
 <h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
 <p>In <a href="../05-streaming/">Step 5</a>, we take the same single-call instrumentation from Step 2 and adapt it for streaming responses, adding a new metric that only makes sense in a streaming context: time-to-first-chunk.</p>
 <div id="dt-quiz-anchor"></div>

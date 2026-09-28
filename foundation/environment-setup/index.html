@@ -1188,10 +1188,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-you-need-either-way" class="md-nav__link">
+  <a href="#what-you-need" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What you need either way
+        What you need
       
     </span>
   </a>
@@ -1199,21 +1199,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#option-1-github-codespaces-recommended" class="md-nav__link">
+  <a href="#github-codespaces" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Option 1: GitHub Codespaces (recommended)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#option-2-a-local-dev-container" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Option 2: A local dev container
+        GitHub Codespaces
       
     </span>
   </a>
@@ -1225,28 +1214,6 @@
     <span class="md-ellipsis">
       
         Adding your Dynatrace token
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#option-3-plain-python-no-containers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Option 3: Plain Python, no containers
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#which-option-should-i-pick" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Which option should I pick?
       
     </span>
   </a>
@@ -1272,15 +1239,15 @@
 
 
 <h1 id="environment-setup">Environment Setup<a class="headerlink" href="#environment-setup" title="Permanent link">&para;</a></h1>
-<p>Before running any of the tutorial code, you need a working Python environment, a way to reach AWS Bedrock, and a local OTel Collector. This page covers three ways to get there. Pick the one that fits your setup, or ask your instructor if you're not sure which applies.</p>
-<h2 id="what-you-need-either-way">What you need either way<a class="headerlink" href="#what-you-need-either-way" title="Permanent link">&para;</a></h2>
-<p>Two things are the same no matter which option you pick below:</p>
+<p>Before running any of the tutorial code, you need a working Python environment, a way to reach AWS Bedrock, and a local OTel Collector. These tutorials run inside a GitHub Codespace — everything is pre-configured for you.</p>
+<h2 id="what-you-need">What you need<a class="headerlink" href="#what-you-need" title="Permanent link">&para;</a></h2>
+<p>Two things are required before you start:</p>
 <ul>
 <li><strong>Your own AWS credentials with Bedrock access.</strong> These tutorials use AWS Bedrock Mantle, and you'll need an AWS account with Bedrock enabled. See <a href="../aws-bedrock/">AWS Bedrock</a> for the prerequisites, and the console's <a href="https://us-east-2.console.aws.amazon.com/bedrock-mantle/projects/default/getting-started">"Getting started" page for Bedrock Mantle</a> to download your credentials.</li>
 <li><strong>A Dynatrace API token.</strong> If you're attending a live class, your instructor will walk through generating this together, so there's nothing to prepare in advance. See <a href="../dynatrace-setup/">Dynatrace Setup</a> for the steps.</li>
 </ul>
-<h2 id="option-1-github-codespaces-recommended">Option 1: GitHub Codespaces (recommended)<a class="headerlink" href="#option-1-github-codespaces-recommended" title="Permanent link">&para;</a></h2>
-<p>This is the fastest way to get hands-on. It runs everything in your browser, so there's nothing to install on your laptop.</p>
+<h2 id="github-codespaces">GitHub Codespaces<a class="headerlink" href="#github-codespaces" title="Permanent link">&para;</a></h2>
+<p>This is how these tutorials are run. Everything executes in your browser — there's nothing to install on your laptop.</p>
 <ol>
 <li>Open this repository on GitHub.</li>
 <li>Click <strong>Code → Codespaces → Create codespace on main</strong>.</li>
@@ -1291,71 +1258,14 @@
 <p class="admonition-title">Add your AWS credentials as Codespaces secrets</p>
 <p>Rather than pasting your AWS keys into a shared terminal during class, set them once as Codespaces secrets: on GitHub, go to <strong>Settings → Codespaces → Secrets</strong>, and add <code>AWS_ACCESS_KEY_ID</code>, <code>AWS_SECRET_ACCESS_KEY</code>, and (if your credentials include one) <code>AWS_SESSION_TOKEN</code>, scoped to this repository. They'll be available automatically as environment variables inside every codespace you create.</p>
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Some organisations block Codespaces</p>
-<p>Codespaces is sometimes disabled by organisational policy, or capped at a size too small to run these exercises. If you can't create a codespace, use Option 2 or Option 3 below instead.</p>
-</div>
-<h2 id="option-2-a-local-dev-container">Option 2: A local dev container<a class="headerlink" href="#option-2-a-local-dev-container" title="Permanent link">&para;</a></h2>
-<p>If Codespaces isn't available to you but you already have <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a> and <a href="https://code.visualstudio.com/">VS Code</a> with the <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers">Dev Containers extension</a>, you can run the exact same setup locally:</p>
-<ol>
-<li>Clone this repository.</li>
-<li>Open it in VS Code.</li>
-<li>Run <strong>Dev Containers: Reopen in Container</strong> from the command palette.</li>
-<li>Wait for the container to build. As with Codespaces, this installs everything and starts the OTel Collector for you. See <a href="#adding-your-dynatrace-token">Adding your Dynatrace token</a> below once you've generated one.</li>
-</ol>
-<p>For your AWS credentials, the dev container mounts your local <code>~/.aws</code> folder automatically, so if you already have <code>aws configure</code> set up on your machine, it just works.</p>
 <h2 id="adding-your-dynatrace-token">Adding your Dynatrace token<a class="headerlink" href="#adding-your-dynatrace-token" title="Permanent link">&para;</a></h2>
-<p>Options 1 and 2 both use the same setup, so this step is identical either way. It's the one thing you can't do until your instructor walks through generating a Dynatrace API token in class, so there's nothing to do here in advance.</p>
+<p>This is the one thing you can't do until your instructor walks through generating a Dynatrace API token in class, so there's nothing to do here in advance.</p>
 <ol>
 <li>In the integrated terminal, copy the template: <code>cp .devcontainer/.env.example .devcontainer/.env</code></li>
 <li>Open <code>.devcontainer/.env</code> and fill in <code>DT_TENANT</code> and <code>DT_API_TOKEN</code> with the values from the walkthrough.</li>
 <li>Apply the change by recreating the collector container: <code>docker compose -f .devcontainer/docker-compose.yml up -d otel-collector</code></li>
 </ol>
 <p><code>.devcontainer/.env</code> is gitignored, so this never gets committed. Until you complete this step, the collector still runs, it just has nowhere to send data yet.</p>
-<h2 id="option-3-plain-python-no-containers">Option 3: Plain Python, no containers<a class="headerlink" href="#option-3-plain-python-no-containers" title="Permanent link">&para;</a></h2>
-<p>If your organisation restricts both Codespaces and Docker, you can still run everything with just Python installed locally.</p>
-<ol>
-<li>Install Python 3.9 or later.</li>
-<li>
-<p>Create a virtual environment and install the dependencies for the exercise you're working on:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
-</span></code></pre></div>
-<p>Each exercise folder has its own <code>requirements.txt</code>, so repeat this <code>pip install</code> step when you move to a new folder.</p>
-</li>
-<li>
-<p>Run a local OTel Collector. See <a href="../dynatrace-setup/">Dynatrace Setup</a> for both the Docker and the no-Docker (downloaded binary) versions of this step.</p>
-</li>
-</ol>
-<h2 id="which-option-should-i-pick">Which option should I pick?<a class="headerlink" href="#which-option-should-i-pick" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Setup time</th>
-<th>Needs on your laptop</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Codespaces</td>
-<td>Fastest</td>
-<td>A browser and a GitHub account</td>
-</tr>
-<tr>
-<td>Local dev container</td>
-<td>Moderate</td>
-<td>Docker Desktop, VS Code</td>
-</tr>
-<tr>
-<td>Plain Python</td>
-<td>Depends on your machine</td>
-<td>Python 3.9+, and a way to run (or download) the OTel Collector</td>
-</tr>
-</tbody>
-</table>
-<p>If you're not sure, start with Codespaces. It's the option we'll demonstrate in class.</p>
 
 
 
