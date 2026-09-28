@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../anatomy-of-a-request/">
+        <link rel="prev" href="../aws-bedrock/">
       
       
-        <link rel="next" href="../aws-bedrock/">
+        <link rel="next" href="../../monitor-production/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>OpenTelemetry - AI Observability with Dynatrace</title>
+        <title>Setup - AI Observability with Dynatrace</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#opentelemetry" class="md-skip">
+        <a href="#setup" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              OpenTelemetry
+              Setup
             
           </span>
         </div>
@@ -514,37 +514,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    OpenTelemetry
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../opentelemetry/" class="md-nav__link">
         
   
   
@@ -560,153 +533,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#signal-types" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Signal types
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Signal types">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#traces" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Traces
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#metrics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Metrics
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#logs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Logs
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#events" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Events
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#profiles" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Profiles
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#others" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Others
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-opentelemetry-collector" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The OpenTelemetry Collector
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-otlp-protocol" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The OTLP protocol
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#genai-semantic-conventions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GenAI semantic conventions
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-youll-need" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What you'll need
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -744,10 +570,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../setup/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -763,6 +616,181 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-0-fork-this-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 0: Fork this repository
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-gather-your-credentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Gather your credentials
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Gather your credentials">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws-credentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AWS credentials
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AWS credentials">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#required-iam-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Required IAM permissions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-a-iam-identity-center-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option A: IAM Identity Center (recommended)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-b-iam-user-with-access-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option B: IAM user with access keys
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynatrace-api-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dynatrace API token
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynatrace-platform-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dynatrace platform token
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#your-tenant-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Your tenant ID
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-fits-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How it fits together
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-start-the-dev-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Start the dev container
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-verify-the-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Verify the pipeline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choose-your-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choose your path
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1371,22 +1399,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#signal-types" class="md-nav__link">
+  <a href="#step-0-fork-this-repository" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Signal types
+        Step 0: Fork this repository
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Signal types">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-gather-your-credentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Gather your credentials
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Gather your credentials">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#traces" class="md-nav__link">
+  <a href="#aws-credentials" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Traces
+        AWS credentials
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AWS credentials">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#required-iam-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Required IAM permissions
       
     </span>
   </a>
@@ -1394,10 +1445,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#metrics" class="md-nav__link">
+  <a href="#option-a-iam-identity-center-recommended" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Metrics
+        Option A: IAM Identity Center (recommended)
       
     </span>
   </a>
@@ -1405,10 +1456,26 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#logs" class="md-nav__link">
+  <a href="#option-b-iam-user-with-access-keys" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Logs
+        Option B: IAM user with access keys
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynatrace-api-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dynatrace API token
       
     </span>
   </a>
@@ -1416,10 +1483,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#events" class="md-nav__link">
+  <a href="#dynatrace-platform-token" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Events
+        Dynatrace platform token
       
     </span>
   </a>
@@ -1427,21 +1494,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#profiles" class="md-nav__link">
+  <a href="#your-tenant-id" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Profiles
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#others" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Others
+        Your tenant ID
       
     </span>
   </a>
@@ -1454,10 +1510,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-opentelemetry-collector" class="md-nav__link">
+  <a href="#how-it-fits-together" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The OpenTelemetry Collector
+        How it fits together
       
     </span>
   </a>
@@ -1465,10 +1521,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-otlp-protocol" class="md-nav__link">
+  <a href="#step-2-start-the-dev-container" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The OTLP protocol
+        Step 2: Start the dev container
       
     </span>
   </a>
@@ -1476,10 +1532,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#genai-semantic-conventions" class="md-nav__link">
+  <a href="#step-3-verify-the-pipeline" class="md-nav__link">
     <span class="md-ellipsis">
       
-        GenAI semantic conventions
+        Step 3: Verify the pipeline
       
     </span>
   </a>
@@ -1487,10 +1543,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-youll-need" class="md-nav__link">
+  <a href="#choose-your-path" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What you'll need
+        Choose your path
       
     </span>
   </a>
@@ -1515,122 +1571,200 @@
 
 
 
-<h1 id="opentelemetry">OpenTelemetry<a class="headerlink" href="#opentelemetry" title="Permanent link">&para;</a></h1>
-<p>OpenTelemetry (often shortened to <strong>OTel</strong>) is the open standard for collecting observability data from applications. It's what we use to capture information about our AI calls and send it to Dynatrace.</p>
-<h2 id="signal-types">Signal types<a class="headerlink" href="#signal-types" title="Permanent link">&para;</a></h2>
-<p>Observability tools collect different types of data, called <strong>signals</strong>. OpenTelemetry supports traces, metrics, and logs, but there are others too, like events and profiles. Each signal type answers a different question about your system.</p>
-<p>In these tutorials we focus on traces and metrics, as they're the most useful for understanding AI behaviour and cost. Here's a quick overview of the main types, with more emerging as the standard evolves:</p>
-<h3 id="traces">Traces<a class="headerlink" href="#traces" title="Permanent link">&para;</a></h3>
-<p>A <strong>trace</strong> is the complete story of one operation from start to finish. For example: diagnosing and routing a customer complaint email. That single operation might involve calling a sentiment agent, checking a policy database, and routing to the right team. The trace captures all of it as one joined-up picture.</p>
-<p>A <strong>span</strong> is one step within that trace: "call the sentiment agent," "make this AI request," "look up the policy." Each span records:</p>
-<ul>
-<li>A name</li>
-<li>When it started and how long it took</li>
-<li>Whether it succeeded or failed</li>
-<li>Custom attributes (key-value pairs of extra information)</li>
-</ul>
-<p>Spans nest inside each other, forming a tree. The top-level span is the <strong>root span</strong>. Everything inside it is a <strong>child span</strong>.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>triage COMPLAINT-001                    ← root span (the whole operation)
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  invoke_agent sentiment                ← child span (calling the sentiment agent)
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    chat openai.gpt-oss-120b           ← grandchild span (the actual AI call)
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  invoke_agent policy_checker           ← child span
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    chat openai.gpt-oss-120b           ← grandchild span
+<h1 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h1>
+<h2 id="step-0-fork-this-repository">Step 0: Fork this repository<a class="headerlink" href="#step-0-fork-this-repository" title="Permanent link">&para;</a></h2>
+<p><strong>You do not have write access to the source repository.</strong> Fork it into your own GitHub account first — you'll need your own copy to store credentials.</p>
+<ol>
+<li>Go to the repository on GitHub</li>
+<li>Click <strong>Fork</strong> (top right)</li>
+<li>Accept the defaults and click <strong>Create fork</strong></li>
+</ol>
+<p>Use your fork for everything below.</p>
+<h2 id="step-1-gather-your-credentials">Step 1: Gather your credentials<a class="headerlink" href="#step-1-gather-your-credentials" title="Permanent link">&para;</a></h2>
+<p>Collect these before starting Step 2.</p>
+<h3 id="aws-credentials">AWS credentials<a class="headerlink" href="#aws-credentials" title="Permanent link">&para;</a></h3>
+<p>The tutorial code calls AWS Bedrock Mantle, so you need AWS credentials with permission to invoke Bedrock models.</p>
+<h4 id="required-iam-permissions">Required IAM permissions<a class="headerlink" href="#required-iam-permissions" title="Permanent link">&para;</a></h4>
+<p>Whichever credential type you use, the IAM identity needs the following policy. The <code>bedrock:InvokeModel</code> action covers standard calls; <code>InvokeModelWithResponseStream</code> covers the streaming exercises.</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">      </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">      </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">        </span><span class="s2">"bedrock-mantle:CallWithBearerToken"</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">      </span><span class="p">],</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">      </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">      </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">        </span><span class="s2">"bedrock-mantle:CreateInference"</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">      </span><span class="p">],</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:bedrock-mantle:us-east-2:*:project/default"</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">  </span><span class="p">]</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="p">}</span>
 </span></code></pre></div>
-<p>This tree structure is incredibly useful for AI apps. You can see exactly which AI call took the longest, which one consumed the most tokens, and where errors occurred.</p>
-<h3 id="metrics">Metrics<a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h3>
-<p><strong>Metrics</strong> are numbers collected over time, aggregated rather than individual. They answer questions like:</p>
-<ul>
-<li>What's the average token usage per request?</li>
-<li>How many AI calls are we making per minute?</li>
-<li>What's the 95th percentile latency?</li>
-</ul>
-<p>In our tutorials, we use a metric called <code>gen_ai.client.token.usage</code>, a histogram that tracks token counts across all AI calls, broken down by model, agent, and token type (input vs output).</p>
-<h3 id="logs">Logs<a class="headerlink" href="#logs" title="Permanent link">&para;</a></h3>
-<p>Logs are timestamped text records: "request received," "error: timeout," "user 123 logged in." Useful for debugging specific events. We don't focus on logs in these tutorials.</p>
-<h3 id="events">Events<a class="headerlink" href="#events" title="Permanent link">&para;</a></h3>
-<p>Events are a structured form of log, used to record discrete things that happened at a point in time. In AI workflows, an example would be recording each tool call an agent made during a run.</p>
-<h3 id="profiles">Profiles<a class="headerlink" href="#profiles" title="Permanent link">&para;</a></h3>
-<p>Profiles capture how your application is using resources (CPU, memory) over time. Useful for understanding the compute cost of your code, separate from the AI token cost.</p>
-<h3 id="others">Others<a class="headerlink" href="#others" title="Permanent link">&para;</a></h3>
-<p>The OpenTelemetry ecosystem is still growing. New signal types get added as the standard evolves.</p>
-<h2 id="the-opentelemetry-collector">The OpenTelemetry Collector<a class="headerlink" href="#the-opentelemetry-collector" title="Permanent link">&para;</a></h2>
-<p>Your application could send data directly to Dynatrace, and technically that works. But in these tutorials we route it through an <strong>OpenTelemetry Collector</strong> first. This is considered best practice for any modern enterprise observability stack.</p>
-<div class="dt-diagram">
-
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Your App
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    │
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    │  OTLP (HTTP or gRPC)
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    ▼
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>OTel Collector  ──────────────────►  Dynatrace
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    │
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    └── can also forward to other backends
+<h4 id="option-a-iam-identity-center-recommended">Option A: IAM Identity Center (recommended)<a class="headerlink" href="#option-a-iam-identity-center-recommended" title="Permanent link">&para;</a></h4>
+<p>If your organisation uses IAM Identity Center (SSO), ask your AWS administrator to attach a permission set containing the policy above to your account. Your credentials will be short-lived and rotate automatically — no keys to manage.</p>
+<p>Once access is granted, log in:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>aws<span class="w"> </span>sso<span class="w"> </span>login<span class="w"> </span>--profile<span class="w"> </span>your-profile-name
 </span></code></pre></div>
-
+<p>Note the profile name — you'll use it in Step 2 if your credentials are not already in <code>~/.aws</code>.</p>
+<h4 id="option-b-iam-user-with-access-keys">Option B: IAM user with access keys<a class="headerlink" href="#option-b-iam-user-with-access-keys" title="Permanent link">&para;</a></h4>
+<p>Use this if you have a personal AWS account or your organisation doesn't use IAM Identity Center.</p>
+<ol>
+<li>In the <a href="https://console.aws.amazon.com/iam/">IAM console</a>, go to <strong>Policies → Create policy</strong></li>
+<li>Switch to the <strong>JSON</strong> editor, paste the policy above, and save it with a name like <code>BedrockInvokePolicy</code></li>
+<li>Go to <strong>Users → Create user</strong>, give it a name (e.g. <code>ai-lab</code>), and attach the <code>BedrockInvokePolicy</code> you just created</li>
+<li>Open the new user, go to <strong>Security credentials → Create access key</strong>, choose <strong>Other</strong>, and download the key</li>
+</ol>
+<p>You'll have an <code>AWS_ACCESS_KEY_ID</code> (starts with <code>AKIA</code>) and <code>AWS_SECRET_ACCESS_KEY</code>. Note both — you'll need them in Step 2.</p>
+<div class="admonition warning">
+<p class="admonition-title">Access keys don't expire</p>
+<p>Delete this user and its keys when you're done with the lab. Never commit them to git.</p>
 </div>
-
-<p>The collector sits between your app and your backend. Using a collector has several practical benefits:</p>
-<ul>
-<li>Your app only needs to know one endpoint (the collector). Swap backends without touching app code.</li>
-<li>The collector can batch, filter, and transform data before it's sent.</li>
-<li>You can forward to multiple backends at once.</li>
-<li>You can run multiple collectors for redundancy.</li>
+<h3 id="dynatrace-api-token">Dynatrace API token<a class="headerlink" href="#dynatrace-api-token" title="Permanent link">&para;</a></h3>
+<p>The OTel Collector uses this to send traces and metrics to your Dynatrace environment.</p>
+<ol>
+<li>In Dynatrace, press <code>Ctrl / Cmd + k</code> and search for <strong>Access tokens</strong></li>
+<li>Click <strong>Generate new token</strong>, name it (e.g. <code>otel-collector-local</code>), and add:<ul>
+<li><code>openTelemetryTrace.ingest</code></li>
+<li><code>metrics.ingest</code></li>
 </ul>
-<p>In short: the collector decouples your application from your observability infrastructure. Change one without changing the other.</p>
-<h2 id="the-otlp-protocol">The OTLP protocol<a class="headerlink" href="#the-otlp-protocol" title="Permanent link">&para;</a></h2>
-<p><strong>OTLP</strong> (OpenTelemetry Protocol) is how data travels between components. It works over HTTP or gRPC. In our examples, we use HTTP because it's simpler and works everywhere.</p>
-<p>When you see these environment variables in the code:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">OTEL_EXPORTER_OTLP_ENDPOINT</span><span class="o">=</span>http://localhost:4318
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nv">OTEL_EXPORTER_OTLP_HEADERS</span><span class="o">=</span><span class="nv">Authorization</span><span class="o">=</span>Api-Token<span class="w"> </span>dt0c01.*****.***<span class="w">  </span><span class="c1"># optional, only needed if your collector requires authentication</span>
-</span></code></pre></div>
-<p>...the first one tells the app where the collector is, and the second one authenticates the connection.</p>
-<h2 id="genai-semantic-conventions">GenAI semantic conventions<a class="headerlink" href="#genai-semantic-conventions" title="Permanent link">&para;</a></h2>
-<p>OpenTelemetry defines standard attribute names for AI-related telemetry, called the <a href="https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/gen-ai/README.md"><strong>GenAI semantic conventions</strong></a>. These are the <code>gen_ai.*</code> attributes you'll see throughout the tutorials:</p>
+</li>
+<li>Click <strong>Generate token</strong> and copy it immediately — you won't see it again</li>
+</ol>
+<h3 id="dynatrace-platform-token">Dynatrace platform token<a class="headerlink" href="#dynatrace-platform-token" title="Permanent link">&para;</a></h3>
+<p>The <code>dtctl</code> CLI uses this to run DQL queries.</p>
+<ol>
+<li>Go to <code>https://myaccount.dynatrace.com/platformTokens</code></li>
+<li>Click <strong>Generate token</strong>, name it (e.g. <code>dtctl-local</code>), and add:<ul>
+<li><code>storage:metrics:read</code></li>
+<li><code>storage:spans:read</code></li>
+<li><code>storage:buckets:read</code></li>
+</ul>
+</li>
+<li>Click <strong>Generate</strong> and copy it immediately</li>
+</ol>
+<h3 id="your-tenant-id">Your tenant ID<a class="headerlink" href="#your-tenant-id" title="Permanent link">&para;</a></h3>
+<p>Your Dynatrace environment URL looks like <code>https://abc12345.live.dynatrace.com</code> or <code>https://abc12345.apps.dynatrace.com</code>. The <code>abc12345</code> part is your <strong>tenant ID</strong> — you'll need it too.</p>
+<hr />
+<h2 id="how-it-fits-together">How it fits together<a class="headerlink" href="#how-it-fits-together" title="Permanent link">&para;</a></h2>
+<p>Before choosing your environment, here is what you are setting up:</p>
+<p><img alt="Diagram showing the AI Lab Dev Container and OTel Collector running on localhost, with arrows to AWS Bedrock and Dynatrace" src="../../assets/ai-reliability-lab-architecture.drawio.png" /></p>
+<p>Everything runs inside <strong>two containers</strong> on your machine:</p>
 <table>
 <thead>
 <tr>
-<th>Attribute</th>
-<th>What it records</th>
+<th>Container</th>
+<th>What it does</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>gen_ai.provider.name</code></td>
-<td>Which AI provider (e.g. <code>openai</code>, <code>anthropic</code>)</td>
+<td><strong>AI Lab Dev Container</strong></td>
+<td>Runs your exercise Python code and the <code>dtctl</code> CLI</td>
 </tr>
 <tr>
-<td><code>gen_ai.operation.name</code></td>
-<td>What operation (<code>chat</code>, <code>invoke_agent</code>, <code>execute_tool</code>)</td>
-</tr>
-<tr>
-<td><code>gen_ai.request.model</code></td>
-<td>Model requested (e.g. <code>openai.gpt-oss-120b</code>)</td>
-</tr>
-<tr>
-<td><code>gen_ai.response.model</code></td>
-<td>Model that actually responded</td>
-</tr>
-<tr>
-<td><code>gen_ai.usage.input_tokens</code></td>
-<td>Input tokens consumed</td>
-</tr>
-<tr>
-<td><code>gen_ai.usage.output_tokens</code></td>
-<td>Output tokens generated</td>
-</tr>
-<tr>
-<td><code>gen_ai.agent.name</code></td>
-<td>Name of the agent (for multi-agent systems)</td>
+<td><strong>OpenTelemetry Collector</strong></td>
+<td>Receives telemetry from your code and forwards it to Dynatrace</td>
 </tr>
 </tbody>
 </table>
-<p>Using standard names means Dynatrace (and other backends) can automatically recognise and visualise your AI telemetry without custom configuration.</p>
-<div class="admonition warning">
-<p class="admonition-title">Still in development</p>
-<p>The GenAI semantic conventions are currently marked as <strong>Development</strong> status, which means the attribute names above may change as the spec matures. Check the <a href="https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/gen-ai/README.md">spec repo</a> for the latest, and don't be surprised if a future version renames something.</p>
+<p>Docker Desktop is the only thing you install on your host machine. When the lab is over, stop and delete both containers — your machine is unchanged.</p>
+<p>Two external services are involved:</p>
+<ul>
+<li><strong>AWS Bedrock</strong> — the AI model API your exercise code calls</li>
+<li><strong>Dynatrace</strong> — receives and stores all traces, metrics, and logs; <code>dtctl</code> queries it directly</li>
+</ul>
+<p>This is why you need <strong>four credentials</strong> in Step 1: two for AWS (to call Bedrock), two for Dynatrace (one to push telemetry, one to query it).</p>
+<hr />
+<h2 id="step-2-start-the-dev-container">Step 2: Start the dev container<a class="headerlink" href="#step-2-start-the-dev-container" title="Permanent link">&para;</a></h2>
+<p>Requires <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a> and <a href="https://code.visualstudio.com/">VS Code</a> with the <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers">Dev Containers extension</a>.</p>
+<ol>
+<li>
+<p>Clone your fork:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/YOUR_USERNAME/REPO_NAME.git
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">cd</span><span class="w"> </span>REPO_NAME
+</span></code></pre></div>
+</li>
+<li>
+<p>Copy the environment template and fill in your Dynatrace values:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>cp<span class="w"> </span>.devcontainer/.env.example<span class="w"> </span>.devcontainer/.env
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>DT_TENANT=abc12345
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>DT_API_TOKEN=dt0c01.XXXX...
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>DTCTL_PLATFORM_TOKEN=dt0s16.XXXX...
+</span></code></pre></div>
+</li>
+<li>
+<p><strong>AWS credentials:</strong> the dev container mounts your <code>~/.aws</code> folder automatically. If you previously ran <code>aws configure</code> or <code>aws sso login</code>, your credentials are already available inside the container — nothing else to do. If not, add them to <code>.devcontainer/.env</code> as well:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>AWS_ACCESS_KEY_ID=AKIA...
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>AWS_SECRET_ACCESS_KEY=...
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>AWS_SESSION_TOKEN=...
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>AWS_REGION=us-east-2
+</span></code></pre></div>
+</li>
+<li>
+<p>Open the folder in VS Code and run <strong>Dev Containers: Reopen in Container</strong> from the command palette. Wait for the container to build — the OTel Collector starts and <code>dtctl</code> is configured automatically.</p>
+</li>
+</ol>
+<h2 id="step-3-verify-the-pipeline">Step 3: Verify the pipeline<a class="headerlink" href="#step-3-verify-the-pipeline" title="Permanent link">&para;</a></h2>
+<p><strong>Do this before starting any exercise.</strong> Every lab depends on this pipeline working.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>python<span class="w"> </span>code/smoke-test.py
+</span></code></pre></div>
+<p>The script runs <strong>two checks</strong> and exits non-zero if either fails.</p>
+<p><strong>Check 1</strong> confirms that your exercise code can reach the OTel Collector and that telemetry is accepted. <strong>Check 2</strong> confirms that your AWS credentials are valid and that the Bedrock model responds.</p>
+<p>Expected output when both pass:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>============================================================
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>Check 1: OTel Collector pipeline
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>  Sending to: http://localhost:4318
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>  Span recorded:   smoke-test
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>  Metric recorded: smoke_test.runs +1
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>[OK] OTel Collector pipeline: telemetry accepted by collector
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>============================================================
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>Check 2: AWS Bedrock connection
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>  Model replied:   'OK'
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>[OK] AWS Bedrock connection: model reachable and responding
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>============================================================
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>Both checks passed. Wait ~60 s then verify data reached Dynatrace:
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>  ...
+</span></code></pre></div>
+<p>If Check 1 fails with a connection error, the OTel Collector is not reachable on port 4318 — re-check Step 2.4 and confirm the container built successfully.</p>
+<p>If Check 2 fails, follow the error message: either your AWS credentials are not set (<code>AWS_ACCESS_KEY_ID</code> / <code>AWS_SECRET_ACCESS_KEY</code> / <code>AWS_REGION</code>), or the IAM identity lacks <code>bedrock:InvokeModel</code> permission.</p>
+<p>Wait about <strong>60 seconds</strong>, then run:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dtctl<span class="w"> </span>query<span class="w"> </span><span class="s1">'fetch spans</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="s1">| filter service.name == "otel-smoke-test"</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="s1">| fields startTime, span.name, duration, service.name</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="s1">| sort startTime desc</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="s1">| limit 5'</span>
+</span></code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dtctl<span class="w"> </span>query<span class="w"> </span><span class="s1">'timeseries runs = sum(smoke_test.runs), by: {service.name}</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="s1">| filter service.name == "otel-smoke-test"</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="s1">| fieldsAdd total_runs = arraySum(runs)</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="s1">| fields service.name, total_runs'</span>
+</span></code></pre></div>
+<div class="admonition success">
+<p class="admonition-title">Both queries return data?</p>
+<p>Your end-to-end pipeline is confirmed. Choose your path below.</p>
 </div>
-<h2 id="what-youll-need">What you'll need<a class="headerlink" href="#what-youll-need" title="Permanent link">&para;</a></h2>
-<p>You'll need two things: <strong>Docker</strong> and a <strong>Dynatrace environment</strong>. If you don't have one, you can <a href="https://dt-url.net/trial">start a free trial</a>. We provide everything else.</p>
-<p>Before starting the tutorials, we'll walk you through spinning up an OTel Collector locally using a Docker image we provide, pre-configured to forward data to your Dynatrace environment. The <a href="../dynatrace-setup/">Dynatrace Setup</a> page has the exact commands. It takes a few minutes and you only need to do it once.</p>
+<div class="admonition failure">
+<p class="admonition-title">One or both queries return nothing?</p>
+<ol>
+<li>Check the OTel Collector token scopes: <code>openTelemetryTrace.ingest</code> and <code>metrics.ingest</code></li>
+<li>Check the collector logs: <code>docker logs $(docker ps -q --filter "name=otel-collector") | tail -30</code></li>
+<li>Look for lines containing <code>error</code> or <code>REFUSED</code> — these usually name the missing permission</li>
+</ol>
+</div>
+<h2 id="choose-your-path">Choose your path<a class="headerlink" href="#choose-your-path" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><a href="../../monitor-production/">Monitor Production AI</a></strong> — Add observability to a running AI application, step by step</li>
+<li><strong><a href="../../monitor-development/">Monitor AI in Development</a></strong> — Observe AI tool usage across your development team</li>
+</ul>
 
 
 
@@ -1670,7 +1804,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../anatomy-of-a-request/" class="md-footer__link md-footer__link--prev" aria-label="Previous: What&#39;s in a Request">
+          <a href="../aws-bedrock/" class="md-footer__link md-footer__link--prev" aria-label="Previous: AWS Bedrock">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1680,20 +1814,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                What's in a Request
+                AWS Bedrock
               </div>
             </div>
           </a>
         
         
           
-          <a href="../aws-bedrock/" class="md-footer__link md-footer__link--next" aria-label="Next: AWS Bedrock">
+          <a href="../../monitor-production/" class="md-footer__link md-footer__link--next" aria-label="Next: Monitor AI in Production">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                AWS Bedrock
+                Monitor AI in Production
               </div>
             </div>
             <div class="md-footer__button md-icon">

@@ -13,7 +13,7 @@
       
       
       
-        <link rel="prev" href="../foundation/environment-setup/">
+        <link rel="prev" href="../foundation/setup/">
       
       
         <link rel="next" href="01-single-call/">
@@ -570,42 +570,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../foundation/dynatrace-setup/" class="md-nav__link">
+      <a href="../foundation/setup/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Dynatrace Setup
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../foundation/environment-setup/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Environment Setup
+    Setup
   
 
     
@@ -1391,18 +1363,25 @@
   </div>
   <div class="dt-trail-item">
     <a href="06-rag/" class="dt-trail-step">Step 6: RAG</a>
+    <span class="dt-trail-arrow">→</span>
+  </div>
+  <div class="dt-trail-item">
+    <a href="07-guardrails/" class="dt-trail-step">Step 7: Guardrails</a>
+    <span class="dt-trail-arrow">→</span>
+  </div>
+  <div class="dt-trail-item">
+    <a href="08-model-selection/" class="dt-trail-step">Step 8: Model Migration</a>
   </div>
 </div>
 
 <h2 id="before-you-start">Before you start<a class="headerlink" href="#before-you-start" title="Permanent link">&para;</a></h2>
-<p>Make sure you've read through the <a href="../foundation/">Foundation</a> section and have:</p>
+<p>Complete <a href="../foundation/setup/">Foundation → Setup</a> before running any exercise. It walks you through:</p>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> A Dynatrace environment with a valid API token</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> The OTel Collector running on <code>localhost:4318</code></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Python 3.9+ installed</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> AWS credentials configured for Bedrock Mantle access</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> AWS credentials (no AWS CLI required — environment variables work)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Dynatrace API token and platform token</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Choosing your environment (Codespaces, dev container, or plain Python)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Verifying the OTel Collector is running on <code>localhost:4318</code></li>
 </ul>
-<p>See <a href="../foundation/environment-setup/">Environment Setup</a> for three ways to get all of this running, including a one-click GitHub Codespaces option that needs nothing installed locally.</p>
 <div class="admonition tip">
 <p class="admonition-title">Just want to read along?</p>
 <p>You don't need to run the code to learn. All the key concepts are explained in the text.</p>
@@ -1446,7 +1425,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../foundation/environment-setup/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Environment Setup">
+          <a href="../foundation/setup/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Setup">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1456,7 +1435,7 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Environment Setup
+                Setup
               </div>
             </div>
           </a>

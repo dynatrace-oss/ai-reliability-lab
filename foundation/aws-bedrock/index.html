@@ -16,7 +16,7 @@
         <link rel="prev" href="../opentelemetry/">
       
       
-        <link rel="next" href="../dynatrace-setup/">
+        <link rel="next" href="../setup/">
       
       
         
@@ -638,10 +638,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
+  <a href="#why-bedrock" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Prerequisites
+        Why Bedrock?
       
     </span>
   </a>
@@ -649,10 +649,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-bedrock" class="md-nav__link">
+  <a href="#ready-to-run-the-code" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why Bedrock?
+        Ready to run the code?
       
     </span>
   </a>
@@ -675,42 +675,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../dynatrace-setup/" class="md-nav__link">
+      <a href="../setup/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Dynatrace Setup
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../environment-setup/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Environment Setup
+    Setup
   
 
     
@@ -1360,10 +1332,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
+  <a href="#why-bedrock" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Prerequisites
+        Why Bedrock?
       
     </span>
   </a>
@@ -1371,10 +1343,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-bedrock" class="md-nav__link">
+  <a href="#ready-to-run-the-code" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why Bedrock?
+        Ready to run the code?
       
     </span>
   </a>
@@ -1424,25 +1396,17 @@
 <p>The <code>provide_token()</code> function handles AWS authentication (SigV4 signing) behind the scenes and returns a short-lived token that the OpenAI client uses as its API key.</p>
 <h2 id="the-model-we-use">The model we use<a class="headerlink" href="#the-model-we-use" title="Permanent link">&para;</a></h2>
 <p>Our tutorials use <code>openai.gpt-oss-120b</code>, a large language model available via Bedrock Mantle. The <code>openai.</code> prefix is part of the model identifier in the Mantle namespace.</p>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<p>To run the tutorial code yourself, you'll need:</p>
-<ol>
-<li>An AWS account with Bedrock access enabled</li>
-<li>AWS credentials configured locally (<code>aws configure</code> or environment variables)</li>
-<li>The <code>aws_bedrock_token_generator</code> package installed</li>
-<li>The <code>AWS_REGION</code> environment variable set (e.g. <code>us-east-2</code>)</li>
-</ol>
-<details class="tip" open="open">
-<summary>Don't have Bedrock access?</summary>
-<p>The tutorials are written so you can follow along and understand the concepts even without running the code. The observability instrumentation works the same way regardless of which AI provider you use.</p>
-</details>
 <h2 id="why-bedrock">Why Bedrock?<a class="headerlink" href="#why-bedrock" title="Permanent link">&para;</a></h2>
-<p>We use Bedrock for a few reasons:
-- It's enterprise-grade and production-ready
-- AWS handles model updates and availability
-- It supports the OpenAI-compatible API, which keeps our code portable
-- Many organisations already have AWS infrastructure in place</p>
+<p>We use Bedrock for a few reasons:</p>
+<ul>
+<li>It's enterprise-grade and production-ready</li>
+<li>AWS handles model updates and availability</li>
+<li>It supports the OpenAI-compatible API, which keeps our code portable</li>
+<li>Many organisations already have AWS infrastructure in place</li>
+</ul>
 <p>The observability patterns in these tutorials work equally well with other providers (Anthropic's API directly, Azure OpenAI, etc.). Only the client setup differs.</p>
+<h2 id="ready-to-run-the-code">Ready to run the code?<a class="headerlink" href="#ready-to-run-the-code" title="Permanent link">&para;</a></h2>
+<p>See <a href="../setup/">Setup</a> for how to configure your AWS credentials, Dynatrace tokens, and Python environment.</p>
 
 
 
@@ -1499,13 +1463,13 @@
         
         
           
-          <a href="../dynatrace-setup/" class="md-footer__link md-footer__link--next" aria-label="Next: Dynatrace Setup">
+          <a href="../setup/" class="md-footer__link md-footer__link--next" aria-label="Next: Setup">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Dynatrace Setup
+                Setup
               </div>
             </div>
             <div class="md-footer__button md-icon">

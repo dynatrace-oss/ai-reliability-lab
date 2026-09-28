@@ -13,10 +13,6 @@
       
       
       
-        <link rel="prev" href="../aws-bedrock/">
-      
-      
-        <link rel="next" href="../environment-setup/">
       
       
         
@@ -233,12 +229,10 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="../" class="md-tabs__link">
           
   
@@ -373,31 +367,28 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   
@@ -415,7 +406,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -570,259 +561,17 @@
                 
   
   
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Dynatrace Setup
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Dynatrace Setup
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#finding-your-environment-url" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Finding your Environment URL
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#creating-an-api-token" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Creating an API Token
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#creating-a-platform-token" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Creating a platform token
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#setting-your-credentials" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Setting your credentials
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Setting your credentials">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#devcontainer-or-codespaces-options-1-and-2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Devcontainer or Codespaces (Options 1 and 2)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#plain-python-no-containers-option-3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Plain Python, no containers (Option 3)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Plain Python, no containers (Option 3)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#collector-config" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Collector config
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#run-it-with-docker" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Run it with Docker
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#verify-the-plumbing-works" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Verify the plumbing works
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Verify the plumbing works">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#run-the-smoke-test" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Run the smoke test
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#confirm-data-arrived-in-dynatrace" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Confirm data arrived in Dynatrace
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Confirm data arrived in Dynatrace">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#trace-check" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Trace check
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#metric-check" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Metric check
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
   
   
     <li class="md-nav__item">
-      <a href="../environment-setup/" class="md-nav__link">
+      <a href="../setup/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Environment Setup
+    Setup
   
 
     
@@ -1833,44 +1582,6 @@
       
         <footer class="md-footer">
   
-    
-      
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
-        
-          
-          <a href="../aws-bedrock/" class="md-footer__link md-footer__link--prev" aria-label="Previous: AWS Bedrock">
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-            </div>
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              <div class="md-ellipsis">
-                AWS Bedrock
-              </div>
-            </div>
-          </a>
-        
-        
-          
-          <a href="../environment-setup/" class="md-footer__link md-footer__link--next" aria-label="Next: Environment Setup">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                Environment Setup
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
     
   
   <div class="md-footer-meta md-typeset">
