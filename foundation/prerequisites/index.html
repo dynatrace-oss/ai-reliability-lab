@@ -1647,7 +1647,7 @@
 <h2 id="container-runtime">Container runtime<a class="headerlink" href="#container-runtime" title="Permanent link">&para;</a></h2>
 <p>The lab runs in two containers started with Docker Compose, so you need a runtime that provides both <code>docker</code> and <code>docker compose</code>.</p>
 <ul>
-<li><strong><a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a></strong> is the simplest option, but it requires a paid licence for many organisations. Dynatrace employees can't use it.</li>
+<li><strong><a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a></strong> is the simplest option, but it requires a paid licence for many organisations.</li>
 <li><strong><a href="https://rancherdesktop.io/">Rancher Desktop</a></strong> is a free alternative. In its settings, choose the <strong>dockerd (moby)</strong> container engine, not containerd. The dev container uses the <code>docker</code> and <code>docker compose</code> commands, which only the dockerd engine provides.</li>
 <li>Any other runtime works if it provides working <code>docker</code> and <code>docker compose</code> commands (for example Colima, or Docker Engine on Linux).</li>
 </ul>
