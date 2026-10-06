@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../01-invisible-cost/">
+        <link rel="prev" href="../..">
       
       
-        <link rel="next" href="../03-claude-code-hook/">
+        <link rel="next" href="../setup/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Step 2: Bedrock Telemetry - AI Observability with Dynatrace</title>
+        <title>Prerequisites - AI Observability with Dynatrace</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#step-2-aws-bedrock-telemetry" class="md-skip">
+        <a href="#prerequisites" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Step 2: Bedrock Telemetry
+              Prerequisites
             
           </span>
         </div>
@@ -233,9 +233,11 @@
   
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../../foundation/prerequisites/" class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
         
   
   
@@ -254,7 +256,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../foundation/setup/" class="md-tabs__link">
+      <a href="../setup/" class="md-tabs__link">
         
   
   
@@ -275,7 +277,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../foundation/" class="md-tabs__link">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -311,13 +313,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../monitor-development/" class="md-tabs__link">
           
   
   
@@ -411,10 +411,37 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../foundation/prerequisites/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prerequisites
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -430,6 +457,159 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Checklist">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#on-your-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        On your machine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AWS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynatrace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dynatrace
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#container-runtime" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Container runtime
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws-credentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AWS credentials
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AWS credentials">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#path-1-you-already-have-the-aws-cli-and-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Path 1: You already have the AWS CLI and it works
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#path-2-you-dont-have-the-aws-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Path 2: You don't have the AWS CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-your-readiness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check your readiness
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-reminders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Security reminders
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next step
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -441,7 +621,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/setup/" class="md-nav__link">
+      <a href="../setup/" class="md-nav__link">
         
   
   
@@ -522,7 +702,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -550,7 +730,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/tokens/" class="md-nav__link">
+      <a href="../tokens/" class="md-nav__link">
         
   
   
@@ -578,7 +758,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/anatomy-of-a-request/" class="md-nav__link">
+      <a href="../anatomy-of-a-request/" class="md-nav__link">
         
   
   
@@ -606,7 +786,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/opentelemetry/" class="md-nav__link">
+      <a href="../opentelemetry/" class="md-nav__link">
         
   
   
@@ -634,7 +814,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/aws-bedrock/" class="md-nav__link">
+      <a href="../aws-bedrock/" class="md-nav__link">
         
   
   
@@ -662,7 +842,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/setup/" class="md-nav__link">
+      <a href="../setup/" class="md-nav__link">
         
   
   
@@ -1007,31 +1187,28 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   
@@ -1049,7 +1226,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1067,7 +1244,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../monitor-development/" class="md-nav__link">
         
   
   
@@ -1095,7 +1272,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01-invisible-cost/" class="md-nav__link">
+      <a href="../../monitor-development/01-invisible-cost/" class="md-nav__link">
         
   
   
@@ -1120,37 +1297,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Step 2: Bedrock Telemetry
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../monitor-development/02-first-dev-span/" class="md-nav__link">
         
   
   
@@ -1166,81 +1316,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#what-bedrock-logs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What Bedrock logs
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#enabling-model-invocation-logging" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Enabling model invocation logging
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pulling-metrics-into-dynatrace" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Pulling metrics into Dynatrace
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-this-gives-you-and-what-it-doesnt" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What this gives you and what it doesn't
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#next-step" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Next step
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1253,7 +1328,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../03-claude-code-hook/" class="md-nav__link">
+      <a href="../../monitor-development/03-claude-code-hook/" class="md-nav__link">
         
   
   
@@ -1281,7 +1356,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../04-team-proxy/" class="md-nav__link">
+      <a href="../../monitor-development/04-team-proxy/" class="md-nav__link">
         
   
   
@@ -1309,7 +1384,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../05-cost-attribution/" class="md-nav__link">
+      <a href="../../monitor-development/05-cost-attribution/" class="md-nav__link">
         
   
   
@@ -1391,10 +1466,60 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-bedrock-logs" class="md-nav__link">
+  <a href="#checklist" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What Bedrock logs
+        Checklist
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Checklist">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#on-your-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        On your machine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AWS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynatrace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dynatrace
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#container-runtime" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Container runtime
       
     </span>
   </a>
@@ -1402,10 +1527,49 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#enabling-model-invocation-logging" class="md-nav__link">
+  <a href="#aws-credentials" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Enabling model invocation logging
+        AWS credentials
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AWS credentials">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#path-1-you-already-have-the-aws-cli-and-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Path 1: You already have the AWS CLI and it works
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#path-2-you-dont-have-the-aws-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Path 2: You don't have the AWS CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-your-readiness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check your readiness
       
     </span>
   </a>
@@ -1413,21 +1577,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pulling-metrics-into-dynatrace" class="md-nav__link">
+  <a href="#security-reminders" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pulling metrics into Dynatrace
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-this-gives-you-and-what-it-doesnt" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What this gives you and what it doesn't
+        Security reminders
       
     </span>
   </a>
@@ -1463,98 +1616,116 @@
 
 
 
-<h1 id="step-2-aws-bedrock-telemetry">Step 2: AWS Bedrock Telemetry<a class="headerlink" href="#step-2-aws-bedrock-telemetry" title="Permanent link">&para;</a></h1>
-<div class="dt-trail">
-  <div class="dt-trail-item">
-    <a href="../01-invisible-cost/" class="dt-trail-step inactive">Step 1: Developer AI Usage</a>
-    <span class="dt-trail-arrow">→</span>
-  </div>
-  <div class="dt-trail-item">
-    <span class="dt-trail-step">Step 2: Bedrock Telemetry</span>
-    <span class="dt-trail-arrow">→</span>
-  </div>
-  <div class="dt-trail-item">
-    <a href="../03-claude-code-hook/" class="dt-trail-step inactive">Step 3: Harness Hooks</a>
-    <span class="dt-trail-arrow">→</span>
-  </div>
-  <div class="dt-trail-item">
-    <a href="../04-team-proxy/" class="dt-trail-step inactive">Step 4: Enterprise Push</a>
-    <span class="dt-trail-arrow">→</span>
-  </div>
-  <div class="dt-trail-item">
-    <a href="../05-cost-attribution/" class="dt-trail-step inactive">Step 5: AI Gateway</a>
-  </div>
-</div>
-
-<p>AWS Bedrock logs every model invocation natively. You can turn this on without writing any code, and Dynatrace's AWS integration can pull the resulting metrics directly from CloudWatch.</p>
-<p>This is the lowest-effort option. No instrumentation, no hook scripts, no proxy. You enable a setting in the AWS console and point Dynatrace at your AWS account.</p>
-<h2 id="what-bedrock-logs">What Bedrock logs<a class="headerlink" href="#what-bedrock-logs" title="Permanent link">&para;</a></h2>
-<p>When model invocation logging is enabled, Bedrock writes a record for every API call to your account: the model used, token counts, latency, and whether the call succeeded. These records go to CloudWatch Logs and, optionally, S3.</p>
-<p>CloudWatch also surfaces a set of Bedrock metrics automatically: invocation count, latency percentiles, input and output token counts, and throttling events. These are per-model and per-account, updated in near real time.</p>
-<h2 id="enabling-model-invocation-logging">Enabling model invocation logging<a class="headerlink" href="#enabling-model-invocation-logging" title="Permanent link">&para;</a></h2>
-<p>In the AWS console, go to <strong>Amazon Bedrock &gt; Configure and Learn &gt; Settings &gt; Model invocation logging</strong>.</p>
-<p>Turn on logging and choose your destination. CloudWatch is the easiest starting point: Bedrock creates the log group and writes to it automatically. S3 is better if you want long-term retention or need the raw request and response payloads for audit purposes.</p>
-<p>You need one IAM permission for Bedrock to write to CloudWatch:</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="s2">"logs:CreateLogGroup"</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="s2">"logs:CreateLogStream"</span><span class="p">,</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="s2">"logs:PutLogEvents"</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="p">],</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:logs:*:*:log-group:/aws/bedrock/*"</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="p">}</span>
-</span></code></pre></div>
-<p>That is the full setup on the AWS side.</p>
-<h2 id="pulling-metrics-into-dynatrace">Pulling metrics into Dynatrace<a class="headerlink" href="#pulling-metrics-into-dynatrace" title="Permanent link">&para;</a></h2>
-<p>Dynatrace's AWS integration polls CloudWatch metrics on a configurable interval. Once your AWS account is connected, go to <strong>Settings &gt; Cloud and virtualisation &gt; AWS</strong>, select your account, and enable the following services:</p>
-<ul>
-<li><strong>Amazon Bedrock Agents</strong></li>
-<li><strong>Amazon Bedrock Guardrails</strong></li>
+<h1 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h1>
+<p>Confirm every item below <strong>before the lab starts</strong>. Several items (AWS access, Dynatrace tokens) can take time to arrange, so check them early.</p>
+<h2 id="checklist">Checklist<a class="headerlink" href="#checklist" title="Permanent link">&para;</a></h2>
+<h3 id="on-your-machine">On your machine<a class="headerlink" href="#on-your-machine" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>A GitHub account</strong>, so you can fork this repository. You don't have write access to the source repository.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>A container runtime with <code>docker</code> and <code>docker compose</code></strong>, installed and running. The dev container needs both commands. Verify with <code>docker run hello-world</code> and <code>docker compose version</code>. See <a href="#container-runtime">Container runtime</a> below.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong><a href="https://code.visualstudio.com/">VS Code</a></strong> with the <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers">Dev Containers extension</a>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Git</strong> installed. Verify with <code>git --version</code>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Free port <code>4318</code></strong> on localhost. The OpenTelemetry Collector listens here.</li>
 </ul>
-<p>Once enabled, check <strong>Metrics</strong> and search for <code>aws.bedrock</code>. You should see:</p>
+<div class="admonition note">
+<p class="admonition-title">Nothing else to install</p>
+<p>Python, the OpenTelemetry Collector and the <code>dtctl</code> CLI all run inside the dev container. You don't need to install them on your host.</p>
+</div>
+<h3 id="aws">AWS<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>An AWS account or identity</strong> that can use Amazon Bedrock in <code>us-east-2</code>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>IAM permissions</strong> to invoke Bedrock models and guardrails. The exact policy is in <a href="../setup/#required-iam-permissions">Setup, Step 1</a>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Working AWS credentials in <code>~/.aws</code></strong>, set up by one of the two paths in <a href="#aws-credentials">AWS credentials</a> below.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Permission to create a Bedrock Guardrail</strong>, or an existing guardrail ID. Step 3 of the lab needs one.</li>
+</ul>
+<h3 id="dynatrace">Dynatrace<a class="headerlink" href="#dynatrace" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>A Dynatrace environment</strong> you can sign in to. Note your tenant ID (the <code>abc12345</code> in <code>https://abc12345.live.dynatrace.com</code>).</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Permission to create an access token</strong> with the <code>openTelemetryTrace.ingest</code> and <code>metrics.ingest</code> scopes.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Permission to create a platform token</strong> with the <code>storage:metrics:read</code>, <code>storage:spans:read</code> and <code>storage:buckets:read</code> scopes.</li>
+</ul>
+<h2 id="container-runtime">Container runtime<a class="headerlink" href="#container-runtime" title="Permanent link">&para;</a></h2>
+<p>The lab runs in two containers started with Docker Compose, so you need a runtime that provides both <code>docker</code> and <code>docker compose</code>.</p>
+<ul>
+<li><strong><a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a></strong> is the simplest option, but it requires a paid licence for many organisations. Dynatrace employees can't use it.</li>
+<li><strong><a href="https://rancherdesktop.io/">Rancher Desktop</a></strong> is a free alternative. In its settings, choose the <strong>dockerd (moby)</strong> container engine, not containerd. The dev container uses the <code>docker</code> and <code>docker compose</code> commands, which only the dockerd engine provides.</li>
+<li>Any other runtime works if it provides working <code>docker</code> and <code>docker compose</code> commands (for example Colima, or Docker Engine on Linux).</li>
+</ul>
+<p>Whichever you choose, make sure it is running before you open the dev container.</p>
+<h2 id="aws-credentials">AWS credentials<a class="headerlink" href="#aws-credentials" title="Permanent link">&para;</a></h2>
+<p>The dev container mounts your <code>~/.aws</code> folder, so the lab uses whatever credentials are in there. <strong>The folder must exist or the container won't start.</strong> Pick the path that matches you.</p>
+<h3 id="path-1-you-already-have-the-aws-cli-and-it-works">Path 1: You already have the AWS CLI and it works<a class="headerlink" href="#path-1-you-already-have-the-aws-cli-and-it-works" title="Permanent link">&para;</a></h3>
+<p>You're done. Check it with:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity
+</span></code></pre></div>
+<p>If that prints your account and identity, the container will pick up the same credentials.</p>
+<ul>
+<li><strong>SSO users:</strong> run <code>aws sso login --profile your-profile-name</code> on your host before starting the lab, and again whenever the session expires.</li>
+<li><strong>Non-default profile:</strong> if your profile isn't called <code>default</code>, add <code>AWS_PROFILE=your-profile-name</code> to <code>.devcontainer/.env</code>.</li>
+<li>Make sure the identity has the <a href="../setup/#required-iam-permissions">IAM permissions</a> the lab needs.</li>
+</ul>
+<h3 id="path-2-you-dont-have-the-aws-cli">Path 2: You don't have the AWS CLI<a class="headerlink" href="#path-2-you-dont-have-the-aws-cli" title="Permanent link">&para;</a></h3>
+<p>You don't need to install it. You need an access key and a credentials file.</p>
+<ol>
+<li><strong>Create an IAM user and access key.</strong> Follow <a href="../setup/#option-b-iam-user-with-access-keys">Setup, Option B</a>. You end up with an <code>AWS_ACCESS_KEY_ID</code> (starts with <code>AKIA</code>) and an <code>AWS_SECRET_ACCESS_KEY</code>.</li>
+<li>
+<p><strong>Create the folder and file on your machine:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.aws
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>touch<span class="w"> </span>~/.aws/credentials
+</span></code></pre></div>
+</li>
+<li>
+<p><strong>Put your keys in <code>~/.aws/credentials</code>.</strong> Replace the placeholders:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">[default]</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="na">aws_access_key_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">AKIAXXXXXXXXXXXXXXXX</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="na">aws_secret_access_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">REPLACE_WITH_YOUR_SECRET_KEY</span>
+</span></code></pre></div>
+<p>If you were given temporary credentials (they come with a session token), add one more line:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="na">aws_session_token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">REPLACE_WITH_YOUR_SESSION_TOKEN</span>
+</span></code></pre></div>
+<p>You don't need a <code>config</code> file. The region (<code>us-east-2</code>) is set by the dev container.</p>
+</li>
+</ol>
+<p><strong>Prefer not to create a credentials file?</strong> Run <code>mkdir -p ~/.aws</code> to create the empty folder, then put <code>AWS_ACCESS_KEY_ID</code>, <code>AWS_SECRET_ACCESS_KEY</code> and (for temporary credentials) <code>AWS_SESSION_TOKEN</code> in <code>.devcontainer/.env</code>. See <a href="../setup/#step-2-start-the-dev-container">Setup, Step 2.3</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Keep keys out of git</p>
+<p><code>~/.aws/credentials</code> lives outside the repository, so it can't be committed by accident. Never paste keys into files inside the repository other than the gitignored <code>.devcontainer/.env</code>.</p>
+</div>
+<h2 id="check-your-readiness">Check your readiness<a class="headerlink" href="#check-your-readiness" title="Permanent link">&para;</a></h2>
+<p>Before you start, confirm that you can answer "yes" to each of these:</p>
 <table>
 <thead>
 <tr>
-<th>Metric</th>
-<th>What it shows</th>
+<th>Question</th>
+<th>If no</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>aws.bedrock.invocations</code></td>
-<td>Total model calls, per model</td>
+<td>Do <code>docker run hello-world</code> and <code>docker compose version</code> both succeed?</td>
+<td>Start your container runtime, or install one that provides <code>docker</code> and <code>docker compose</code>.</td>
 </tr>
 <tr>
-<td><code>aws.bedrock.invocationlatency</code></td>
-<td>Latency percentiles per model</td>
+<td>Can you open the AWS Console and find <strong>Amazon Bedrock</strong>?</td>
+<td>Ask your AWS administrator for access.</td>
 </tr>
 <tr>
-<td><code>aws.bedrock.inputtokencount</code></td>
-<td>Input tokens consumed per model</td>
+<td>Is <code>us-east-2</code> available to you for Bedrock?</td>
+<td>Ask your AWS administrator to enable it.</td>
 </tr>
 <tr>
-<td><code>aws.bedrock.outputtokencount</code></td>
-<td>Output tokens generated per model</td>
-</tr>
-<tr>
-<td><code>aws.bedrock.invocationthrottles</code></td>
-<td>Throttled requests per model</td>
+<td>Can you open <strong>Access tokens</strong> in Dynatrace (<code>Ctrl / Cmd + k</code>)?</td>
+<td>Ask your Dynatrace administrator for token permissions.</td>
 </tr>
 </tbody>
 </table>
-<p>Split any of these by the <code>ModelId</code> dimension to see the breakdown per model across your account.</p>
-<h2 id="what-this-gives-you-and-what-it-doesnt">What this gives you and what it doesn't<a class="headerlink" href="#what-this-gives-you-and-what-it-doesnt" title="Permanent link">&para;</a></h2>
-<p>Bedrock telemetry is account-level. You can see that your account made 4,000 Claude Sonnet calls yesterday and consumed 12 million input tokens. You cannot see which developer or tool generated those calls, because that information is not in the Bedrock logs.</p>
-<p>If all you need is aggregate visibility across your AWS account, this is enough. If you need per-developer attribution or per-tool breakdown, you need one of the approaches in Steps 3 to 5.</p>
-<details class="info" open="open">
-<summary>Bedrock Mantle and invocation logging</summary>
-<p>If your organisation uses Bedrock Mantle (the OpenAI-compatible endpoint), check whether invocation logging applies at the Mantle layer or the underlying Bedrock layer. Logging behaviour may differ depending on how Mantle is configured in your account.</p>
-</details>
-<div id="dt-quiz-anchor"></div>
-
+<h2 id="security-reminders">Security reminders<a class="headerlink" href="#security-reminders" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Never commit credentials, tokens or <code>.devcontainer/.env</code> to git.</li>
+<li>If you use IAM access keys, delete the user and keys when the lab is over.</li>
+</ul>
 <h2 id="next-step">Next step<a class="headerlink" href="#next-step" title="Permanent link">&para;</a></h2>
-<p><a href="../03-claude-code-hook/">Step 3: Harness Hooks →</a></p>
+<p>Once everything above is ticked, continue to <strong><a href="../setup/">Setup</a></strong>.</p>
 
 
 
@@ -1594,7 +1765,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../01-invisible-cost/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Step 1: Developer AI Usage">
+          <a href="../.." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1604,20 +1775,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Step 1: Developer AI Usage
+                Home
               </div>
             </div>
           </a>
         
         
           
-          <a href="../03-claude-code-hook/" class="md-footer__link md-footer__link--next" aria-label="Next: Step 3: Harness Hooks">
+          <a href="../setup/" class="md-footer__link md-footer__link--next" aria-label="Next: Setup">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Step 3: Harness Hooks
+                Setup
               </div>
             </div>
             <div class="md-footer__button md-icon">
