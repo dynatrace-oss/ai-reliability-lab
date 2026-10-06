@@ -13,7 +13,7 @@
       
       
       
-        <link rel="prev" href="../07-guardrails/">
+        <link rel="prev" href="../07-rag/">
       
       
         <link rel="next" href="../../monitor-development/">
@@ -746,14 +746,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../03-agentic-pipeline/" class="md-nav__link">
+      <a href="../03-guardrails/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Step 3: Agentic Pipeline
+    Step 3: Guardrails
   
 
     
@@ -774,14 +774,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../04-agentic-loop/" class="md-nav__link">
+      <a href="../04-agentic-pipeline/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Step 4: Agentic Loop
+    Step 4: Agentic Pipeline
   
 
     
@@ -802,14 +802,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../05-streaming/" class="md-nav__link">
+      <a href="../05-agentic-loop/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Step 5: Streaming
+    Step 5: Agentic Loop
   
 
     
@@ -830,14 +830,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../06-rag/" class="md-nav__link">
+      <a href="../06-streaming/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Step 6: RAG
+    Step 6: Streaming
   
 
     
@@ -858,14 +858,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../07-guardrails/" class="md-nav__link">
+      <a href="../07-rag/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Step 7: Guardrails
+    Step 7: RAG
   
 
     
@@ -1626,23 +1626,23 @@
     <span class="dt-trail-arrow">→</span>
   </div>
   <div class="dt-trail-item">
-    <a href="03-agentic-pipeline.md" class="dt-trail-step inactive">Step 3: Pipeline</a>
+    <a href="03-guardrails.md" class="dt-trail-step inactive">Step 3: Guardrails</a>
     <span class="dt-trail-arrow">→</span>
   </div>
   <div class="dt-trail-item">
-    <a href="04-agentic-loop.md" class="dt-trail-step inactive">Step 4: Loop</a>
+    <a href="04-agentic-pipeline.md" class="dt-trail-step inactive">Step 4: Pipeline</a>
     <span class="dt-trail-arrow">→</span>
   </div>
   <div class="dt-trail-item">
-    <a href="05-streaming.md" class="dt-trail-step inactive">Step 5: Streaming</a>
+    <a href="05-agentic-loop.md" class="dt-trail-step inactive">Step 5: Loop</a>
     <span class="dt-trail-arrow">→</span>
   </div>
   <div class="dt-trail-item">
-    <a href="06-rag.md" class="dt-trail-step inactive">Step 6: RAG</a>
+    <a href="06-streaming.md" class="dt-trail-step inactive">Step 6: Streaming</a>
     <span class="dt-trail-arrow">→</span>
   </div>
   <div class="dt-trail-item">
-    <a href="07-guardrails.md" class="dt-trail-step inactive">Step 7: Guardrails</a>
+    <a href="07-rag.md" class="dt-trail-step inactive">Step 7: RAG</a>
     <span class="dt-trail-arrow">→</span>
   </div>
   <div class="dt-trail-item">
@@ -1688,7 +1688,7 @@
 </table>
 <p>At each phase, Dynatrace gives you the comparison. You are not guessing: you have a report.</p>
 <h2 id="running-it">Running it<a class="headerlink" href="#running-it" title="Permanent link">&para;</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>code/monitor-production/step7-model-selection
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>code/monitor-production/step8-model-selection
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_REGION</span><span class="o">=</span>us-east-2
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">OTEL_EXPORTER_OTLP_ENDPOINT</span><span class="o">=</span>http://localhost:4318
@@ -1699,7 +1699,7 @@
 <p>No separate flag server to start. The app uses the official <code>openfeature-provider-flagd</code> package in file mode, which reads <code>flags.json</code> and polls for changes every five seconds. Edit the file and the next batch of complaints picks up the new split automatically.</p>
 <h2 id="the-flag">The flag<a class="headerlink" href="#the-flag" title="Permanent link">&para;</a></h2>
 <p><code>flags.json</code> is the single place where the migration is controlled:</p>
-<div class="language-json highlight"><span class="filename">step7-model-selection/flags.json</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
+<div class="language-json highlight"><span class="filename">step8-model-selection/flags.json</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">"$schema"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://flagd.dev/schema/v0/flags.json"</span><span class="p">,</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">"flags"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nt">"active-model"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -1740,7 +1740,7 @@
 </span></code></pre></div>
 <p>The urgency score determines whether the complaint is even eligible for the challenger. The complaint ID determines which eligible complaints land in the challenger bucket. This means the same complaint always routes to the same model variant across multiple runs, which matters when you are re-running a batch to compare results.</p>
 <h2 id="the-routing-code">The routing code<a class="headerlink" href="#the-routing-code" title="Permanent link">&para;</a></h2>
-<div class="language-python highlight"><span class="filename">step7-model-selection/app-instrumented.py</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">urgency</span> <span class="o">=</span> <span class="n">_get_urgency</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+<div class="language-python highlight"><span class="filename">step8-model-selection/app-instrumented.py</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">urgency</span> <span class="o">=</span> <span class="n">_get_urgency</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">ctx</span>     <span class="o">=</span> <span class="n">EvaluationContext</span><span class="p">(</span><span class="n">targeting_key</span><span class="o">=</span><span class="n">cid</span><span class="p">,</span> <span class="n">attributes</span><span class="o">=</span><span class="p">{</span><span class="s2">"urgency"</span><span class="p">:</span> <span class="n">urgency</span><span class="p">})</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">details</span> <span class="o">=</span> <span class="n">flag_client</span><span class="o">.</span><span class="n">get_string_details</span><span class="p">(</span><span class="s2">"active-model"</span><span class="p">,</span> <span class="n">MODEL_CONTROL</span><span class="p">,</span> <span class="n">ctx</span><span class="p">)</span>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">model</span>   <span class="o">=</span> <span class="n">details</span><span class="o">.</span><span class="n">value</span>    <span class="c1"># the model name to call</span>
@@ -1874,7 +1874,7 @@
 <tbody>
 <tr>
 <td><strong>Step 1–7</strong></td>
-<td>Observability on a fixed model, including guardrail monitoring</td>
+<td>Observability on a fixed model — single calls, guardrails, pipelines, loops, streaming, and RAG</td>
 </tr>
 <tr>
 <td><strong>Step 8</strong></td>
@@ -1926,7 +1926,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../07-guardrails/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Step 7: Guardrails">
+          <a href="../07-rag/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Step 7: RAG">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1936,7 +1936,7 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Step 7: Guardrails
+                Step 7: RAG
               </div>
             </div>
           </a>

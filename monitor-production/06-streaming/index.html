@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../05-streaming/">
+        <link rel="prev" href="../05-agentic-loop/">
       
       
-        <link rel="next" href="../07-guardrails/">
+        <link rel="next" href="../07-rag/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Step 6: RAG - AI Observability with Dynatrace</title>
+        <title>Step 6: Streaming - AI Observability with Dynatrace</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#step-6-rag" class="md-skip">
+        <a href="#step-6-streaming" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Step 6: RAG
+              Step 6: Streaming
             
           </span>
         </div>
@@ -746,14 +746,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../03-agentic-pipeline/" class="md-nav__link">
+      <a href="../03-guardrails/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Step 3: Agentic Pipeline
+    Step 3: Guardrails
   
 
     
@@ -774,14 +774,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../04-agentic-loop/" class="md-nav__link">
+      <a href="../04-agentic-pipeline/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Step 4: Agentic Loop
+    Step 4: Agentic Pipeline
   
 
     
@@ -802,14 +802,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../05-streaming/" class="md-nav__link">
+      <a href="../05-agentic-loop/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Step 5: Streaming
+    Step 5: Agentic Loop
   
 
     
@@ -846,7 +846,7 @@
   <span class="md-ellipsis">
     
   
-    Step 6: RAG
+    Step 6: Streaming
   
 
     
@@ -864,7 +864,7 @@
   <span class="md-ellipsis">
     
   
-    Step 6: RAG
+    Step 6: Streaming
   
 
     
@@ -912,45 +912,51 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-the-policy-gets-into-the-vector-store" class="md-nav__link">
+  <a href="#the-instrumentation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How the policy gets into the vector store
+        The instrumentation
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-retrieval-span" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The retrieval span
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="The retrieval span">
+    <nav class="md-nav" aria-label="The instrumentation">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#why-record-matched-sections-on-the-root-span-too" class="md-nav__link">
+  <a href="#the-span-wraps-the-iteration-loop" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why record matched sections on the root span too?
+        The span wraps the iteration loop
       
     </span>
   </a>
   
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#measuring-time-to-first-chunk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Measuring time-to-first-chunk
+      
+    </span>
+  </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#collecting-token-usage-from-the-final-chunk" class="md-nav__link">
+    <span class="md-ellipsis">
       
-        <li class="md-nav__item">
+        Collecting token usage from the final chunk
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#the-new-metric" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -959,33 +965,10 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="The new metric">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#what-good-and-bad-actually-look-like" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What "good" and "bad" actually look like
-      
-    </span>
-  </a>
-  
 </li>
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#is-rag-cheaper-than-the-agentic-pipeline" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Is RAG cheaper than the agentic pipeline?
-      
-    </span>
-  </a>
   
 </li>
       
@@ -998,16 +981,44 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#summary" class="md-nav__link">
+    <nav class="md-nav" aria-label="What you&#39;ll see in Dynatrace">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-the-streaming-spans" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Summary
+        Check the streaming spans
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-time-to-first-chunk-over-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check time-to-first-chunk over time
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-token-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check token usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1016,6 +1027,17 @@
     <span class="md-ellipsis">
       
         What's next?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next step
       
     </span>
   </a>
@@ -1038,14 +1060,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../07-guardrails/" class="md-nav__link">
+      <a href="../07-rag/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Step 7: Guardrails
+    Step 7: RAG
   
 
     
@@ -1399,45 +1421,51 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-the-policy-gets-into-the-vector-store" class="md-nav__link">
+  <a href="#the-instrumentation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How the policy gets into the vector store
+        The instrumentation
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-retrieval-span" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The retrieval span
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="The retrieval span">
+    <nav class="md-nav" aria-label="The instrumentation">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#why-record-matched-sections-on-the-root-span-too" class="md-nav__link">
+  <a href="#the-span-wraps-the-iteration-loop" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why record matched sections on the root span too?
+        The span wraps the iteration loop
       
     </span>
   </a>
   
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#measuring-time-to-first-chunk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Measuring time-to-first-chunk
+      
+    </span>
+  </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#collecting-token-usage-from-the-final-chunk" class="md-nav__link">
+    <span class="md-ellipsis">
       
-        <li class="md-nav__item">
+        Collecting token usage from the final chunk
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#the-new-metric" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1446,33 +1474,10 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="The new metric">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#what-good-and-bad-actually-look-like" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What "good" and "bad" actually look like
-      
-    </span>
-  </a>
-  
 </li>
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#is-rag-cheaper-than-the-agentic-pipeline" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Is RAG cheaper than the agentic pipeline?
-      
-    </span>
-  </a>
   
 </li>
       
@@ -1485,16 +1490,44 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#summary" class="md-nav__link">
+    <nav class="md-nav" aria-label="What you&#39;ll see in Dynatrace">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-the-streaming-spans" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Summary
+        Check the streaming spans
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-time-to-first-chunk-over-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check time-to-first-chunk over time
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-token-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check token usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1503,6 +1536,17 @@
     <span class="md-ellipsis">
       
         What's next?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next step
       
     </span>
   </a>
@@ -1527,7 +1571,7 @@
 
 
 
-<h1 id="step-6-rag">Step 6: RAG<a class="headerlink" href="#step-6-rag" title="Permanent link">&para;</a></h1>
+<h1 id="step-6-streaming">Step 6: Streaming<a class="headerlink" href="#step-6-streaming" title="Permanent link">&para;</a></h1>
 <div class="dt-trail">
   <div class="dt-trail-item">
     <a href="01-single-call.md" class="dt-trail-step inactive">Step 1: First Call</a>
@@ -1538,23 +1582,23 @@
     <span class="dt-trail-arrow">→</span>
   </div>
   <div class="dt-trail-item">
-    <a href="03-agentic-pipeline.md" class="dt-trail-step inactive">Step 3: Pipeline</a>
+    <a href="03-guardrails.md" class="dt-trail-step inactive">Step 3: Guardrails</a>
     <span class="dt-trail-arrow">→</span>
   </div>
   <div class="dt-trail-item">
-    <a href="04-agentic-loop.md" class="dt-trail-step inactive">Step 4: Loop</a>
+    <a href="04-agentic-pipeline.md" class="dt-trail-step inactive">Step 4: Pipeline</a>
     <span class="dt-trail-arrow">→</span>
   </div>
   <div class="dt-trail-item">
-    <a href="05-streaming.md" class="dt-trail-step inactive">Step 5: Streaming</a>
+    <a href="05-agentic-loop.md" class="dt-trail-step inactive">Step 5: Loop</a>
     <span class="dt-trail-arrow">→</span>
   </div>
   <div class="dt-trail-item">
-    <span class="dt-trail-step">Step 6: RAG</span>
+    <span class="dt-trail-step">Step 6: Streaming</span>
     <span class="dt-trail-arrow">→</span>
   </div>
   <div class="dt-trail-item">
-    <a href="07-guardrails.md" class="dt-trail-step inactive">Step 7: Guardrails</a>
+    <a href="07-rag.md" class="dt-trail-step inactive">Step 7: RAG</a>
     <span class="dt-trail-arrow">→</span>
   </div>
   <div class="dt-trail-item">
@@ -1562,10 +1606,10 @@
   </div>
 </div>
 
-<p>Retrieval-Augmented Generation (RAG) is a pattern for giving the model access to a large knowledge base without putting it all in the prompt. Before calling the model, you search a vector database for the sections most relevant to the user's request, and pass only those to the model.</p>
-<p>This adds a new operation to the trace: the retrieval step.</p>
+<p>Streaming changes how the model sends its response. Instead of waiting for the entire reply before returning anything, the model sends tokens as it generates them. Your application can display them in real time.</p>
+<p>This changes the instrumentation pattern in three important ways.</p>
 <h2 id="running-it">Running it<a class="headerlink" href="#running-it" title="Permanent link">&para;</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>code/monitor-production/step6-rag
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>code/monitor-production/step6-streaming
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_REGION</span><span class="o">=</span>us-east-2
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">OTEL_EXPORTER_OTLP_ENDPOINT</span><span class="o">=</span>http://localhost:4318
@@ -1574,213 +1618,139 @@
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>python<span class="w"> </span>app-instrumented.py<span class="w"> </span>C001<span class="w">   </span><span class="c1"># run a specific complaint</span>
 </span></code></pre></div>
 <h2 id="what-changes">What changes<a class="headerlink" href="#what-changes" title="Permanent link">&para;</a></h2>
-<p>Our demo app uses a company policy document to decide what remedy to offer each customer. Refund rules, replacement timelines, escalation criteria. It's all in there.</p>
-<p>When the model needs to respond to a complaint, it needs to know what the policy says. There are two ways to give it that information.</p>
-<p><strong>Option 1: send the whole policy document in every request.</strong> Simple, but every token in that document <a href="../../foundation/tokens/">costs money and counts against the context window</a>. If the policy is 10 pages, you're paying for 10 pages of tokens on every single complaint, even though a complaint about a late delivery only needs the shipping policy section.</p>
-<p><strong>Option 2: figure out which sections of the policy are relevant to this specific complaint, and only send those.</strong> Much cheaper. But how do you do that automatically, for every complaint, without reading the document yourself?</p>
-<p>RAG solves this by running a similarity search against the policy document before calling the model. The search finds the sections most likely to be relevant to the complaint and returns just those. The model only ever sees the parts it actually needs.</p>
-<p>The trace now has three spans under the root instead of one:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>triage {complaint_id}         ← root span, full lifecycle
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  retrieval                   ← vector similarity search
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>  chat {MODEL}                ← LLM call with retrieved context only
-</span></code></pre></div>
-<h2 id="how-the-policy-gets-into-the-vector-store">How the policy gets into the vector store<a class="headerlink" href="#how-the-policy-gets-into-the-vector-store" title="Permanent link">&para;</a></h2>
-<p>Before RAG can work, the policy document has to be loaded into a vector store. This is called indexing, and it happens once at startup, before any complaint is processed.</p>
-<p>Here is what the app does:</p>
+<p>In every previous step, the response was a single object returned all at once. You could read <code>response.usage</code>, <code>response.choices[0].finish_reason</code>, and <code>response.choices[0].message.content</code> immediately after the call returned.</p>
+<p>With streaming, there is no single response object. Instead you iterate over a stream of small chunks. Each chunk carries a fragment of the content, and the final chunk carries the token counts. This means:</p>
 <ol>
 <li>
-<p><strong>Split the document into sections.</strong> The policy is a markdown file. The app reads it and breaks it into chunks, one per <code>##</code> heading. Each chunk is one self-contained policy section, such as "Shipping delays" or "Refund eligibility".</p>
+<p><strong>The span must stay open for the full stream.</strong> You cannot record token counts or finish reason until you have consumed all chunks. Those attributes are deferred to after the loop ends.</p>
 </li>
 <li>
-<p><strong>Convert each chunk into a vector.</strong> A vector is a list of numbers that represents the meaning of a piece of text. The vector store handles this automatically when you add a document. Texts that mean similar things end up with similar vectors, even if they use different words. For example, "my parcel never arrived" and "item not delivered" would produce very similar vectors, so a complaint with either phrase would match the shipping policy section. "I want a refund" would produce a different vector and match the refund policy section instead.</p>
+<p><strong>Time-to-first-chunk must be measured with a wall-clock timer.</strong> This is a new metric that does not exist in non-streaming calls. It is also how humans judge whether an LLM feels responsive: not how long the full response takes, but how quickly the first word appears. A model that starts writing in half a second feels fast even if the complete reply takes ten seconds. One that sits silent for five seconds feels broken, even if it finishes quickly after that.</p>
 </li>
 <li>
-<p><strong>Store the vectors.</strong> Each chunk and its vector are saved in the vector store, tagged with the name of the section it came from. The section name is stored as metadata so that after a search you know not just what text was returned but where in the policy it came from. That is what populates <code>retrieval.matched_sections</code> in the trace.</p>
+<p><strong>Token usage arrives on a final empty chunk.</strong> The provider sends a terminating chunk with no content but with <code>chunk.usage</code> populated. This only happens if you set <code>stream_options={"include_usage": True}</code> on the request.</p>
 </li>
 </ol>
-<p>When a complaint arrives, the same process runs on the complaint text. The complaint "my delivery is late" is converted to a vector. The vector store compares that vector against every stored policy vector and finds the closest matches. In this case the "Late deliveries" section would score as highly similar, while "Refund eligibility" and "Warranty claims" would score as distant. The vector store then returns the original text of the matching sections, not the numbers. The numbers were only ever a lookup mechanism. The model receives the actual policy wording, just the one or two sections that are relevant, and nothing else from the document. That is the retrieval step.</p>
-<p>The indexing runs once at startup, separate from any complaint trace. The app wraps it in its own span named <code>index policy</code>, with <code>policy.file</code> and <code>policy.section_count</code> as attributes, so you can see it in Dynatrace alongside the per-complaint traces and confirm the index was built correctly before any complaints were processed. You will also see <code>Indexed N policy sections</code> printed in the terminal.</p>
-<p>In this demo app, the vector database (we use ChromaDB) is running entirely in-memory bundled in the application code.</p>
-<h2 id="the-retrieval-span">The retrieval span<a class="headerlink" href="#the-retrieval-span" title="Permanent link">&para;</a></h2>
-<p>The retrieval step is a child span with its own instrumentation:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">with</span> <span class="n">tracer</span><span class="o">.</span><span class="n">start_as_current_span</span><span class="p">(</span><span class="s2">"retrieval"</span><span class="p">)</span> <span class="k">as</span> <span class="n">span</span><span class="p">:</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="n">span</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">"gen_ai.operation.name"</span><span class="p">,</span> <span class="s2">"retrieval"</span><span class="p">)</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">span</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">"retrieval.query"</span><span class="p">,</span>        <span class="n">query</span><span class="p">)</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="n">span</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">"retrieval.n_results"</span><span class="p">,</span>    <span class="n">n</span><span class="p">)</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">results</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query_texts</span><span class="o">=</span><span class="p">[</span><span class="n">query</span><span class="p">],</span> <span class="n">n_results</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="n">chunks</span>  <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s2">"documents"</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="n">metas</span>   <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s2">"metadatas"</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="n">matched</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span><span class="p">[</span><span class="s2">"section"</span><span class="p">]</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">metas</span><span class="p">]</span>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="n">span</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">"retrieval.matched_sections"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">matched</span><span class="p">))</span>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    <span class="n">span</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">"retrieval.chunk_count"</span><span class="p">,</span>      <span class="nb">len</span><span class="p">(</span><span class="n">chunks</span><span class="p">))</span>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    <span class="n">retrieval_results</span><span class="o">.</span><span class="n">record</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">chunks</span><span class="p">),</span> <span class="p">{</span>
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>        <span class="s2">"gen_ai.operation.name"</span><span class="p">:</span> <span class="s2">"retrieval"</span><span class="p">,</span>
-</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>    <span class="p">})</span>
+<h2 id="the-instrumentation">The instrumentation<a class="headerlink" href="#the-instrumentation" title="Permanent link">&para;</a></h2>
+<h3 id="the-span-wraps-the-iteration-loop">The span wraps the iteration loop<a class="headerlink" href="#the-span-wraps-the-iteration-loop" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">with</span> <span class="n">tracer</span><span class="o">.</span><span class="n">start_as_current_span</span><span class="p">(</span><span class="sa">f</span><span class="s2">"chat </span><span class="si">{</span><span class="n">MODEL</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span> <span class="k">as</span> <span class="n">span</span><span class="p">:</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">span</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">"gen_ai.request.stream"</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="c1"># ... other request attributes ...</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="n">first_chunk_elapsed</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="n">stream</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>        <span class="n">model</span><span class="o">=</span><span class="n">MODEL</span><span class="p">,</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>        <span class="n">messages</span><span class="o">=</span><span class="n">messages</span><span class="p">,</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>        <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>        <span class="n">stream_options</span><span class="o">=</span><span class="p">{</span><span class="s2">"include_usage"</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>    <span class="p">)</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>    <span class="n">content_chunks</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>    <span class="n">finish_reason</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>    <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">stream</span><span class="p">:</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>        <span class="o">...</span>  <span class="c1"># see sections below</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>    <span class="c1"># --- Deferred attributes: set after the loop ends ---</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>    <span class="n">span</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">"gen_ai.response.finish_reasons"</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>    <span class="n">span</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">"gen_ai.output.messages"</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
 </span></code></pre></div>
-<p><code>gen_ai.operation.name = "retrieval"</code> follows the OTel GenAI semantic conventions for vector search operations. The span duration covers the embedding of the query and the similarity search, so you can see vector store latency separately from LLM latency in the trace waterfall.</p>
-<p>The key attribute here is <code>retrieval.matched_sections</code>. It records which policy sections were actually returned, so you can answer "what context did the model see?" directly from the trace, without re-running the query.</p>
-<h3 id="why-record-matched-sections-on-the-root-span-too">Why record matched sections on the root span too?<a class="headerlink" href="#why-record-matched-sections-on-the-root-span-too" title="Permanent link">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">root</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">"retrieval.matched_sections"</span><span class="p">,</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>                   <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">([</span><span class="n">c</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">relevant_chunks</span><span class="p">]))</span>
+<p>The span opens before the stream starts and closes after the loop ends. This means the span duration is the total time to receive the complete response, which is the correct end-to-end latency for a streaming call.</p>
+<h3 id="measuring-time-to-first-chunk">Measuring time-to-first-chunk<a class="headerlink" href="#measuring-time-to-first-chunk" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">stream</span><span class="p">:</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="k">if</span> <span class="n">chunk</span><span class="o">.</span><span class="n">choices</span> <span class="ow">and</span> <span class="n">chunk</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">delta</span><span class="o">.</span><span class="n">content</span><span class="p">:</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>        <span class="k">if</span> <span class="n">first_chunk_elapsed</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>            <span class="n">first_chunk_elapsed</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>        <span class="n">delta</span> <span class="o">=</span> <span class="n">chunk</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">delta</span><span class="o">.</span><span class="n">content</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>        <span class="n">content_chunks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </span></code></pre></div>
-<p>The retrieval child span already has this. Duplicating it on the root span lets you filter complaints by which policy sections were triggered at the trace level, without drilling into child spans every time. It's a small redundancy that makes Dynatrace queries much easier to write.</p>
-<h2 id="the-new-metric">The new metric<a class="headerlink" href="#the-new-metric" title="Permanent link">&para;</a></h2>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">retrieval_results</span> <span class="o">=</span> <span class="n">meter</span><span class="o">.</span><span class="n">create_histogram</span><span class="p">(</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">"rag.retrieval.chunk_count"</span><span class="p">,</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">unit</span><span class="o">=</span><span class="s2">"</span><span class="si">{chunk}</span><span class="s2">"</span><span class="p">,</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="n">description</span><span class="o">=</span><span class="s2">"Number of policy chunks retrieved per complaint"</span><span class="p">,</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">)</span>
+<p>The timer starts just before the stream opens (before any network round-trip) and stops on the first chunk that carries content. The result is recorded as both a span attribute and a metric after the loop ends:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">if</span> <span class="n">first_chunk_elapsed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="n">span</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">"gen_ai.response.time_to_first_chunk"</span><span class="p">,</span> <span class="n">first_chunk_elapsed</span><span class="p">)</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="n">ttfc</span><span class="o">.</span><span class="n">record</span><span class="p">(</span><span class="n">first_chunk_elapsed</span><span class="p">,</span> <span class="p">{</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>        <span class="s2">"gen_ai.provider.name"</span><span class="p">:</span>  <span class="s2">"openai"</span><span class="p">,</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>        <span class="s2">"gen_ai.operation.name"</span><span class="p">:</span> <span class="s2">"chat"</span><span class="p">,</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>        <span class="s2">"gen_ai.request.model"</span><span class="p">:</span>  <span class="n">MODEL</span><span class="p">,</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="p">})</span>
 </span></code></pre></div>
-<p>This tracks how many chunks are returned per complaint. A consistently low value means the retrieval is focused. A high value suggests the query is too broad, or the policy chunks are not semantically distinct enough from each other.</p>
-<h3 id="what-good-and-bad-actually-look-like">What "good" and "bad" actually look like<a class="headerlink" href="#what-good-and-bad-actually-look-like" title="Permanent link">&para;</a></h3>
-<p>Before setting an alert on this metric, check how your vector database (we use the open source vector database <a href="https://github.com/chroma-core/chroma">ChromaDB</a> for this demo) is configured, because that determines whether the metric can vary at all.</p>
-<div class="language-python highlight"><span class="filename">step6-rag/app-instrumented.py</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">RETRIEVAL_THRESHOLD</span> <span class="o">=</span> <span class="mf">0.5</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">chroma</span>     <span class="o">=</span> <span class="n">chromadb</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">collection</span> <span class="o">=</span> <span class="n">chroma</span><span class="o">.</span><span class="n">create_collection</span><span class="p">(</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="s2">"policy"</span><span class="p">,</span>
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s2">"hnsw:space"</span><span class="p">:</span> <span class="s2">"cosine"</span><span class="p">},</span>
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="p">)</span>
-</span></code></pre></div>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">results</span>   <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query_texts</span><span class="o">=</span><span class="p">[</span><span class="n">query</span><span class="p">],</span> <span class="n">n_results</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">chunks</span>    <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s2">"documents"</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">distances</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s2">"distances"</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">chunks</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">chunks</span><span class="p">,</span> <span class="n">distances</span><span class="p">)</span> <span class="k">if</span> <span class="n">d</span> <span class="o">&lt;=</span> <span class="n">RETRIEVAL_THRESHOLD</span><span class="p">]</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="n">metas</span>  <span class="o">=</span> <span class="p">[</span><span class="n">m</span> <span class="k">for</span> <span class="n">m</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">metas</span><span class="p">,</span>  <span class="n">distances</span><span class="p">)</span> <span class="k">if</span> <span class="n">d</span> <span class="o">&lt;=</span> <span class="n">RETRIEVAL_THRESHOLD</span><span class="p">]</span>
-</span></code></pre></div>
-<p>ChromaDB supports three distance functions: <code>l2</code> (the default), <code>cosine</code>, and <code>ip</code> (inner product). The choice affects which chunks get returned for a given query. For semantic text search, <code>cosine</code> is a good starting point: it measures how similar two pieces of text are in meaning, regardless of their length. See the <a href="https://docs.trychroma.com/docs/collections/configure">ChromaDB docs</a> for guidance on when to use each.</p>
-<p>This demo uses <code>cosine</code> with a threshold of <code>0.5</code>. Cosine distance runs from 0 (identical meaning) to 1 (completely unrelated), so anything above 0.5 gets dropped. This means <code>chunk_count</code> can now be anywhere from 0 to <code>n_results</code> depending on how well the complaint matches the policy, so the metric actually varies and alerting on it is meaningful.</p>
-<p>The threshold is also recorded on the retrieval span (<code>retrieval.threshold</code>), so you can see it alongside the chunk count in Dynatrace and adjust it if results feel too broad or too narrow.</p>
-<p>Once you have score-based filtering, the patterns to watch for are:</p>
-<table>
-<thead>
-<tr>
-<th>Pattern</th>
-<th>What it suggests</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>chunk_count</code> consistently below <code>n_results</code></td>
-<td>Retrieval is focused; queries match specific sections clearly</td>
-</tr>
-<tr>
-<td><code>chunk_count</code> consistently at <code>n_results</code> (the cap)</td>
-<td>Threshold may be too loose; everything is matching</td>
-</tr>
-<tr>
-<td><code>chunk_count</code> dropping suddenly</td>
-<td>Policy chunks no longer match incoming queries. Possible causes: the policy document changed, or complaint language has shifted</td>
-</tr>
-<tr>
-<td>High variance across complaints</td>
-<td>Some query types have clear policy matches; others don't. Points to gaps in the knowledge base</td>
-</tr>
-</tbody>
-</table>
-<p>The raw count alone is not enough. Pair it with <code>gen_ai.usage.input_tokens</code> on the <code>chat</code> span: high chunk_count with high input tokens means you're paying for broad retrieval. Low chunk_count with degraded answers means the retrieval is too narrow.</p>
-<p>The baseline for what is "high" also depends on your <code>n_results</code> setting. The ratio <code>chunk_count / n_results</code> is more portable than the raw number when comparing across different configurations.</p>
-<h2 id="is-rag-cheaper-than-the-agentic-pipeline">Is RAG cheaper than the agentic pipeline?<a class="headerlink" href="#is-rag-cheaper-than-the-agentic-pipeline" title="Permanent link">&para;</a></h2>
-<p>It depends on what you're comparing.</p>
-<p>For a small policy document, the agentic pipeline sends the whole policy file to the policy checker on every complaint. RAG retrieves 3 chunks and sends about 100 tokens. So RAG uses fewer tokens for the policy context. But the pipeline makes three LLM calls (sentiment, policy checker, draft) while RAG makes one. You're not comparing like for like.</p>
 <details class="info" open="open">
-<summary>The real case for RAG is scalability, not cost</summary>
-<p>The point is not that RAG is cheaper than the pipeline at small scale. It's that the pipeline approach breaks when the policy grows.</p>
-<p>When the policy reaches 500 pages covering every product, region, warranty clause, and edge case, you cannot fit it in a prompt. Even if you could, you'd be paying for 500 pages of tokens on every single complaint, and <a href="https://arxiv.org/abs/2307.03172">model attention degrades when given a huge irrelevant document</a>.</p>
-<p>RAG solves that. The knowledge base can be 10,000 pages and you still only ever send 3 relevant chunks to the model. Cost and quality both scale well.</p>
+<summary>Why does time-to-first-chunk matter?</summary>
+<p>Streaming only feels fast if the first token arrives quickly. A five-second silence before streaming starts is indistinguishable from a broken request to the person waiting for it.</p>
+<p>A slow time-to-first-chunk is usually a cold-start or scheduling delay on the provider side, not something related to the length of the response. The span duration tells you total time; time-to-first-chunk tells you where the initial wait actually is.</p>
 </details>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Agentic pipeline</th>
-<th>RAG</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>LLM calls per complaint</strong></td>
-<td>3</td>
-<td>1</td>
-</tr>
-<tr>
-<td><strong>Policy tokens sent</strong></td>
-<td>All of it</td>
-<td>~3 chunks</td>
-</tr>
-<tr>
-<td><strong>Works with a 500-page policy</strong></td>
-<td>No</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td><strong>Trace structure</strong></td>
-<td>3 child spans</td>
-<td>retrieval + chat</td>
-</tr>
-</tbody>
-</table>
+<h3 id="collecting-token-usage-from-the-final-chunk">Collecting token usage from the final chunk<a class="headerlink" href="#collecting-token-usage-from-the-final-chunk" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">stream</span><span class="p">:</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="c1"># ...content chunks handled above...</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="k">if</span> <span class="n">chunk</span><span class="o">.</span><span class="n">usage</span><span class="p">:</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>        <span class="n">span</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">"gen_ai.usage.input_tokens"</span><span class="p">,</span>  <span class="n">chunk</span><span class="o">.</span><span class="n">usage</span><span class="o">.</span><span class="n">prompt_tokens</span><span class="p">)</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>        <span class="n">span</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">"gen_ai.usage.output_tokens"</span><span class="p">,</span> <span class="n">chunk</span><span class="o">.</span><span class="n">usage</span><span class="o">.</span><span class="n">completion_tokens</span><span class="p">)</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>        <span class="n">metric_attrs</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>            <span class="s2">"gen_ai.provider.name"</span><span class="p">:</span>  <span class="s2">"openai"</span><span class="p">,</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>            <span class="s2">"gen_ai.operation.name"</span><span class="p">:</span> <span class="s2">"chat"</span><span class="p">,</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>            <span class="s2">"gen_ai.request.model"</span><span class="p">:</span>  <span class="n">MODEL</span><span class="p">,</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>        <span class="p">}</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>        <span class="n">token_usage</span><span class="o">.</span><span class="n">record</span><span class="p">(</span><span class="n">chunk</span><span class="o">.</span><span class="n">usage</span><span class="o">.</span><span class="n">prompt_tokens</span><span class="p">,</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>                           <span class="p">{</span><span class="o">**</span><span class="n">metric_attrs</span><span class="p">,</span> <span class="s2">"gen_ai.token.type"</span><span class="p">:</span> <span class="s2">"input"</span><span class="p">})</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>        <span class="n">token_usage</span><span class="o">.</span><span class="n">record</span><span class="p">(</span><span class="n">chunk</span><span class="o">.</span><span class="n">usage</span><span class="o">.</span><span class="n">completion_tokens</span><span class="p">,</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>                           <span class="p">{</span><span class="o">**</span><span class="n">metric_attrs</span><span class="p">,</span> <span class="s2">"gen_ai.token.type"</span><span class="p">:</span> <span class="s2">"output"</span><span class="p">})</span>
+</span></code></pre></div>
+<p><code>chunk.usage</code> is only populated on the final chunk, and only because we passed <code>stream_options={"include_usage": True}</code>. Without that option, token counts are unavailable in streaming mode and <code>gen_ai.usage.*</code> cannot be set on the span.</p>
+<h3 id="the-new-metric">The new metric<a class="headerlink" href="#the-new-metric" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">ttfc</span> <span class="o">=</span> <span class="n">meter</span><span class="o">.</span><span class="n">create_histogram</span><span class="p">(</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">"gen_ai.client.operation.time_to_first_chunk"</span><span class="p">,</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="n">unit</span><span class="o">=</span><span class="s2">"s"</span><span class="p">,</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="n">description</span><span class="o">=</span><span class="s2">"Time from request to first content chunk"</span><span class="p">,</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">)</span>
+</span></code></pre></div>
+<p>This follows the <a href="https://opentelemetry.io/docs/specs/semconv/gen-ai/">OpenTelemetry GenAI semantic conventions</a> for streaming. Use the p50 to understand typical model startup latency and the p99 to catch outliers caused by provider-side cold starts or scheduling delays.</p>
 <h2 id="what-youll-see-in-dynatrace">What you'll see in Dynatrace<a class="headerlink" href="#what-youll-see-in-dynatrace" title="Permanent link">&para;</a></h2>
-<p>Each trace has three spans. Open one and you'll see:</p>
+<p>After running, wait about <strong>60 seconds</strong> for data to arrive, then query from the terminal.</p>
+<p>Each trace will have a single <code>chat</code> span whose duration is the full streaming time. On that span you will see:</p>
 <ul>
-<li>The root <code>triage</code> span with <code>complaint.id</code>, <code>complaint.customer</code>, and <code>retrieval.matched_sections</code></li>
-<li>A <code>retrieval</code> child span showing the query, how many chunks were requested, and which sections were returned. Duration here is the vector search latency.</li>
-<li>A <code>chat</code> child span with the full GenAI attributes (model, token counts, input/output messages). Duration here is the LLM latency.</li>
+<li><code>gen_ai.request.stream: true</code> confirming this was a streaming call</li>
+<li><code>gen_ai.response.time_to_first_chunk</code>: how long before content started arriving</li>
+<li><code>gen_ai.usage.input_tokens</code> and <code>gen_ai.usage.output_tokens</code> from the final chunk</li>
+<li><code>gen_ai.output.messages</code> containing the assembled full response</li>
 </ul>
-<p>Compare retrieval duration vs chat duration across complaints. If retrieval latency is close to LLM latency, the vector store is a meaningful part of your response time. If it's near zero, the bottleneck is entirely in the model.</p>
-<p>In <strong>Metrics</strong>, <code>rag.retrieval.chunk_count</code> shows whether your retrieval is returning focused results or casting too wide a net.</p>
-<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
-<p>You have now seen the full progression:</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>What runs</th>
-<th>Observability</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Step 1</strong></td>
-<td>One AI call, no OTel</td>
-<td>None</td>
-</tr>
-<tr>
-<td><strong>Step 2</strong></td>
-<td>One AI call, with OTel</td>
-<td>1 span, token histogram</td>
-</tr>
-<tr>
-<td><strong>Step 3</strong></td>
-<td>Fixed pipeline of agents</td>
-<td>Predictable nested spans</td>
-</tr>
-<tr>
-<td><strong>Step 4</strong></td>
-<td>Model-driven agentic loop</td>
-<td>Variable nested spans</td>
-</tr>
-<tr>
-<td><strong>Step 5</strong></td>
-<td>Streaming response</td>
-<td>1 span with time-to-first-chunk metric</td>
-</tr>
-<tr>
-<td><strong>Step 6</strong></td>
-<td>RAG</td>
-<td>retrieval + chat spans, chunk count metric</td>
-</tr>
-</tbody>
-</table>
-<p>The span and metric patterns are consistent throughout. What changes with each step is the shape of the operation you're observing.</p>
+<p>In <strong>Metrics</strong>, you will find two histograms:</p>
+<ul>
+<li><code>gen_ai.client.token.usage</code> (the same one from Step 2, now populated from streaming)</li>
+<li><code>gen_ai.client.operation.time_to_first_chunk</code> (streaming-specific, in seconds)</li>
+</ul>
+<h3 id="check-the-streaming-spans">Check the streaming spans<a class="headerlink" href="#check-the-streaming-spans" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dtctl<span class="w"> </span>query<span class="w"> </span><span class="s1">'fetch spans</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="s1">| filter service.name == "support-streaming"</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="s1">| filter gen_ai.operation.name == "chat"</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="s1">| fieldsAdd dur_ns = toLong(duration)</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="s1">| fieldsAdd duration_readable = concat(toString(tolong(dur_ns / 60000000000)), "m ", toString(round((dur_ns / 1000000000) - (tolong(dur_ns / 60000000000) * 60), decimals:1)), "s")</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="s1">| fields start_time, trace.id, span.name, duration_readable, gen_ai.response.time_to_first_chunk, gen_ai.usage.input_tokens, gen_ai.usage.output_tokens</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="s1">| sort start_time desc</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="s1">| limit 10'</span>
+</span></code></pre></div>
+<p>Each row is one streaming call. The <code>span.name</code> will be <code>chat openai.gpt-oss-120b</code> and its parent root span is <code>respond {complaint_id}</code> — use <code>trace.id</code> to link them. Compare <code>gen_ai.response.time_to_first_chunk</code> (in seconds) against <code>duration_readable</code> (total time). A small TTFC relative to the total means the model started generating quickly — most of the time was spent streaming tokens. A large TTFC means the model was slow to start.</p>
+<h3 id="check-time-to-first-chunk-over-time">Check time-to-first-chunk over time<a class="headerlink" href="#check-time-to-first-chunk-over-time" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dtctl<span class="w"> </span>query<span class="w"> </span><span class="s1">'timeseries ttfc = avg(gen_ai.client.operation.time_to_first_chunk), by: {gen_ai.request.model}</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="s1">| fieldsAdd avg_ttfc = arrayAvg(ttfc)</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="s1">| fields gen_ai.request.model, avg_ttfc'</span>
+</span></code></pre></div>
+<h3 id="check-token-usage">Check token usage<a class="headerlink" href="#check-token-usage" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dtctl<span class="w"> </span>query<span class="w"> </span><span class="s1">'timeseries tokens = sum(gen_ai.client.token.usage), by: {gen_ai.token.type}</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="s1">| fieldsAdd total = arraySum(tokens)</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="s1">| fields gen_ai.token.type, total'</span>
+</span></code></pre></div>
+<p>Compare <code>time_to_first_chunk</code> against span duration across complaints. If the first-chunk time is consistently close to the total duration, the model is generating quickly but you have network or streaming overhead. If it is high relative to the total, the model is slow to start.</p>
+<h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
+<p>So far, every example has given the model everything it needs directly in the prompt. That works when the background knowledge is small. But real products have product catalogues, policy documents, knowledge bases, and FAQs that are far too large to include on every request.</p>
+<p>RAG (Retrieval-Augmented Generation) solves this. Instead of stuffing the whole document into the prompt, you search it first and pass only the relevant sections to the model. Your knowledge base can be thousands of pages and the model never has to see more than a handful at a time.</p>
+<p>In <a href="../07-rag/">Step 7</a>, we add a retrieval step to the trace. A vector search runs before the LLM call, and the results feed directly into the prompt. This introduces a new span type, a new metric, and a new question you can answer from your traces: what context did the model actually see?</p>
 <div id="dt-quiz-anchor"></div>
 
-<h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
-<p>In <a href="../07-guardrails/">Step 7</a>, we tackle prompt injection: users who try to sneak off-topic tasks into a legitimate question. You will configure an AWS Bedrock Guardrail to block them, then add the instrumentation that makes guardrail activity visible in Dynatrace.</p>
+<h2 id="next-step">Next step<a class="headerlink" href="#next-step" title="Permanent link">&para;</a></h2>
+<p><a href="../07-rag/">Step 7: RAG →</a></p>
 
 
 
@@ -1820,7 +1790,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../05-streaming/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Step 5: Streaming">
+          <a href="../05-agentic-loop/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Step 5: Agentic Loop">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1830,20 +1800,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Step 5: Streaming
+                Step 5: Agentic Loop
               </div>
             </div>
           </a>
         
         
           
-          <a href="../07-guardrails/" class="md-footer__link md-footer__link--next" aria-label="Next: Step 7: Guardrails">
+          <a href="../07-rag/" class="md-footer__link md-footer__link--next" aria-label="Next: Step 7: RAG">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Step 7: Guardrails
+                Step 7: RAG
               </div>
             </div>
             <div class="md-footer__button md-icon">

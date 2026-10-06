@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../03-agentic-pipeline/">
+        <link rel="prev" href="../04-agentic-pipeline/">
       
       
-        <link rel="next" href="../05-streaming/">
+        <link rel="next" href="../06-streaming/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Step 4: Agentic Loop - AI Observability with Dynatrace</title>
+        <title>Step 5: Agentic Loop - AI Observability with Dynatrace</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#step-4-agentic-loop" class="md-skip">
+        <a href="#step-5-agentic-loop" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Step 4: Agentic Loop
+              Step 5: Agentic Loop
             
           </span>
         </div>
@@ -746,14 +746,42 @@
   
   
     <li class="md-nav__item">
-      <a href="../03-agentic-pipeline/" class="md-nav__link">
+      <a href="../03-guardrails/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Step 3: Agentic Pipeline
+    Step 3: Guardrails
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-agentic-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Step 4: Agentic Pipeline
   
 
     
@@ -790,7 +818,7 @@
   <span class="md-ellipsis">
     
   
-    Step 4: Agentic Loop
+    Step 5: Agentic Loop
   
 
     
@@ -808,7 +836,7 @@
   <span class="md-ellipsis">
     
   
-    Step 4: Agentic Loop
+    Step 5: Agentic Loop
   
 
     
@@ -1054,14 +1082,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../05-streaming/" class="md-nav__link">
+      <a href="../06-streaming/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Step 5: Streaming
+    Step 6: Streaming
   
 
     
@@ -1082,42 +1110,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../06-rag/" class="md-nav__link">
+      <a href="../07-rag/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Step 6: RAG
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../07-guardrails/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Step 7: Guardrails
+    Step 7: RAG
   
 
     
@@ -1671,7 +1671,7 @@
 
 
 
-<h1 id="step-4-agentic-loop">Step 4: Agentic Loop<a class="headerlink" href="#step-4-agentic-loop" title="Permanent link">&para;</a></h1>
+<h1 id="step-5-agentic-loop">Step 5: Agentic Loop<a class="headerlink" href="#step-5-agentic-loop" title="Permanent link">&para;</a></h1>
 <div class="dt-trail">
   <div class="dt-trail-item">
     <a href="01-single-call.md" class="dt-trail-step inactive">Step 1: First Call</a>
@@ -1682,23 +1682,23 @@
     <span class="dt-trail-arrow">→</span>
   </div>
   <div class="dt-trail-item">
-    <a href="03-agentic-pipeline.md" class="dt-trail-step inactive">Step 3: Pipeline</a>
+    <a href="03-guardrails.md" class="dt-trail-step inactive">Step 3: Guardrails</a>
     <span class="dt-trail-arrow">→</span>
   </div>
   <div class="dt-trail-item">
-    <span class="dt-trail-step">Step 4: Loop</span>
+    <a href="04-agentic-pipeline.md" class="dt-trail-step inactive">Step 4: Pipeline</a>
     <span class="dt-trail-arrow">→</span>
   </div>
   <div class="dt-trail-item">
-    <a href="05-streaming.md" class="dt-trail-step inactive">Step 5: Streaming</a>
+    <span class="dt-trail-step">Step 5: Loop</span>
     <span class="dt-trail-arrow">→</span>
   </div>
   <div class="dt-trail-item">
-    <a href="06-rag.md" class="dt-trail-step inactive">Step 6: RAG</a>
+    <a href="06-streaming.md" class="dt-trail-step inactive">Step 6: Streaming</a>
     <span class="dt-trail-arrow">→</span>
   </div>
   <div class="dt-trail-item">
-    <a href="07-guardrails.md" class="dt-trail-step inactive">Step 7: Guardrails</a>
+    <a href="07-rag.md" class="dt-trail-step inactive">Step 7: RAG</a>
     <span class="dt-trail-arrow">→</span>
   </div>
   <div class="dt-trail-item">
@@ -1712,7 +1712,7 @@
 <p>In an agentic loop, your code says: "you are a routing agent, here are tools you can call, decide which ones to use and in what order. Do not take any action yourself."</p>
 <p>The model looks at the complaint, looks at the available tools, and chooses what to call, in what order, and when to stop. Your code just dispatches whatever the model requests.</p>
 <h2 id="running-it">Running it<a class="headerlink" href="#running-it" title="Permanent link">&para;</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>code/monitor-production/step4-agentic-loop
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>code/monitor-production/step5-agentic-loop
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_REGION</span><span class="o">=</span>us-east-2
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">OTEL_EXPORTER_OTLP_ENDPOINT</span><span class="o">=</span>http://localhost:4318
@@ -1988,11 +1988,11 @@
 </span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="s1">| summarize count(), by: {triage.outcome}'</span>
 </span></code></pre></div>
 <h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
-<p>In <a href="../05-streaming/">Step 5</a>, we take the same single-call instrumentation from Step 2 and adapt it for streaming responses, adding a new metric that only makes sense in a streaming context: time-to-first-chunk.</p>
+<p>In <a href="../06-streaming/">Step 6</a>, we take the same single-call instrumentation from Step 2 and adapt it for streaming responses, adding a new metric that only makes sense in a streaming context: time-to-first-chunk.</p>
 <div id="dt-quiz-anchor"></div>
 
 <h2 id="next-step">Next step<a class="headerlink" href="#next-step" title="Permanent link">&para;</a></h2>
-<p><a href="../05-streaming/">Step 5: Streaming →</a></p>
+<p><a href="../06-streaming/">Step 6: Streaming →</a></p>
 
 
 
@@ -2032,7 +2032,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../03-agentic-pipeline/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Step 3: Agentic Pipeline">
+          <a href="../04-agentic-pipeline/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Step 4: Agentic Pipeline">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2042,20 +2042,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Step 3: Agentic Pipeline
+                Step 4: Agentic Pipeline
               </div>
             </div>
           </a>
         
         
           
-          <a href="../05-streaming/" class="md-footer__link md-footer__link--next" aria-label="Next: Step 5: Streaming">
+          <a href="../06-streaming/" class="md-footer__link md-footer__link--next" aria-label="Next: Step 6: Streaming">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Step 5: Streaming
+                Step 6: Streaming
               </div>
             </div>
             <div class="md-footer__button md-icon">

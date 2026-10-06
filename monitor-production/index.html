@@ -744,6 +744,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#steps-at-a-glance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Steps at a glance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#before-you-start" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -826,14 +837,14 @@
   
   
     <li class="md-nav__item">
-      <a href="03-agentic-pipeline/" class="md-nav__link">
+      <a href="03-guardrails/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Step 3: Agentic Pipeline
+    Step 3: Guardrails
   
 
     
@@ -854,14 +865,14 @@
   
   
     <li class="md-nav__item">
-      <a href="04-agentic-loop/" class="md-nav__link">
+      <a href="04-agentic-pipeline/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Step 4: Agentic Loop
+    Step 4: Agentic Pipeline
   
 
     
@@ -882,14 +893,14 @@
   
   
     <li class="md-nav__item">
-      <a href="05-streaming/" class="md-nav__link">
+      <a href="05-agentic-loop/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Step 5: Streaming
+    Step 5: Agentic Loop
   
 
     
@@ -910,14 +921,14 @@
   
   
     <li class="md-nav__item">
-      <a href="06-rag/" class="md-nav__link">
+      <a href="06-streaming/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Step 6: RAG
+    Step 6: Streaming
   
 
     
@@ -938,14 +949,14 @@
   
   
     <li class="md-nav__item">
-      <a href="07-guardrails/" class="md-nav__link">
+      <a href="07-rag/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Step 7: Guardrails
+    Step 7: RAG
   
 
     
@@ -1299,6 +1310,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#steps-at-a-glance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Steps at a glance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#before-you-start" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1350,23 +1372,23 @@
     <span class="dt-trail-arrow">→</span>
   </div>
   <div class="dt-trail-item">
-    <a href="03-agentic-pipeline/" class="dt-trail-step">Step 3: Pipeline</a>
+    <a href="03-guardrails/" class="dt-trail-step">Step 3: Guardrails</a>
     <span class="dt-trail-arrow">→</span>
   </div>
   <div class="dt-trail-item">
-    <a href="04-agentic-loop/" class="dt-trail-step">Step 4: Loop</a>
+    <a href="04-agentic-pipeline/" class="dt-trail-step">Step 4: Pipeline</a>
     <span class="dt-trail-arrow">→</span>
   </div>
   <div class="dt-trail-item">
-    <a href="05-streaming/" class="dt-trail-step">Step 5: Streaming</a>
+    <a href="05-agentic-loop/" class="dt-trail-step">Step 5: Loop</a>
     <span class="dt-trail-arrow">→</span>
   </div>
   <div class="dt-trail-item">
-    <a href="06-rag/" class="dt-trail-step">Step 6: RAG</a>
+    <a href="06-streaming/" class="dt-trail-step">Step 6: Streaming</a>
     <span class="dt-trail-arrow">→</span>
   </div>
   <div class="dt-trail-item">
-    <a href="07-guardrails/" class="dt-trail-step">Step 7: Guardrails</a>
+    <a href="07-rag/" class="dt-trail-step">Step 7: RAG</a>
     <span class="dt-trail-arrow">→</span>
   </div>
   <div class="dt-trail-item">
@@ -1374,6 +1396,67 @@
   </div>
 </div>
 
+<h2 id="steps-at-a-glance">Steps at a glance<a class="headerlink" href="#steps-at-a-glance" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Step</th>
+<th>What you build</th>
+<th>Key observability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><a href="01-single-call/">First Call</a></td>
+<td>A single AI call with no instrumentation</td>
+<td>None</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="02-add-observability/">Add OTel</a></td>
+<td>The same call, fully instrumented</td>
+<td>1 span, token histogram</td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="03-guardrails/">Guardrails</a></td>
+<td>AWS Bedrock Guardrail blocking prompt injection</td>
+<td>Guardrail block attribute + counter metric</td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="04-agentic-pipeline/">Pipeline</a></td>
+<td>A fixed three-agent pipeline</td>
+<td>Predictable nested spans</td>
+</tr>
+<tr>
+<td>5</td>
+<td><a href="05-agentic-loop/">Loop</a></td>
+<td>A model-driven agentic loop</td>
+<td>Variable nested spans</td>
+</tr>
+<tr>
+<td>6</td>
+<td><a href="06-streaming/">Streaming</a></td>
+<td>Streaming response with time-to-first-chunk</td>
+<td>1 span, time-to-first-chunk metric</td>
+</tr>
+<tr>
+<td>7</td>
+<td><a href="07-rag/">RAG</a></td>
+<td>Retrieval-augmented generation</td>
+<td>retrieval + chat spans, chunk count metric</td>
+</tr>
+<tr>
+<td>8</td>
+<td><a href="08-model-selection/">Model Migration</a></td>
+<td>Feature-flag-controlled A/B model routing</td>
+<td>Per-model comparison metrics</td>
+</tr>
+</tbody>
+</table>
 <h2 id="before-you-start">Before you start<a class="headerlink" href="#before-you-start" title="Permanent link">&para;</a></h2>
 <p>Complete <a href="../foundation/setup/">Foundation → Setup</a> before running any exercise. It walks you through:</p>
 <ul class="task-list">

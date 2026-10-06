@@ -706,6 +706,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#aws-bedrock-guardrail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AWS Bedrock Guardrail
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#dynatrace-api-token" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -948,14 +959,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../monitor-production/03-agentic-pipeline/" class="md-nav__link">
+      <a href="../../monitor-production/03-guardrails/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Step 3: Agentic Pipeline
+    Step 3: Guardrails
   
 
     
@@ -976,14 +987,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../monitor-production/04-agentic-loop/" class="md-nav__link">
+      <a href="../../monitor-production/04-agentic-pipeline/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Step 4: Agentic Loop
+    Step 4: Agentic Pipeline
   
 
     
@@ -1004,14 +1015,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../monitor-production/05-streaming/" class="md-nav__link">
+      <a href="../../monitor-production/05-agentic-loop/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Step 5: Streaming
+    Step 5: Agentic Loop
   
 
     
@@ -1032,14 +1043,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../monitor-production/06-rag/" class="md-nav__link">
+      <a href="../../monitor-production/06-streaming/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Step 6: RAG
+    Step 6: Streaming
   
 
     
@@ -1060,14 +1071,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../monitor-production/07-guardrails/" class="md-nav__link">
+      <a href="../../monitor-production/07-rag/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Step 7: Guardrails
+    Step 7: RAG
   
 
     
@@ -1472,6 +1483,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#aws-bedrock-guardrail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AWS Bedrock Guardrail
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#dynatrace-api-token" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1583,9 +1605,9 @@
 <h2 id="step-1-gather-your-credentials">Step 1: Gather your credentials<a class="headerlink" href="#step-1-gather-your-credentials" title="Permanent link">&para;</a></h2>
 <p>Collect these before starting Step 2.</p>
 <h3 id="aws-credentials">AWS credentials<a class="headerlink" href="#aws-credentials" title="Permanent link">&para;</a></h3>
-<p>The tutorial code calls AWS Bedrock Mantle, so you need AWS credentials with permission to invoke Bedrock models.</p>
+<p>The tutorial code calls AWS Bedrock — most steps through the Bedrock Mantle (OpenAI-compatible) endpoint, Step 3 (Guardrails) through the native <code>bedrock-runtime</code> endpoint — so you need AWS credentials with permission to invoke Bedrock models and guardrails.</p>
 <h4 id="required-iam-permissions">Required IAM permissions<a class="headerlink" href="#required-iam-permissions" title="Permanent link">&para;</a></h4>
-<p>Whichever credential type you use, the IAM identity needs the following policy. The <code>bedrock:InvokeModel</code> action covers standard calls; <code>InvokeModelWithResponseStream</code> covers the streaming exercises.</p>
+<p>Whichever credential type you use, the IAM identity needs the following policy.</p>
 <div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
@@ -1602,10 +1624,26 @@
 </span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">        </span><span class="s2">"bedrock-mantle:CreateInference"</span>
 </span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">      </span><span class="p">],</span>
 </span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:bedrock-mantle:us-east-2:*:project/default"</span>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">  </span><span class="p">]</span>
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="p">}</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">      </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">      </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">        </span><span class="s2">"bedrock:InvokeModel"</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">      </span><span class="p">],</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:bedrock:us-east-2::foundation-model/openai.gpt-oss-120b-1:0"</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">      </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">      </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">        </span><span class="s2">"bedrock:GetGuardrail"</span><span class="p">,</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">        </span><span class="s2">"bedrock:ApplyGuardrail"</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">      </span><span class="p">],</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:bedrock:us-east-2:*:guardrail/*"</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">  </span><span class="p">]</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="p">}</span>
 </span></code></pre></div>
+<p>Most steps call the model through the <code>bedrock-mantle</code> endpoint — that is what the first two statements cover. <strong>Step 3 (Guardrails) is the exception.</strong> AWS Bedrock Guardrails do not work through <code>bedrock-mantle</code> — the OpenAI compatibility layer has no parameter for attaching a guardrail. Step 3 calls the native <code>bedrock-runtime</code> <code>converse</code> API instead, which needs <code>bedrock:InvokeModel</code> to run the model plus <code>bedrock:GetGuardrail</code> and <code>bedrock:ApplyGuardrail</code> to attach and evaluate the guardrail. The third and fourth statements grant that.</p>
 <h4 id="option-a-iam-identity-center-recommended">Option A: IAM Identity Center (recommended)<a class="headerlink" href="#option-a-iam-identity-center-recommended" title="Permanent link">&para;</a></h4>
 <p>If your organisation uses IAM Identity Center (SSO), ask your AWS administrator to attach a permission set containing the policy above to your account. Your credentials will be short-lived and rotate automatically — no keys to manage.</p>
 <p>Once access is granted, log in:</p>
@@ -1624,6 +1662,43 @@
 <div class="admonition warning">
 <p class="admonition-title">Access keys don't expire</p>
 <p>Delete this user and its keys when you're done with the lab. Never commit them to git.</p>
+</div>
+<h3 id="aws-bedrock-guardrail">AWS Bedrock Guardrail<a class="headerlink" href="#aws-bedrock-guardrail" title="Permanent link">&para;</a></h3>
+<p>Step 3 of the tutorial needs a guardrail already set up in your AWS account, so create it now. This takes about five minutes.</p>
+<p><strong>1. Open the AWS Console</strong></p>
+<p>Go to <a href="https://console.aws.amazon.com">console.aws.amazon.com</a> and sign in. In the search bar at the top of the page, type <strong>Bedrock</strong> and click the result that says "Amazon Bedrock".</p>
+<p><strong>2. Find Guardrails in the left-hand menu</strong></p>
+<p>In the left navigation panel, scroll down until you see <strong>Guardrails</strong>. Click it. If you do not see the left panel, click the hamburger menu icon (three horizontal lines) in the top-left corner to open it.</p>
+<p><strong>3. Create a new guardrail</strong></p>
+<p>Click the orange <strong>Create guardrail</strong> button. You will be taken through a multi-step form.</p>
+<ul>
+<li><strong>Name</strong>: Give it any name, for example <code>support-bot-guardrail</code>.</li>
+<li><strong>Blocked messaging</strong>: This is the text your application will receive when a request is blocked. Set it to something like: <code>I can only answer questions about AnyCloud services.</code></li>
+</ul>
+<p>Click <strong>Next</strong>.</p>
+<p><strong>4. Add a denied topic</strong></p>
+<p>On the "Configure content filters" page, scroll down to <strong>Denied topics</strong>. This is where you tell the guardrail what kinds of requests to block.</p>
+<p>Click <strong>Add denied topic</strong> and fill in:</p>
+<ul>
+<li><strong>Name</strong>: <code>off-topic-tasks</code></li>
+<li><strong>Definition</strong>: <code>Requests that ask the model to do something other than answer questions about AnyCloud services, such as writing code, telling stories, or generating content unrelated to the company.</code></li>
+<li><strong>Sample phrases</strong>: Add a few examples to help Bedrock understand the pattern:<ul>
+<li><code>write me a tic-tac-toe game in Python</code></li>
+<li><code>tell me a poem about cats</code></li>
+<li><code>generate a recipe for pasta</code></li>
+</ul>
+</li>
+</ul>
+<p>Click <strong>Add denied topic</strong>, then <strong>Next</strong>.</p>
+<p><strong>5. Skip the remaining steps</strong></p>
+<p>Click <strong>Next</strong> through the remaining pages (word filters, sensitive information, grounding) without adding anything. These are useful but not needed for this demo.</p>
+<p><strong>6. Review and create</strong></p>
+<p>On the final review page, click <strong>Create guardrail</strong>. AWS will create it and take you to the guardrail's detail page.</p>
+<p><strong>7. Find your guardrail ID</strong></p>
+<p>On the detail page, you will see a field called <strong>Guardrail ID</strong>. It looks something like <code>abc123def456</code>. Copy this value — you'll set it as <code>GUARDRAIL_ID</code> in Step 2.</p>
+<div class="admonition note">
+<p class="admonition-title">Guardrails are region-specific</p>
+<p>We've used <code>us-east-2</code> so far in these tutorials. A guardrail created in <code>us-east-1</code> cannot be used with a model endpoint in <code>us-east-2</code>. Make sure the region where you created the guardrail matches the <code>AWS_REGION</code> environment variable you have set for the app.</p>
 </div>
 <h3 id="dynatrace-api-token">Dynatrace API token<a class="headerlink" href="#dynatrace-api-token" title="Permanent link">&para;</a></h3>
 <p>The OTel Collector uses this to send traces and metrics to your Dynatrace environment.</p>
@@ -1679,7 +1754,7 @@
 <li><strong>AWS Bedrock</strong> — the AI model API your exercise code calls</li>
 <li><strong>Dynatrace</strong> — receives and stores all traces, metrics, and logs; <code>dtctl</code> queries it directly</li>
 </ul>
-<p>This is why you need <strong>four credentials</strong> in Step 1: two for AWS (to call Bedrock), two for Dynatrace (one to push telemetry, one to query it).</p>
+<p>This is why you need <strong>five values</strong> from Step 1: two AWS credentials plus a guardrail ID (to call Bedrock and enforce guardrails), and two Dynatrace tokens (one to push telemetry, one to query it).</p>
 <hr />
 <h2 id="step-2-start-the-dev-container">Step 2: Start the dev container<a class="headerlink" href="#step-2-start-the-dev-container" title="Permanent link">&para;</a></h2>
 <p>Requires <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a> and <a href="https://code.visualstudio.com/">VS Code</a> with the <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers">Dev Containers extension</a>.</p>
@@ -1705,7 +1780,9 @@
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>AWS_SECRET_ACCESS_KEY=...
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>AWS_SESSION_TOKEN=...
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>AWS_REGION=us-east-2
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>GUARDRAIL_ID=abc123def456
 </span></code></pre></div>
+<p><code>GUARDRAIL_ID</code> is the value you copied when creating the guardrail in Step 1 — it's used by the smoke test and by Step 3 of the tutorial.</p>
 </li>
 <li>
 <p>Open the folder in VS Code and run <strong>Dev Containers: Reopen in Container</strong> from the command palette. Wait for the container to build — the OTel Collector starts and <code>dtctl</code> is configured automatically.</p>
@@ -1715,9 +1792,9 @@
 <p><strong>Do this before starting any exercise.</strong> Every lab depends on this pipeline working.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>python<span class="w"> </span>code/smoke-test.py
 </span></code></pre></div>
-<p>The script runs <strong>two checks</strong> and exits non-zero if either fails.</p>
-<p><strong>Check 1</strong> confirms that your exercise code can reach the OTel Collector and that telemetry is accepted. <strong>Check 2</strong> confirms that your AWS credentials are valid and that the Bedrock model responds.</p>
-<p>Expected output when both pass:</p>
+<p>The script runs <strong>three checks</strong> and exits non-zero if any fails.</p>
+<p><strong>Check 1</strong> confirms that your exercise code can reach the OTel Collector and that telemetry is accepted. <strong>Check 2</strong> confirms that your AWS credentials are valid and that the Bedrock model responds through the Mantle endpoint used by most steps. <strong>Check 3</strong> confirms that your credentials also work against the native <code>bedrock-runtime</code> endpoint and that your <code>GUARDRAIL_ID</code> resolves and applies correctly — this is what Step 3 (Guardrails) needs.</p>
+<p>Expected output when all three pass:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>============================================================
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>Check 1: OTel Collector pipeline
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>  Sending to: http://localhost:4318
@@ -1726,16 +1803,22 @@
 </span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>[OK] OTel Collector pipeline: telemetry accepted by collector
 </span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
 </span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>============================================================
-</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>Check 2: AWS Bedrock connection
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>Check 2: AWS Bedrock connection (Mantle)
 </span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>  Model replied:   'OK'
 </span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>[OK] AWS Bedrock connection: model reachable and responding
 </span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>
 </span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>============================================================
-</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>Both checks passed. Wait ~60 s then verify data reached Dynatrace:
-</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>  ...
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>Check 3: AWS Bedrock Guardrail (native bedrock-runtime)
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>  Guardrail applied, stop_reason: end_turn
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>[OK] AWS Bedrock Guardrail: native endpoint and guardrail both working
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>============================================================
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>All checks passed. Wait ~60 s then verify data reached Dynatrace:
+</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>  ...
 </span></code></pre></div>
 <p>If Check 1 fails with a connection error, the OTel Collector is not reachable on port 4318 — re-check Step 2.4 and confirm the container built successfully.</p>
-<p>If Check 2 fails, follow the error message: either your AWS credentials are not set (<code>AWS_ACCESS_KEY_ID</code> / <code>AWS_SECRET_ACCESS_KEY</code> / <code>AWS_REGION</code>), or the IAM identity lacks <code>bedrock:InvokeModel</code> permission.</p>
+<p>If Check 2 fails, follow the error message: either your AWS credentials are not set (<code>AWS_ACCESS_KEY_ID</code> / <code>AWS_SECRET_ACCESS_KEY</code> / <code>AWS_REGION</code>), or the IAM identity lacks the <code>bedrock-mantle:CallWithBearerToken</code> and <code>bedrock-mantle:CreateInference</code> permissions from the policy above.</p>
+<p>If Check 3 fails, follow the error message: either <code>GUARDRAIL_ID</code> is not set (see Step 2.3), the guardrail doesn't exist in <code>AWS_REGION</code>, or the IAM identity lacks <code>bedrock:InvokeModel</code>, <code>bedrock:GetGuardrail</code>, or <code>bedrock:ApplyGuardrail</code> from the policy above.</p>
 <p>Wait about <strong>60 seconds</strong>, then run:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dtctl<span class="w"> </span>query<span class="w"> </span><span class="s1">'fetch spans</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="s1">| filter service.name == "otel-smoke-test"</span>

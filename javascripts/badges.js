@@ -11,11 +11,11 @@
     { id: 'dynatrace-setup',      name: 'Dynatrace Setup',      emoji: '⚙️', path: '/foundation/dynatrace-setup', quiz: true },
     { id: 'first-ai-call',        name: 'First AI Call',        emoji: '🤖', path: '/monitor-production/01-single-call', quiz: true },
     { id: 'observability',        name: 'Observability',        emoji: '📊', path: '/monitor-production/02-add-observability', quiz: true },
-    { id: 'agentic-pipeline',     name: 'Agentic Pipeline',     emoji: '🔗', path: '/monitor-production/03-agentic-pipeline', quiz: true },
-    { id: 'agentic-loop',         name: 'Agentic Loop',         emoji: '🔄', path: '/monitor-production/04-agentic-loop', quiz: true },
-    { id: 'streaming',            name: 'Streaming',            emoji: '⚡', path: '/monitor-production/05-streaming', quiz: true },
-    { id: 'rag',                  name: 'RAG',                  emoji: '📚', path: '/monitor-production/06-rag', quiz: true },
-    { id: 'guardrails',           name: 'Guardrails',           emoji: '🛡️', path: '/monitor-production/07-guardrails', quiz: true },
+    { id: 'guardrails',           name: 'Guardrails',           emoji: '🛡️', path: '/monitor-production/03-guardrails', quiz: true },
+    { id: 'agentic-pipeline',     name: 'Agentic Pipeline',     emoji: '🔗', path: '/monitor-production/04-agentic-pipeline', quiz: true },
+    { id: 'agentic-loop',         name: 'Agentic Loop',         emoji: '🔄', path: '/monitor-production/05-agentic-loop', quiz: true },
+    { id: 'streaming',            name: 'Streaming',            emoji: '⚡', path: '/monitor-production/06-streaming', quiz: true },
+    { id: 'rag',                  name: 'RAG',                  emoji: '📚', path: '/monitor-production/07-rag', quiz: true },
     { id: 'model-selection',      name: 'Model Migration',      emoji: '🔀', path: '/monitor-production/08-model-selection', quiz: true },
   ];
 

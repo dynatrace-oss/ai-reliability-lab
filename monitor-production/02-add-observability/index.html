@@ -16,7 +16,7 @@
         <link rel="prev" href="../01-single-call/">
       
       
-        <link rel="next" href="../03-agentic-pipeline/">
+        <link rel="next" href="../03-guardrails/">
       
       
         
@@ -981,14 +981,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../03-agentic-pipeline/" class="md-nav__link">
+      <a href="../03-guardrails/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Step 3: Agentic Pipeline
+    Step 3: Guardrails
   
 
     
@@ -1009,14 +1009,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../04-agentic-loop/" class="md-nav__link">
+      <a href="../04-agentic-pipeline/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Step 4: Agentic Loop
+    Step 4: Agentic Pipeline
   
 
     
@@ -1037,14 +1037,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../05-streaming/" class="md-nav__link">
+      <a href="../05-agentic-loop/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Step 5: Streaming
+    Step 5: Agentic Loop
   
 
     
@@ -1065,14 +1065,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../06-rag/" class="md-nav__link">
+      <a href="../06-streaming/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Step 6: RAG
+    Step 6: Streaming
   
 
     
@@ -1093,14 +1093,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../07-guardrails/" class="md-nav__link">
+      <a href="../07-rag/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Step 7: Guardrails
+    Step 7: RAG
   
 
     
@@ -1648,23 +1648,23 @@
     <span class="dt-trail-arrow">→</span>
   </div>
   <div class="dt-trail-item">
-    <a href="03-agentic-pipeline.md" class="dt-trail-step inactive">Step 3: Pipeline</a>
+    <a href="03-guardrails.md" class="dt-trail-step inactive">Step 3: Guardrails</a>
     <span class="dt-trail-arrow">→</span>
   </div>
   <div class="dt-trail-item">
-    <a href="04-agentic-loop.md" class="dt-trail-step inactive">Step 4: Loop</a>
+    <a href="04-agentic-pipeline.md" class="dt-trail-step inactive">Step 4: Pipeline</a>
     <span class="dt-trail-arrow">→</span>
   </div>
   <div class="dt-trail-item">
-    <a href="05-streaming.md" class="dt-trail-step inactive">Step 5: Streaming</a>
+    <a href="05-agentic-loop.md" class="dt-trail-step inactive">Step 5: Loop</a>
     <span class="dt-trail-arrow">→</span>
   </div>
   <div class="dt-trail-item">
-    <a href="06-rag.md" class="dt-trail-step inactive">Step 6: RAG</a>
+    <a href="06-streaming.md" class="dt-trail-step inactive">Step 6: Streaming</a>
     <span class="dt-trail-arrow">→</span>
   </div>
   <div class="dt-trail-item">
-    <a href="07-guardrails.md" class="dt-trail-step inactive">Step 7: Guardrails</a>
+    <a href="07-rag.md" class="dt-trail-step inactive">Step 7: RAG</a>
     <span class="dt-trail-arrow">→</span>
   </div>
   <div class="dt-trail-item">
@@ -1871,12 +1871,12 @@
 <p><code>timeseries</code> returns one value per time bucket across the full lookback window (default ~2 hours), so the <code>tokens</code> column is an array. <code>arraySum()</code> collapses that array into a single total.</p>
 </details>
 <h2 id="what-were-still-missing">What we're still missing<a class="headerlink" href="#what-were-still-missing" title="Permanent link">&para;</a></h2>
-<p>This is great for a single call, but real applications make many AI calls, sometimes in sequence, sometimes in parallel. We can't easily see the relationship between calls or understand the overall operation.</p>
-<p>In <a href="../03-agentic-pipeline/">Step 3</a>, we build a multi-agent pipeline where multiple AI calls form a single business operation, and we observe them all together in one trace.</p>
+<p>You can now see every call your application makes. But visibility alone doesn't stop a user from making the model do something it shouldn't — that's a safety concern, not an observability one, and it exists from the very first call this app makes.</p>
+<p>In <a href="../03-guardrails/">Step 3</a>, before we grow the app into more complex call patterns, we add an AWS Bedrock Guardrail and instrument it so blocked requests are just as visible as successful ones.</p>
 <div id="dt-quiz-anchor"></div>
 
 <h2 id="next-step">Next step<a class="headerlink" href="#next-step" title="Permanent link">&para;</a></h2>
-<p><a href="../03-agentic-pipeline/">Step 3: Agentic Pipeline →</a></p>
+<p><a href="../03-guardrails/">Step 3: Guardrails →</a></p>
 
 
 
@@ -1933,13 +1933,13 @@
         
         
           
-          <a href="../03-agentic-pipeline/" class="md-footer__link md-footer__link--next" aria-label="Next: Step 3: Agentic Pipeline">
+          <a href="../03-guardrails/" class="md-footer__link md-footer__link--next" aria-label="Next: Step 3: Guardrails">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Step 3: Agentic Pipeline
+                Step 3: Guardrails
               </div>
             </div>
             <div class="md-footer__button md-icon">
