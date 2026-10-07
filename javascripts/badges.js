@@ -59,7 +59,15 @@
 
   // Derive a root-relative URL to another top-level path, handling subdirectory deploys
   function siteUrl(topLevelPath) {
-    return window.location.origin + topLevelPath;
+    var path = window.location.pathname;
+    var base = path;
+    var sections = allSections().concat(['badges']);
+    for (var i = 0; i < sections.length; i++) {
+      var idx = path.indexOf('/' + sections[i] + '/');
+      if (idx !== -1 && idx < base.length) base = path.slice(0, idx);
+    }
+    if (base === path) base = path.replace(/\/[^\/]*$/, '');
+    return window.location.origin + base + topLevelPath;
   }
 
   function earnBadge(id) {
