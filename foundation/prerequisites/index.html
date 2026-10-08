@@ -543,6 +543,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="AWS credentials">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#required-iam-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Required IAM permissions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-awscredentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create ~/.aws/credentials
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dont-have-credentials-yet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Don't have credentials yet?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1367,6 +1406,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="AWS credentials">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#required-iam-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Required IAM permissions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-awscredentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create ~/.aws/credentials
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dont-have-credentials-yet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Don't have credentials yet?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1425,7 +1503,7 @@
 <h2 id="checklist">Checklist<a class="headerlink" href="#checklist" title="Permanent link">&para;</a></h2>
 <h3 id="on-your-machine">On your machine<a class="headerlink" href="#on-your-machine" title="Permanent link">&para;</a></h3>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>A GitHub account</strong>, so you can fork this repository. You don't have write access to the source repository.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>A GitHub account</strong>, so you can fork <a href="https://github.com/dynatrace-oss/ai-reliability-lab">this repository</a>.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>A container runtime with <code>docker</code> and <code>docker compose</code></strong>, installed and running. The dev container needs both commands. Verify with <code>docker run hello-world</code> and <code>docker compose version</code>. See <a href="#container-runtime">Container runtime</a> below.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong><a href="https://code.visualstudio.com/">VS Code</a></strong> with the <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers">Dev Containers extension</a>.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Git</strong> installed. Verify with <code>git --version</code>.</li>
@@ -1438,7 +1516,7 @@
 <h3 id="aws">AWS<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>An AWS account or identity</strong> that can use Amazon Bedrock in <code>us-east-2</code>.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>IAM permissions</strong> to invoke Bedrock models and guardrails. The exact policy is in <a href="../setup/#required-iam-permissions">Setup, Step 1</a>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>IAM permissions</strong> to invoke Bedrock models and guardrails. The exact policy is in <a href="#required-iam-permissions">Required IAM permissions</a> below.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>A <code>~/.aws/credentials</code> file</strong> with working credentials. See <a href="#aws-credentials">AWS credentials</a> below.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Permission to create a Bedrock Guardrail</strong>, or an existing guardrail ID. Step 3 of the lab needs one.</li>
 </ul>
@@ -1457,18 +1535,66 @@
 </ul>
 <p>Whichever you choose, make sure it is running before you open the dev container.</p>
 <h2 id="aws-credentials">AWS credentials<a class="headerlink" href="#aws-credentials" title="Permanent link">&para;</a></h2>
-<p>You don't need the AWS CLI on your machine. The dev container installs it for you. You only need a <code>~/.aws/credentials</code> file, because the dev container mounts your <code>~/.aws</code> folder.</p>
-<p>Make sure <code>~/.aws/credentials</code> exists and looks like this. Replace the placeholders with your own values:</p>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">[default]</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="na">aws_access_key_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">REPLACE_WITH_YOUR_ACCESS_KEY_ID</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="na">aws_secret_access_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">REPLACE_WITH_YOUR_SECRET_ACCESS_KEY</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="na">aws_session_token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">REPLACE_WITH_YOUR_SESSION_TOKEN</span>
+<p>The tutorial code calls AWS Bedrock, so you need AWS credentials with permission to invoke Bedrock models and guardrails. You don't need the AWS CLI on your machine, because the dev container installs it for you. You only need a <code>~/.aws/credentials</code> file, because the dev container mounts your <code>~/.aws</code> folder.</p>
+<h3 id="required-iam-permissions">Required IAM permissions<a class="headerlink" href="#required-iam-permissions" title="Permanent link">&para;</a></h3>
+<p>Whatever credentials you use, the IAM identity needs the following policy.</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">      </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">      </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">        </span><span class="s2">"bedrock-mantle:CallWithBearerToken"</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">      </span><span class="p">],</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">      </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">      </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">        </span><span class="s2">"bedrock-mantle:CreateInference"</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">      </span><span class="p">],</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:bedrock-mantle:us-east-2:*:project/default"</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">      </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">      </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">        </span><span class="s2">"bedrock:InvokeModel"</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">      </span><span class="p">],</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:bedrock:us-east-2::foundation-model/openai.gpt-oss-120b-1:0"</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">      </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">      </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">        </span><span class="s2">"bedrock:GetGuardrail"</span><span class="p">,</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">        </span><span class="s2">"bedrock:ApplyGuardrail"</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">      </span><span class="p">],</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:bedrock:us-east-2:*:guardrail/*"</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">  </span><span class="p">]</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="p">}</span>
 </span></code></pre></div>
-<p>Temporary credentials (access key ID starting with <code>ASIA</code>) need all three lines. Long-term IAM user keys (starting with <code>AKIA</code>) don't have a session token, so omit the last line.</p>
+<p>Most steps call the model through the <code>bedrock-mantle</code> endpoint — that is what the first two statements cover. <strong>Step 3 (Guardrails) is the exception.</strong> AWS Bedrock Guardrails do not work through <code>bedrock-mantle</code> — the OpenAI compatibility layer has no parameter for attaching a guardrail. Step 3 calls the native <code>bedrock-runtime</code> <code>converse</code> API instead, which needs <code>bedrock:InvokeModel</code> to run the model plus <code>bedrock:GetGuardrail</code> and <code>bedrock:ApplyGuardrail</code> to attach and evaluate the guardrail. The third and fourth statements grant that.</p>
+<h3 id="create-awscredentials">Create <code>~/.aws/credentials</code><a class="headerlink" href="#create-awscredentials" title="Permanent link">&para;</a></h3>
+<p>Make sure <code>~/.aws/credentials</code> exists and looks like this. Replace the placeholders with your own values:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">[default]</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="na">aws_access_key_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">REPLACE_WITH_YOUR_ACCESS_KEY_ID</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="na">aws_secret_access_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">REPLACE_WITH_YOUR_SECRET_ACCESS_KEY</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="na">aws_session_token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">REPLACE_WITH_YOUR_SESSION_TOKEN</span>
+</span></code></pre></div>
+<p>Temporary credentials (access key ID starting with <code>ASIA</code>) need all three lines. Long-term IAM user keys (starting with <code>AKIA</code>) don't have a session token, so omit the last line. The region (<code>us-east-2</code>) is set by the dev container.</p>
 <div class="admonition warning">
 <p class="admonition-title">Keep keys out of git</p>
 <p><code>~/.aws/credentials</code> lives outside the repository, so it can't be committed by accident. Never paste keys into files inside the repository.</p>
 </div>
+<h3 id="dont-have-credentials-yet">Don't have credentials yet?<a class="headerlink" href="#dont-have-credentials-yet" title="Permanent link">&para;</a></h3>
+<p>Ask your AWS administrator for temporary credentials (access key, secret key and session token) for an identity with the policy above. If you have a personal AWS account, you can create an IAM user instead:</p>
+<ol>
+<li>In the <a href="https://console.aws.amazon.com/iam/">IAM console</a>, go to <strong>Policies → Create policy</strong></li>
+<li>Switch to the <strong>JSON</strong> editor, paste the policy above, and save it with a name like <code>BedrockInvokePolicy</code></li>
+<li>Go to <strong>Users → Create user</strong>, give it a name (e.g. <code>ai-lab</code>), and attach the <code>BedrockInvokePolicy</code> you just created</li>
+<li>Open the new user, go to <strong>Security credentials → Create access key</strong>, choose <strong>Other</strong>, and download the key</li>
+<li>Put the access key ID and secret access key in <code>~/.aws/credentials</code>. Omit the <code>aws_session_token</code> line.</li>
+</ol>
 <h2 id="check-your-readiness">Check your readiness<a class="headerlink" href="#check-your-readiness" title="Permanent link">&para;</a></h2>
 <p>Before you start, confirm that you can answer "yes" to each of these:</p>
 <table>
@@ -1504,7 +1630,7 @@
 <h2 id="security-reminders">Security reminders<a class="headerlink" href="#security-reminders" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Never commit credentials, tokens or <code>.devcontainer/.env</code> to git.</li>
-<li>If you use IAM access keys, delete the user and keys when the lab is over.</li>
+<li>IAM access keys don't expire. If you created an IAM user for this lab, delete the user and keys when the lab is over.</li>
 </ul>
 <h2 id="next-step">Next step<a class="headerlink" href="#next-step" title="Permanent link">&para;</a></h2>
 <p>Once everything above is ticked, continue to <strong><a href="../setup/">Setup</a></strong>.</p>
