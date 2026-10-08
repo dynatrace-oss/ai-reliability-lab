@@ -543,34 +543,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="AWS credentials">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#path-1-you-already-have-the-aws-cli-and-it-works" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Path 1: You already have the AWS CLI and it works
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#path-2-you-dont-have-the-aws-cli" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Path 2: You don't have the AWS CLI
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1395,34 +1367,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="AWS credentials">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#path-1-you-already-have-the-aws-cli-and-it-works" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Path 1: You already have the AWS CLI and it works
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#path-2-you-dont-have-the-aws-cli" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Path 2: You don't have the AWS CLI
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1495,7 +1439,7 @@
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>An AWS account or identity</strong> that can use Amazon Bedrock in <code>us-east-2</code>.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>IAM permissions</strong> to invoke Bedrock models and guardrails. The exact policy is in <a href="../setup/#required-iam-permissions">Setup, Step 1</a>.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Working AWS credentials in <code>~/.aws</code></strong>, set up by one of the two paths in <a href="#aws-credentials">AWS credentials</a> below.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>A <code>~/.aws/credentials</code> file</strong> with working credentials. See <a href="#aws-credentials">AWS credentials</a> below.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Permission to create a Bedrock Guardrail</strong>, or an existing guardrail ID. Step 3 of the lab needs one.</li>
 </ul>
 <h3 id="dynatrace">Dynatrace<a class="headerlink" href="#dynatrace" title="Permanent link">&para;</a></h3>
@@ -1513,43 +1457,17 @@
 </ul>
 <p>Whichever you choose, make sure it is running before you open the dev container.</p>
 <h2 id="aws-credentials">AWS credentials<a class="headerlink" href="#aws-credentials" title="Permanent link">&para;</a></h2>
-<p>The dev container mounts your <code>~/.aws</code> folder, so the lab uses whatever credentials are in there. <strong>The folder must exist or the container won't start.</strong> Pick the path that matches you.</p>
-<h3 id="path-1-you-already-have-the-aws-cli-and-it-works">Path 1: You already have the AWS CLI and it works<a class="headerlink" href="#path-1-you-already-have-the-aws-cli-and-it-works" title="Permanent link">&para;</a></h3>
-<p>You're done. Check it with:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity
+<p>You don't need the AWS CLI on your machine. The dev container installs it for you. You only need a <code>~/.aws/credentials</code> file, because the dev container mounts your <code>~/.aws</code> folder.</p>
+<p>Make sure <code>~/.aws/credentials</code> exists and looks like this. Replace the placeholders with your own values:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">[default]</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="na">aws_access_key_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">REPLACE_WITH_YOUR_ACCESS_KEY_ID</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="na">aws_secret_access_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">REPLACE_WITH_YOUR_SECRET_ACCESS_KEY</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="na">aws_session_token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">REPLACE_WITH_YOUR_SESSION_TOKEN</span>
 </span></code></pre></div>
-<p>If that prints your account and identity, the container will pick up the same credentials.</p>
-<ul>
-<li><strong>SSO users:</strong> run <code>aws sso login --profile your-profile-name</code> on your host before starting the lab, and again whenever the session expires.</li>
-<li><strong>Non-default profile:</strong> if your profile isn't called <code>default</code>, add <code>AWS_PROFILE=your-profile-name</code> to <code>.devcontainer/.env</code>.</li>
-<li>Make sure the identity has the <a href="../setup/#required-iam-permissions">IAM permissions</a> the lab needs.</li>
-</ul>
-<h3 id="path-2-you-dont-have-the-aws-cli">Path 2: You don't have the AWS CLI<a class="headerlink" href="#path-2-you-dont-have-the-aws-cli" title="Permanent link">&para;</a></h3>
-<p>You don't need to install it. You need an access key and a credentials file.</p>
-<ol>
-<li><strong>Create an IAM user and access key.</strong> Follow <a href="../setup/#option-b-iam-user-with-access-keys">Setup, Option B</a>. You end up with an <code>AWS_ACCESS_KEY_ID</code> (starts with <code>AKIA</code>) and an <code>AWS_SECRET_ACCESS_KEY</code>.</li>
-<li>
-<p><strong>Create the folder and file on your machine:</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.aws
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>touch<span class="w"> </span>~/.aws/credentials
-</span></code></pre></div>
-</li>
-<li>
-<p><strong>Put your keys in <code>~/.aws/credentials</code>.</strong> Replace the placeholders:</p>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">[default]</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="na">aws_access_key_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">AKIAXXXXXXXXXXXXXXXX</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="na">aws_secret_access_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">REPLACE_WITH_YOUR_SECRET_KEY</span>
-</span></code></pre></div>
-<p>If you were given temporary credentials (they come with a session token), add one more line:</p>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="na">aws_session_token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">REPLACE_WITH_YOUR_SESSION_TOKEN</span>
-</span></code></pre></div>
-<p>You don't need a <code>config</code> file. The region (<code>us-east-2</code>) is set by the dev container.</p>
-</li>
-</ol>
-<p><strong>Prefer not to create a credentials file?</strong> Run <code>mkdir -p ~/.aws</code> to create the empty folder, then put <code>AWS_ACCESS_KEY_ID</code>, <code>AWS_SECRET_ACCESS_KEY</code> and (for temporary credentials) <code>AWS_SESSION_TOKEN</code> in <code>.devcontainer/.env</code>. See <a href="../setup/#step-2-start-the-dev-container">Setup, Step 2.3</a>.</p>
+<p>Temporary credentials (access key ID starting with <code>ASIA</code>) need all three lines. Long-term IAM user keys (starting with <code>AKIA</code>) don't have a session token, so omit the last line.</p>
 <div class="admonition warning">
 <p class="admonition-title">Keep keys out of git</p>
-<p><code>~/.aws/credentials</code> lives outside the repository, so it can't be committed by accident. Never paste keys into files inside the repository other than the gitignored <code>.devcontainer/.env</code>.</p>
+<p><code>~/.aws/credentials</code> lives outside the repository, so it can't be committed by accident. Never paste keys into files inside the repository.</p>
 </div>
 <h2 id="check-your-readiness">Check your readiness<a class="headerlink" href="#check-your-readiness" title="Permanent link">&para;</a></h2>
 <p>Before you start, confirm that you can answer "yes" to each of these:</p>
@@ -1576,6 +1494,10 @@
 <tr>
 <td>Can you open <strong>Access tokens</strong> in Dynatrace (<code>Ctrl / Cmd + k</code>)?</td>
 <td>Ask your Dynatrace administrator for token permissions.</td>
+</tr>
+<tr>
+<td>Can you open <a href="https://myaccount.dynatrace.com/platformTokens">https://myaccount.dynatrace.com/platformTokens</a>?</td>
+<td>Ask your Dynatrace administrator for access to Account Management.</td>
 </tr>
 </tbody>
 </table>
