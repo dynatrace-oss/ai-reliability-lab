@@ -1122,6 +1122,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#check-how-many-chunks-were-indexed-and-how-long-indexing-took" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check how many chunks were indexed and how long indexing took
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#check-triage-traces-with-matched-policy-sections" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1480,6 +1491,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#check-how-many-chunks-were-indexed-and-how-long-indexing-took" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check how many chunks were indexed and how long indexing took
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#check-triage-traces-with-matched-policy-sections" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1687,6 +1709,22 @@
 <p>ChromaDB supports three distance functions: <code>l2</code> (the default), <code>cosine</code>, and <code>ip</code> (inner product). The choice affects which chunks get returned for a given query. For semantic text search, <code>cosine</code> is a good starting point: it measures how similar two pieces of text are in meaning, regardless of their length. See the <a href="https://docs.trychroma.com/docs/collections/configure">ChromaDB docs</a> for guidance on when to use each.</p>
 <p>This demo uses <code>cosine</code> with a threshold of <code>0.5</code>. Cosine distance runs from 0 (identical meaning) to 1 (completely unrelated), so anything above 0.5 gets dropped. This means <code>chunk_count</code> can now be anywhere from 0 to <code>n_results</code> depending on how well the complaint matches the policy, so the metric actually varies and alerting on it is meaningful.</p>
 <p>The threshold is also recorded on the retrieval span (<code>retrieval.threshold</code>), so you can see it alongside the chunk count in Dynatrace and adjust it if results feel too broad or too narrow.</p>
+<p>To tune it with data instead of guesses, the span also records the raw cosine distances from before the filter runs:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">span</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">"retrieval.min_distance"</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">distances</span><span class="p">)</span> <span class="k">if</span> <span class="n">distances</span> <span class="k">else</span> <span class="mf">1.0</span><span class="p">)</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">span</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">"retrieval.distances"</span><span class="p">,</span>    <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">([</span><span class="nb">round</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">distances</span><span class="p">]))</span>
+</span></code></pre></div>
+<p><code>retrieval.min_distance</code> is how far the closest policy section was from the complaint. Smaller means a better match. If it is bigger than <code>retrieval.threshold</code>, nothing was good enough and the model saw no policy text.</p>
+<p>Raising the threshold lets looser matches through. Lowering it is stricter.</p>
+<p>Query it from the terminal (after running the app and waiting about 60 seconds):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dtctl<span class="w"> </span>query<span class="w"> </span><span class="s1">'fetch spans</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="s1">| filter service.name == "support-rag"</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="s1">| filter gen_ai.operation.name == "retrieval"</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="s1">| fieldsAdd missed_by = retrieval.min_distance - retrieval.threshold</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="s1">| fields start_time, retrieval.query, retrieval.min_distance, retrieval.threshold, retrieval.chunk_count, missed_by</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="s1">| sort start_time desc</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="s1">| limit 10'</span>
+</span></code></pre></div>
+<p>A positive <code>missed_by</code> means the complaint just missed the cut-off and the model saw no policy text. If it only misses by a little, raise <code>RETRIEVAL_THRESHOLD</code> in <code>app-instrumented.py</code> and re-run. If it misses by a lot, the policy probably has no section covering that complaint.</p>
 <p>Once you have score-based filtering, the patterns to watch for are:</p>
 <table>
 <thead>
@@ -1764,41 +1802,51 @@
 <li>A <code>retrieval</code> child span showing the query, how many chunks were requested, and which sections were returned. Duration here is the vector search latency.</li>
 <li>A <code>chat</code> child span with the full GenAI attributes (model, token counts, input/output messages). Duration here is the LLM latency.</li>
 </ul>
+<h3 id="check-how-many-chunks-were-indexed-and-how-long-indexing-took">Check how many chunks were indexed and how long indexing took<a class="headerlink" href="#check-how-many-chunks-were-indexed-and-how-long-indexing-took" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dtctl<span class="w"> </span>query<span class="w"> </span><span class="s1">'fetch spans</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="s1">| filter service.name == "support-rag"</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="s1">| filter span.name == "index policy"</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="s1">| fieldsAdd index_duration_s = round(toLong(duration) / 1000000000, decimals:2)</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="s1">| fields start_time, policy.file, policy.section_count, index_duration_s</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="s1">| sort start_time desc</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="s1">| limit 10'</span>
+</span></code></pre></div>
+<p><code>policy.section_count</code> is the number of chunks added to the vector store (one per <code>##</code> heading), and <code>index_duration_s</code> is the length of the <code>index policy</code> span. This should match the <code>Indexed N policy sections</code> line printed in the terminal. If the count is lower than the number of <code>##</code> headings in the policy file, the document was not split as expected.</p>
 <h3 id="check-triage-traces-with-matched-policy-sections">Check triage traces with matched policy sections<a class="headerlink" href="#check-triage-traces-with-matched-policy-sections" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dtctl<span class="w"> </span>query<span class="w"> </span><span class="s1">'fetch spans</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="s1">| filter service.name == "support-rag"</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="s1">| filter transaction.is_root_span == true</span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="s1">| fields start_time, complaint.id, complaint.customer, retrieval.matched_sections</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="s1">| sort start_time desc</span>
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="s1">| limit 10'</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dtctl<span class="w"> </span>query<span class="w"> </span><span class="s1">'fetch spans</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="s1">| filter service.name == "support-rag"</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="s1">| filter transaction.is_root_span == true</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="s1">| fields start_time, complaint.id, complaint.customer, retrieval.matched_sections</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="s1">| sort start_time desc</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="s1">| limit 10'</span>
 </span></code></pre></div>
 <p><code>retrieval.matched_sections</code> shows exactly which policy sections the model saw for each complaint — no need to re-run the query to find out.</p>
 <h3 id="compare-retrieval-vs-llm-latency">Compare retrieval vs LLM latency<a class="headerlink" href="#compare-retrieval-vs-llm-latency" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dtctl<span class="w"> </span>query<span class="w"> </span><span class="s1">'fetch spans</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="s1">| filter service.name == "support-rag"</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="s1">| filter gen_ai.operation.name in ("retrieval", "chat")</span>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="s1">| fieldsAdd dur_ns = toLong(duration)</span>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="s1">| summarize</span>
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="s1">    calls = count(),</span>
-</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="s1">    avg_s = round(avg(dur_ns) / 1000000000, decimals:2),</span>
-</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="s1">    max_s = round(max(dur_ns) / 1000000000, decimals:2),</span>
-</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="s1">    by: {gen_ai.operation.name}</span>
-</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="s1">| sort avg_s desc'</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dtctl<span class="w"> </span>query<span class="w"> </span><span class="s1">'fetch spans</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="s1">| filter service.name == "support-rag"</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="s1">| filter gen_ai.operation.name in ("retrieval", "chat")</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="s1">| fieldsAdd dur_ns = toLong(duration)</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="s1">| summarize</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="s1">    calls = count(),</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="s1">    avg_s = round(avg(dur_ns) / 1000000000, decimals:2),</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="s1">    max_s = round(max(dur_ns) / 1000000000, decimals:2),</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="s1">    by: {gen_ai.operation.name}</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="s1">| sort avg_s desc'</span>
 </span></code></pre></div>
 <p>If <code>retrieval</code> latency is close to <code>chat</code> latency, the vector store is a meaningful part of your response time. If it is near zero, the bottleneck is entirely in the model.</p>
 <h3 id="check-retrieval-chunk-counts">Check retrieval chunk counts<a class="headerlink" href="#check-retrieval-chunk-counts" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dtctl<span class="w"> </span>query<span class="w"> </span><span class="s1">'fetch spans</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="s1">| filter service.name == "support-rag"</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="s1">| filter gen_ai.operation.name == "retrieval"</span>
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="s1">| fields start_time, db.system.name, db.collection.name, retrieval.query, retrieval.chunk_count, retrieval.n_results, retrieval.threshold</span>
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="s1">| sort start_time desc</span>
-</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="s1">| limit 10'</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dtctl<span class="w"> </span>query<span class="w"> </span><span class="s1">'fetch spans</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="s1">| filter service.name == "support-rag"</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="s1">| filter gen_ai.operation.name == "retrieval"</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="s1">| fields start_time, db.system.name, db.collection.name, retrieval.query, retrieval.chunk_count, retrieval.n_results, retrieval.threshold</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="s1">| sort start_time desc</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="s1">| limit 10'</span>
 </span></code></pre></div>
 <p><code>db.system.name</code> confirms the vector store backend (<code>chroma</code>) and <code>db.collection.name</code> identifies the collection queried. Compare <code>retrieval.chunk_count</code> against <code>retrieval.n_results</code>. If chunk count consistently equals n_results, the threshold may be too loose — everything is matching. If it is consistently low or zero, the retrieval is too narrow for some complaint types.</p>
 <h3 id="check-chunk-count-metric-over-time">Check chunk count metric over time<a class="headerlink" href="#check-chunk-count-metric-over-time" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dtctl<span class="w"> </span>query<span class="w"> </span><span class="s1">'timeseries chunks = avg(rag.retrieval.chunk_count)</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="s1">| fieldsAdd avg_chunks = arrayAvg(chunks)</span>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="s1">| fields avg_chunks'</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dtctl<span class="w"> </span>query<span class="w"> </span><span class="s1">'timeseries chunks = avg(rag.retrieval.chunk_count)</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="s1">| fieldsAdd avg_chunks = arrayAvg(chunks)</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="s1">| fields avg_chunks'</span>
 </span></code></pre></div>
 <p>In <strong>Metrics</strong>, <code>rag.retrieval.chunk_count</code> shows whether your retrieval is returning focused results or casting too wide a net.</p>
 <div id="dt-quiz-anchor"></div>
