@@ -1664,13 +1664,11 @@
 <p>In an agentic loop, your code says: "you are a routing agent, here are tools you can call, decide which ones to use and in what order. Do not take any action yourself."</p>
 <p>The model looks at the complaint, looks at the available tools, and chooses what to call, in what order, and when to stop. Your code just dispatches whatever the model requests.</p>
 <h2 id="running-it">Running it<a class="headerlink" href="#running-it" title="Permanent link">&para;</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>code/monitor-production/step5-agentic-loop
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_REGION</span><span class="o">=</span>us-east-2
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">OTEL_EXPORTER_OTLP_ENDPOINT</span><span class="o">=</span>http://localhost:4318
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>python<span class="w"> </span>app-instrumented.py<span class="w">        </span><span class="c1"># run all complaints</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>python<span class="w"> </span>app-instrumented.py<span class="w"> </span>C001<span class="w">   </span><span class="c1"># run a specific complaint</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>/workspace/code/monitor-production/step5-agentic-loop
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">OTEL_EXPORTER_OTLP_ENDPOINT</span><span class="o">=</span>http://localhost:4318
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>python<span class="w"> </span>app-instrumented.py<span class="w">        </span><span class="c1"># run all complaints</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>python<span class="w"> </span>app-instrumented.py<span class="w"> </span>C001<span class="w">   </span><span class="c1"># run a specific complaint</span>
 </span></code></pre></div>
 <h2 id="how-it-works">How it works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h2>
 <p>This demo uses two distinct types of LLM call working together.</p>
@@ -1771,6 +1769,18 @@
 </span><span id="__span-4-28"><a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a>            <span class="k">return</span>  <span class="c1"># escalation is terminal</span>
 </span></code></pre></div>
 <p><strong><code>messages</code> is the orchestrator's only memory.</strong> Every turn appends to it: the orchestrator's requests and every tool result. When the orchestrator is called again next turn, it can see the full history of what has happened so far.</p>
+<div class="admonition example">
+<p class="admonition-title">Exercise: swap the orchestrator's routing for a decision model</p>
+<p>The orchestrator's job is to pick one option from a fixed list of tools. That is the same shape of problem a <strong>decision model</strong> is built for: it chooses between predefined options and returns a confidence score, rather than generating free text. <a href="https://strandsagents.com/blog/introducing-strands-decider/">Strands Decider 2B</a> lists tool selection and routing as core use cases.</p>
+<p>In <a href="../04-agentic-pipeline/">Step 4</a> the exercise swaps a single agent. Here you would swap the router itself. A small decision model could make the "what next?" choice each turn, instead of a 120B-parameter LLM resending the full <code>messages</code> history every time.</p>
+<p>As in Step 4, the model is a bit too heavy for the local Codespace, so we leave this as an exercise. If you have the resources, try it:</p>
+<ol>
+<li>Run a decision model locally, or on hardware that can handle it.</li>
+<li>Replace the orchestrator <code>chat</code> call with the decision model, using the four tool names as its options.</li>
+<li>Keep the final response coming from <code>draft_response</code> (a decision model selects, it doesn't write).</li>
+<li>Compare <code>triage.turns</code>, per-turn latency and orchestrator token usage in Dynatrace against the LLM orchestrator.</li>
+</ol>
+</div>
 <h2 id="the-trace-structure">The trace structure<a class="headerlink" href="#the-trace-structure" title="Permanent link">&para;</a></h2>
 <p>In a pipeline, the trace structure is fixed before the app runs. In an agentic loop, it depends on what the model decided to do:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>triage COMPLAINT-001
@@ -1925,14 +1935,15 @@
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dtctl<span class="w"> </span>query<span class="w"> </span><span class="s1">'fetch spans</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="s1">| filter service.name == "support-triage-loop"</span>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="s1">| filter gen_ai.operation.name == "chat"</span>
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="s1">| summarize</span>
-</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="s1">    calls = count(),</span>
-</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="s1">    avg_input_tokens = round(avg(gen_ai.usage.input_tokens), decimals:0),</span>
-</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="s1">    avg_output_tokens = round(avg(gen_ai.usage.output_tokens), decimals:0),</span>
-</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="s1">    by: {gen_ai.agent.name}</span>
-</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="s1">| sort avg_input_tokens desc'</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="s1">| fieldsAdd agent = coalesce(gen_ai.agent.name, "orchestrator")</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="s1">| summarize</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="s1">    calls = count(),</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="s1">    avg_input_tokens = round(avg(gen_ai.usage.input_tokens), decimals:0),</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="s1">    avg_output_tokens = round(avg(gen_ai.usage.output_tokens), decimals:0),</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="s1">    by: {agent}</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="s1">| sort avg_input_tokens desc'</span>
 </span></code></pre></div>
-<p>The orchestrator's <code>gen_ai.agent.name</code> will be null (it is not a sub-agent). Sub-agents appear by name. Orchestrator input tokens grow each turn because the full conversation history is sent every iteration — this is where loop costs can creep up.</p>
+<p>The orchestrator's <code>gen_ai.agent.name</code> is null (it is not a sub-agent), so the query labels it <code>orchestrator</code>. Sub-agents appear by name. Orchestrator input tokens grow each turn because the full conversation history is sent every iteration — this is where loop costs can creep up.</p>
 <h3 id="check-the-escalation-rate">Check the escalation rate<a class="headerlink" href="#check-the-escalation-rate" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dtctl<span class="w"> </span>query<span class="w"> </span><span class="s1">'fetch spans</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="s1">| filter service.name == "support-triage-loop"</span>
