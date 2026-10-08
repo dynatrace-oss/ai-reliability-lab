@@ -1663,6 +1663,8 @@
 <p>In the previous example (agentic pipeline), your code says: "always call sentiment, then policy, then draft."</p>
 <p>In an agentic loop, your code says: "you are a routing agent, here are tools you can call, decide which ones to use and in what order. Do not take any action yourself."</p>
 <p>The model looks at the complaint, looks at the available tools, and chooses what to call, in what order, and when to stop. Your code just dispatches whatever the model requests.</p>
+<p>Notice that not every tool invokes an agentic call. The <code>escalate</code> tool simply returns a </p>
+<p><img alt="agentic loop architecture" src="../../assets/agentic-loop.architecture.drawio.png" /></p>
 <h2 id="running-it">Running it<a class="headerlink" href="#running-it" title="Permanent link">&para;</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>/workspace/code/monitor-production/step5-agentic-loop
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">OTEL_EXPORTER_OTLP_ENDPOINT</span><span class="o">=</span>http://localhost:4318

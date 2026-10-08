@@ -1663,6 +1663,7 @@
 </blockquote>
 <p>The guardrail catches this. The problem is that without instrumentation, your application has no idea how often this happens, which users are doing it, or whether the guardrail is working at all. You only find out if you read the logs line by line.</p>
 <p>This step adds the observability that makes guardrail activity visible in Dynatrace.</p>
+<p><img alt="guardrail architecture" src="../../assets/guardrail.architecture.drawio.png" /></p>
 <h2 id="what-you-need-first-a-guardrail-id">What you need first: a guardrail ID<a class="headerlink" href="#what-you-need-first-a-guardrail-id" title="Permanent link">&para;</a></h2>
 <p>This step needs a guardrail already set up in your AWS account, plus its ID as the <code>GUARDRAIL_ID</code> environment variable. If you completed <a href="../../foundation/setup/">Foundation → Setup</a>, you already created the guardrail and ran it through the smoke test — you're ready to go.</p>
 <p>If you skipped ahead, go back to <a href="../../foundation/setup/#aws-bedrock-guardrail">Foundation → Setup: AWS Bedrock Guardrail</a> and create one now (about five minutes), then re-run <code>python code/smoke-test.py</code> to confirm it works before continuing here.</p>
