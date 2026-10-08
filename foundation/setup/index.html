@@ -608,6 +608,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#understand-the-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Understand the lab
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#choose-your-path" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -988,6 +999,17 @@
     <span class="md-ellipsis">
       
         Step 3: Verify the pipeline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understand-the-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Understand the lab
       
     </span>
   </a>
@@ -1582,6 +1604,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#understand-the-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Understand the lab
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#choose-your-path" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1806,6 +1839,18 @@
 <li>Look for lines containing <code>error</code> or <code>REFUSED</code> — these usually name the missing permission</li>
 </ol>
 </div>
+<h2 id="understand-the-lab">Understand the lab<a class="headerlink" href="#understand-the-lab" title="Permanent link">&para;</a></h2>
+<p>From a terminal <strong>on your local machine</strong>, run <code>docker ps</code>.</p>
+<p>You should see two containers:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>%<span class="w"> </span>docker<span class="w"> </span>ps
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>CONTAINER<span class="w"> </span>ID<span class="w">   </span>IMAGE<span class="w">                                          </span>COMMAND<span class="w">                  </span>CREATED<span class="w">         </span>STATUS<span class="w">         </span>PORTS<span class="w">     </span>NAMES
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>**<span class="w">   </span>otel/opentelemetry-collector-contrib:0.161.0<span class="w">   </span><span class="s2">"/otelcol-contrib --…"</span><span class="w">   </span><span class="m">5</span><span class="w"> </span>minutes<span class="w"> </span>ago<span class="w">   </span>Up<span class="w"> </span><span class="m">5</span><span class="w"> </span>minutes<span class="w">             </span>ai-reliability-lab_devcontainer-otel-collector-1
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>**<span class="w">   </span>ai-reliability-lab_devcontainer-app<span class="w">            </span><span class="s2">"/bin/sh -c 'echo Co…"</span><span class="w">   </span><span class="m">5</span><span class="w"> </span>minutes<span class="w"> </span>ago<span class="w">   </span>Up<span class="w"> </span><span class="m">5</span><span class="w"> </span>minutes<span class="w">             </span>ai-reliability-lab_devcontainer-app-1
+</span></code></pre></div>
+<ul>
+<li>One will be an OpenTelemetry collector</li>
+<li>One will be the entire lab environment devcontainer (this is the container you're sitting in as <code>root</code>)</li>
+</ul>
 <h2 id="choose-your-path">Choose your path<a class="headerlink" href="#choose-your-path" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong><a href="../../monitor-production/">Monitor Production AI</a></strong> — Add observability to a running AI application, step by step</li>
