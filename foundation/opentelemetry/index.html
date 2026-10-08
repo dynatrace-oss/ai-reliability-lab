@@ -785,6 +785,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#manual-vs-automatic-instrumentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manual vs automatic instrumentation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#what-youll-need" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1439,6 +1450,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#manual-vs-automatic-instrumentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manual vs automatic instrumentation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#what-youll-need" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1579,6 +1601,18 @@
 <div class="admonition warning">
 <p class="admonition-title">Still in development</p>
 <p>The GenAI semantic conventions are currently marked as <strong>Development</strong> status, which means the attribute names above may change as the spec matures. Check the <a href="https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/gen-ai/README.md">spec repo</a> for the latest, and don't be surprised if a future version renames something.</p>
+</div>
+<h2 id="manual-vs-automatic-instrumentation">Manual vs automatic instrumentation<a class="headerlink" href="#manual-vs-automatic-instrumentation" title="Permanent link">&para;</a></h2>
+<p>In these tutorials we instrument everything <strong>manually</strong>: you create each span, set each attribute and record each metric yourself. This is deliberately "the hard way". Nothing is hidden, so you can see exactly where every <code>gen_ai.*</code> attribute comes from.</p>
+<p>In practice, you don't have to write all of this by hand. OpenTelemetry offers <strong>automatic instrumentation</strong> that hooks into common libraries and produces telemetry with little or no code changes:</p>
+<ul>
+<li><strong>Python</strong>: the <a href="https://opentelemetry.io/docs/zero-code/python/"><code>opentelemetry-instrument</code></a> launcher wraps your app and instruments supported libraries (HTTP clients, web frameworks, databases and more). Libraries for popular AI SDKs are also available in the <a href="https://github.com/open-telemetry/opentelemetry-python-contrib">OpenTelemetry Python contrib repository</a>.</li>
+<li><strong>Any language</strong>: the <a href="https://github.com/open-telemetry/opentelemetry-injector">OpenTelemetry Injector</a> uses <code>LD_PRELOAD</code> to inject auto-instrumentation into processes without modifying the application or its launch command.</li>
+</ul>
+<p>A typical production application uses a <strong>mix of both</strong>: automatic instrumentation for the common plumbing (HTTP, databases, SDK calls), plus manual instrumentation for the business logic and AI-specific context that only you know about, such as agent names, routing decisions and guardrail outcomes.</p>
+<div class="admonition tip">
+<p class="admonition-title">Why learn the manual way first?</p>
+<p>Once you understand what a span, attribute and metric look like when you create them yourself, it's much easier to understand, verify and extend what auto-instrumentation produces.</p>
 </div>
 <h2 id="what-youll-need">What you'll need<a class="headerlink" href="#what-youll-need" title="Permanent link">&para;</a></h2>
 <p>You'll need two things: <strong>Docker</strong> and a <strong>Dynatrace environment</strong>. If you don't have one, you can <a href="https://dt-url.net/trial">start a free trial</a>. We provide everything else.</p>

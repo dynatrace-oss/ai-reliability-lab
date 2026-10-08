@@ -1182,6 +1182,100 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#watching-the-shift-live" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Watching the shift live
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Watching the shift live">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#traffic-split-over-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Traffic split over time
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#challenger-share-over-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Challenger share (%) over time
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#latency-by-model-over-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Latency by model over time
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-tokens-by-model-over-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output tokens by model over time
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#side-by-side-comparison-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Side-by-side comparison table
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-the-split-with-the-routing-counter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verify the split with the routing counter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-the-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build the dashboard
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#the-report" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1517,6 +1611,100 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#watching-the-shift-live" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Watching the shift live
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Watching the shift live">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#traffic-split-over-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Traffic split over time
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#challenger-share-over-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Challenger share (%) over time
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#latency-by-model-over-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Latency by model over time
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-tokens-by-model-over-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output tokens by model over time
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#side-by-side-comparison-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Side-by-side comparison table
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-the-split-with-the-routing-counter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verify the split with the routing counter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-the-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build the dashboard
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#the-report" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1612,6 +1800,7 @@
 <tr>
 <th>Phase</th>
 <th>Split (control / challenger)</th>
+<th>Complaints</th>
 <th>Goal</th>
 </tr>
 </thead>
@@ -1619,42 +1808,45 @@
 <tr>
 <td>1</td>
 <td>100 / 0</td>
+<td>C001 to C025</td>
 <td>Baseline: all traffic to control, establish reference metrics</td>
 </tr>
 <tr>
 <td>2</td>
-<td>90 / 10</td>
+<td>80 / 20</td>
+<td>C026 to C050</td>
 <td>Smoke test: confirm the challenger works at all</td>
 </tr>
 <tr>
 <td>3</td>
-<td>80 / 20</td>
-<td>Widen the sample: confirm the early results hold with more traffic</td>
-</tr>
-<tr>
-<td>4</td>
 <td>50 / 50</td>
+<td>C051 to C075</td>
 <td>Head-to-head: enough data to compare properly</td>
 </tr>
 <tr>
-<td>5</td>
-<td>0 / 100</td>
-<td>Complete the migration if metrics are acceptable</td>
+<td>4</td>
+<td>20 / 80</td>
+<td>C076 to C100</td>
+<td>Near-complete migration: confirm the results hold at scale</td>
 </tr>
 </tbody>
 </table>
-<p>Each step exposes more traffic to the challenger only after the previous one looked healthy. If a step goes wrong, put the percentages back: the flag is your rollback. At each phase, Dynatrace gives you the comparison. You are not guessing: you have a report.</p>
+<p>You do this in a single run. You start the app once and move through the phases by editing <code>flags.json</code> by hand while it runs. Each step exposes more traffic to the challenger only after the previous one looked healthy. If a step goes wrong, put the percentages back: the flag is your rollback. Dynatrace gives you the comparison at every point. You are not guessing: you have a report.</p>
 <h2 id="running-it">Running it<a class="headerlink" href="#running-it" title="Permanent link">&para;</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>code/monitor-production/step8-model-selection
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_REGION</span><span class="o">=</span>us-east-2
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">OTEL_EXPORTER_OTLP_ENDPOINT</span><span class="o">=</span>http://localhost:4318
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>python<span class="w"> </span>app-instrumented.py<span class="w">        </span><span class="c1"># run all 100 complaints</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>python<span class="w"> </span>app-instrumented.py<span class="w"> </span>C001<span class="w">   </span><span class="c1"># run a specific complaint</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>/workspace/code/monitor-production/step8-model-selection
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">OTEL_EXPORTER_OTLP_ENDPOINT</span><span class="o">=</span>http://localhost:4318
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>python<span class="w"> </span>app-instrumented.py<span class="w">        </span><span class="c1"># run all 100 complaints</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>python<span class="w"> </span>app-instrumented.py<span class="w"> </span>C001<span class="w">   </span><span class="c1"># run a specific complaint</span>
 </span></code></pre></div>
-<p>This step uses 100 complaints instead of the usual handful, because a 90 / 10 split only shows up in the data when there is enough traffic to split. Each complaint makes two model calls, so a full run takes several minutes. You will run the full set once per phase, so expect to wait. Start a run, then use the time to read the next section.</p>
-<p>No separate flag server to start. The app uses the official <code>openfeature-provider-flagd</code> package in file mode, which reads <code>flags.json</code> and polls for changes every five seconds. Edit the file and the next batch of complaints picks up the new split automatically.</p>
+<p>This step uses 100 complaints instead of the usual handful, because a percentage split only shows up in the data when there is enough traffic to split. Each complaint makes two model calls, so a full run takes several minutes.</p>
+<p><strong>You start the app once and run all 100 complaints in a single run.</strong> While it is running, <strong>you</strong> change the traffic split by editing <code>flags.json</code> by hand. The app does not change the split for you. The <a href="#running-the-migration">Running the migration</a> section tells you exactly when to make each edit.</p>
+<p>Because you need to edit a file while the app is busy, open two terminals (or one terminal and your editor):</p>
+<ul>
+<li><strong>Terminal 1:</strong> start <code>python app-instrumented.py</code> and leave it running. It prints <code>Complaint C001</code>, <code>Complaint C002</code> and so on as it goes. You use these lines to know when to make an edit.</li>
+<li><strong>Terminal 2 or your editor:</strong> edit and save <code>flags.json</code> when the run reaches each checkpoint.</li>
+</ul>
+<p>No separate flag server to start. The app uses the official <code>openfeature-provider-flagd</code> package in file mode, which reads <code>flags.json</code> and polls for changes every five seconds. Save the file and the next complaint to be evaluated picks up the new split automatically. You do not restart the app.</p>
 <h2 id="the-flag">The flag<a class="headerlink" href="#the-flag" title="Permanent link">&para;</a></h2>
 <p><code>flags.json</code> is the single place where the migration is controlled:</p>
 <div class="language-json highlight"><span class="filename">step8-model-selection/flags.json</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
@@ -1682,11 +1874,11 @@
 <p>To move to phase 2, edit the percentages inside the <code>fractional</code> rule:</p>
 <div class="language-json highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">"if"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="p">{</span><span class="nt">"&lt;="</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">"var"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urgency"</span><span class="p">},</span><span class="w"> </span><span class="mi">2</span><span class="p">]},</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="p">{</span><span class="nt">"fractional"</span><span class="p">:</span><span class="w"> </span><span class="p">[[</span><span class="s2">"control"</span><span class="p">,</span><span class="w"> </span><span class="mi">90</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="s2">"challenger"</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">]]},</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="p">{</span><span class="nt">"fractional"</span><span class="p">:</span><span class="w"> </span><span class="p">[[</span><span class="s2">"control"</span><span class="p">,</span><span class="w"> </span><span class="mi">80</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="s2">"challenger"</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">]]},</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="s2">"control"</span>
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">]</span>
 </span></code></pre></div>
-<p>Save the file. The provider picks up the change within five seconds. The running app will start routing roughly 10% of low-urgency complaints to the challenger on the next requests.</p>
+<p>Save the file. The provider picks up the change within five seconds. The running app will start routing roughly 20% of low-urgency complaints to the challenger on the next complaints it evaluates.</p>
 <h3 id="why-flagd-and-openfeature">Why flagd and OpenFeature?<a class="headerlink" href="#why-flagd-and-openfeature" title="Permanent link">&para;</a></h3>
 <p><a href="https://openfeature.dev/">OpenFeature</a> is a CNCF standard for feature flag evaluation. Your application code calls the OpenFeature SDK; it does not call any flag provider directly. This means you can swap providers without touching the routing code. If your organisation already runs LaunchDarkly, Unleash, or Split, you point the SDK at that provider and the rest of the app is unchanged.</p>
 <p>For this tutorial, the app uses the official <code>openfeature-provider-flagd</code> package configured in file mode. It reads <code>flags.json</code> directly with no server required. If you later move to a full flagd deployment, you switch to the gRPC resolver and keep the same <code>flags.json</code> without changes.</p>
@@ -1733,14 +1925,16 @@
 </span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="p">})</span>
 </span></code></pre></div>
 <p>This answers a question you must answer before reading quality metrics: <strong>is the split working?</strong></p>
-<p>If you set challenger to 10% and run all 100 complaints, you expect roughly 6 in the challenger bucket (10% of the 60 low-urgency complaints). If you see 0, the flag is not being evaluated. If you see more than 60, the targeting rule is wrong, because high-urgency complaints should never reach the challenger. Only once the counter confirms the split is correct do the quality comparisons mean anything.</p>
+<p>If you set challenger to 20% and the run is at C040, you expect roughly 3 complaints in the challenger bucket so far (20% of the 15 or so low-urgency complaints in C026 to C040). If you see 0 after several complaints, the flag edit has not been picked up. If you see challenger requests on high-urgency complaints, the targeting rule is wrong, because those should never reach the challenger. Only once the counter confirms the split is correct do the quality comparisons mean anything.</p>
 <h2 id="running-the-migration">Running the migration<a class="headerlink" href="#running-the-migration" title="Permanent link">&para;</a></h2>
-<p>Only the 60 low-urgency complaints are eligible for the challenger. The flag decides by the complaint ID, so the numbers below are approximate, and your run will be close to them but not identical:</p>
+<p>Start the app <strong>once</strong> and leave it running for all 100 complaints. You make the changes to <code>flags.json</code> yourself, by hand, at the checkpoints below. Nothing edits the file for you.</p>
+<p>Only the 60 or so low-urgency complaints are eligible for the challenger. The flag decides by the complaint ID, so the numbers below are approximate, and your run will be close to them but not identical:</p>
 <table>
 <thead>
 <tr>
 <th>Phase</th>
 <th>Split</th>
+<th>Complaints</th>
 <th>Challenger requests</th>
 <th>Control requests</th>
 </tr>
@@ -1749,78 +1943,88 @@
 <tr>
 <td>1</td>
 <td>100 / 0</td>
+<td>C001 to C025</td>
 <td>0</td>
-<td>100</td>
+<td>25</td>
 </tr>
 <tr>
 <td>2</td>
-<td>90 / 10</td>
-<td>about 5</td>
-<td>about 95</td>
+<td>80 / 20</td>
+<td>C026 to C050</td>
+<td>about 3</td>
+<td>about 22</td>
 </tr>
 <tr>
 <td>3</td>
-<td>80 / 20</td>
-<td>about 10</td>
-<td>about 90</td>
+<td>50 / 50</td>
+<td>C051 to C075</td>
+<td>about 7</td>
+<td>about 18</td>
 </tr>
 <tr>
 <td>4</td>
-<td>50 / 50</td>
-<td>about 30</td>
-<td>about 70</td>
-</tr>
-<tr>
-<td>5</td>
-<td>0 / 100</td>
-<td>60</td>
-<td>40</td>
+<td>20 / 80</td>
+<td>C076 to C100</td>
+<td>about 12</td>
+<td>about 13</td>
 </tr>
 </tbody>
 </table>
-<p>Because the same complaint always routes to the same variant, running the set again at the same split gives the same result. Moving to a larger challenger share keeps every complaint that was already on the challenger and adds more, so you are always comparing like with like.</p>
-<p><strong>Phase 1: establish a baseline</strong></p>
-<p>With <code>flags.json</code> at 100% control, run the full complaint set. All traces will have <code>feature_flag.variant = "control"</code>. This gives you reference values for latency and cost with no challenger traffic. Write them down. You will compare against these numbers in later phases.</p>
-<p><strong>Phase 2: 90 / 10</strong></p>
-<p>Edit the <code>fractional</code> percentages in <code>flags.json</code>:</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nt">"if"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="p">{</span><span class="nt">"&lt;="</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">"var"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urgency"</span><span class="p">},</span><span class="w"> </span><span class="mi">2</span><span class="p">]},</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="p">{</span><span class="nt">"fractional"</span><span class="p">:</span><span class="w"> </span><span class="p">[[</span><span class="s2">"control"</span><span class="p">,</span><span class="w"> </span><span class="mi">90</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="s2">"challenger"</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">]]},</span>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span><span class="s2">"control"</span>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="p">]</span>
+<p>Because the same complaint always routes to the same variant, a complaint that lands in the challenger bucket stays there as you raise the percentage. Each phase adds more complaints to the challenger, so you are always comparing like with like.</p>
+<div class="admonition warning">
+<p class="admonition-title">You must edit <code>flags.json</code> yourself</p>
+<p>The app never changes the split on its own. If you do nothing, every complaint goes to the control model and you will never see the challenger. Watch Terminal 1 for the <code>Complaint C0xx</code> lines and make each edit when the run reaches the checkpoint.</p>
+</div>
+<p><strong>Start the run</strong></p>
+<p>In Terminal 1:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>python<span class="w"> </span>app-instrumented.py
 </span></code></pre></div>
-<p>The provider picks this up within five seconds. Run the complaints again. In Dynatrace, check <code>gen_ai.model_selection.requests</code> first. You should see roughly 90/10 in the counter for low-urgency complaints; high-urgency complaints will only appear under <code>"control"</code>. If the split looks right, then compare:</p>
-<ul>
-<li><code>gen_ai.usage.input_tokens</code> split by <code>feature_flag.variant</code>: are input costs similar?</li>
-<li><code>gen_ai.usage.output_tokens</code> split by <code>feature_flag.variant</code>: is the challenger more verbose or more terse?</li>
-<li>Span duration split by <code>feature_flag.variant</code>: is the challenger faster or slower?</li>
-</ul>
-<p>At 10% the question is only "does it work?" Look for errors and obvious problems, not fine differences. If anything looks wrong, set the split back to <code>100 / 0</code> and nothing else changes.</p>
-<p><strong>Phase 3: 80 / 20</strong></p>
+<p>Leave it running. Open Dynatrace alongside it (see <a href="#watching-the-shift-live">Watching the shift live</a>) so you can see each change land.</p>
+<p><strong>Phase 1 (C001 to C025): establish a baseline</strong></p>
+<p><code>flags.json</code> starts at 100% control, so no edit is needed. All traces have <code>feature_flag.variant = "control"</code>. This gives you reference values for latency and cost with no challenger traffic. Write them down. You will compare against these numbers in later phases.</p>
+<p><strong>Phase 2 (C026 to C050): 80 / 20</strong></p>
+<p>When Terminal 1 shows <code>Complaint C026</code>, edit the <code>fractional</code> percentages in <code>flags.json</code> and save:</p>
 <div class="language-json highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nt">"if"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="p">{</span><span class="nt">"&lt;="</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">"var"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urgency"</span><span class="p">},</span><span class="w"> </span><span class="mi">2</span><span class="p">]},</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span><span class="p">{</span><span class="nt">"fractional"</span><span class="p">:</span><span class="w"> </span><span class="p">[[</span><span class="s2">"control"</span><span class="p">,</span><span class="w"> </span><span class="mi">80</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="s2">"challenger"</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">]]},</span>
 </span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">  </span><span class="s2">"control"</span>
 </span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="p">]</span>
 </span></code></pre></div>
-<p>Run the complaints again and verify the counter shows roughly 80/20 before reading anything else. Then repeat the same three comparisons. You are checking that what you saw at 10% still holds with twice the traffic: the same token pattern, the same latency gap, and no new errors. Small differences that were noise at 10% start to show a trend here.</p>
-<p><strong>Phase 4: 50 / 50</strong></p>
+<p>The provider picks this up within five seconds. Do not restart the app. Within a few complaints, the terminal starts printing <code>Model variant: challenger (openai.gpt-oss-20b)</code> for some low-urgency complaints. In Dynatrace, check <code>gen_ai.model_selection.requests</code> first. You should see roughly 80/20 in the counter for low-urgency complaints; high-urgency complaints will only appear under <code>"control"</code>. If the split looks right, then compare:</p>
+<ul>
+<li><code>gen_ai.usage.input_tokens</code> split by <code>feature_flag.variant</code>: are input costs similar?</li>
+<li><code>gen_ai.usage.output_tokens</code> split by <code>feature_flag.variant</code>: is the challenger more verbose or more terse?</li>
+<li>Span duration split by <code>feature_flag.variant</code>: is the challenger faster or slower?</li>
+</ul>
+<p>At 20% the question is only "does it work?" Look for errors and obvious problems, not fine differences. If anything looks wrong, set the split back to <code>100 / 0</code> and nothing else changes.</p>
+<p><strong>Phase 3 (C051 to C075): 50 / 50</strong></p>
+<p>When Terminal 1 shows <code>Complaint C051</code>, edit and save <code>flags.json</code> again:</p>
 <div class="language-json highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nt">"if"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">  </span><span class="p">{</span><span class="nt">"&lt;="</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">"var"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urgency"</span><span class="p">},</span><span class="w"> </span><span class="mi">2</span><span class="p">]},</span>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">  </span><span class="p">{</span><span class="nt">"fractional"</span><span class="p">:</span><span class="w"> </span><span class="p">[[</span><span class="s2">"control"</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="s2">"challenger"</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">]]},</span>
 </span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">  </span><span class="s2">"control"</span>
 </span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="p">]</span>
 </span></code></pre></div>
-<p>With equal traffic, the comparison is head-to-head. This is where you read the response content in the traces (<code>gen_ai.output.messages</code>) and make a qualitative judgement: are the challenger responses as useful as the control?</p>
-<p><strong>Phase 5: complete the migration</strong></p>
-<p>If the challenger looks good at 50%, complete the migration:</p>
+<p>With equal traffic, the comparison is head-to-head. Verify the counter shows roughly 50/50 for low-urgency complaints, then repeat the same three comparisons. This is also where you read the response content in the traces (<code>gen_ai.output.messages</code>) and make a qualitative judgement: are the challenger responses as useful as the control?</p>
+<p><strong>Phase 4 (C076 to C100): 20 / 80</strong></p>
+<p>When Terminal 1 shows <code>Complaint C076</code>, edit and save <code>flags.json</code> one last time:</p>
 <div class="language-json highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nt">"if"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span><span class="p">{</span><span class="nt">"&lt;="</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">"var"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urgency"</span><span class="p">},</span><span class="w"> </span><span class="mi">2</span><span class="p">]},</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span><span class="p">{</span><span class="nt">"fractional"</span><span class="p">:</span><span class="w"> </span><span class="p">[[</span><span class="s2">"control"</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="s2">"challenger"</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">]]},</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span><span class="p">{</span><span class="nt">"fractional"</span><span class="p">:</span><span class="w"> </span><span class="p">[[</span><span class="s2">"control"</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="s2">"challenger"</span><span class="p">,</span><span class="w"> </span><span class="mi">80</span><span class="p">]]},</span>
 </span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">  </span><span class="s2">"control"</span>
 </span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="p">]</span>
 </span></code></pre></div>
+<p>You are checking that what you saw at 20% and 50% still holds with most of the low-urgency traffic on the challenger: the same token pattern, the same latency gap, and no new errors. Let the run finish.</p>
+<p><strong>After the run: complete the migration</strong></p>
+<p>If the challenger looks good, completing the migration means setting the split to 0 / 100:</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nt">"if"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">  </span><span class="p">{</span><span class="nt">"&lt;="</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">"var"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urgency"</span><span class="p">},</span><span class="w"> </span><span class="mi">2</span><span class="p">]},</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">  </span><span class="p">{</span><span class="nt">"fractional"</span><span class="p">:</span><span class="w"> </span><span class="p">[[</span><span class="s2">"control"</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="s2">"challenger"</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">]]},</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">  </span><span class="s2">"control"</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="p">]</span>
+</span></code></pre></div>
 <p>Or, if you want to keep a clean record, flip <code>defaultVariant</code> to <code>"challenger"</code> and remove the targeting rule entirely. The traces continue to carry <code>feature_flag.variant = "challenger"</code> so the migration is recorded in your observability data.</p>
+<p>Before running the lab again, set <code>flags.json</code> back to <code>100 / 0</code>.</p>
 <h2 id="what-youll-see-in-dynatrace">What you'll see in Dynatrace<a class="headerlink" href="#what-youll-see-in-dynatrace" title="Permanent link">&para;</a></h2>
 <p>Each trace has three spans. The root <code>triage</code> span carries:</p>
 <ul>
@@ -1839,8 +2043,109 @@
 <p><strong>Traces view:</strong> Filter by <code>feature_flag.variant = "challenger"</code> to see only the challenger traces. Compare their duration against the same filter for <code>"control"</code>. This is the latency comparison.</p>
 <p><strong>Metrics view:</strong> Chart <code>gen_ai.client.token.usage</code> split by <code>feature_flag.variant</code>. Two lines: one for each model tier. The gap between them is your potential cost saving (or the cost of a quality upgrade, if the challenger is larger).</p>
 <p><strong>Routing verification:</strong> <code>gen_ai.model_selection.requests</code> split by <code>feature_flag.variant</code> confirms the actual distribution matches your flag configuration. Always check this before drawing conclusions from quality metrics.</p>
+<h2 id="watching-the-shift-live">Watching the shift live<a class="headerlink" href="#watching-the-shift-live" title="Permanent link">&para;</a></h2>
+<p>Because you change the split during one run, the best way to see the migration is a time series. Each chart below shows the challenger appearing when you save <code>flags.json</code>, then growing at each phase. Run these with <code>dtctl query</code>, or paste the DQL into a Dashboards tile or a Notebook. Set the timeframe to the last 30 minutes and refresh while the app runs.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The service name is <code>support-model-selection</code>. The <code>chat</code> span for the draft response does not carry <code>feature_flag.variant</code>, so these queries group by <code>gen_ai.request.model</code> instead. That is the same split: <code>openai.gpt-oss-120b</code> is the control and <code>openai.gpt-oss-20b</code> is the challenger. The urgency scoring call also uses a <code>chat</code> span, and always uses the control model. The queries exclude it by filtering out spans with a <code>gen_ai.agent.name</code>.</p>
+</div>
+<h3 id="traffic-split-over-time">Traffic split over time<a class="headerlink" href="#traffic-split-over-time" title="Permanent link">&para;</a></h3>
+<p>This is the headline chart. Use a stacked area or bar chart.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dtctl<span class="w"> </span>query<span class="w"> </span><span class="s1">'fetch spans</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="s1">| filter service.name == "support-model-selection"</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="s1">| filter transaction.is_root_span == true</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="s1">| filter isNotNull(feature_flag.variant)</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="s1">| makeTimeseries requests = count(), by: {feature_flag.variant}, interval: 30s'</span>
+</span></code></pre></div>
+<p>At first you see only <code>control</code>. After the phase 2 edit a <code>challenger</code> series appears, and it takes over the chart by phase 4.</p>
+<h3 id="challenger-share-over-time">Challenger share (%) over time<a class="headerlink" href="#challenger-share-over-time" title="Permanent link">&para;</a></h3>
+<p>Use a line chart with a single line that climbs as you raise the percentage. This one shows only low-urgency complaints, because those are the only ones eligible for the challenger.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dtctl<span class="w"> </span>query<span class="w"> </span><span class="s1">'fetch spans</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="s1">| filter service.name == "support-model-selection"</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="s1">| filter transaction.is_root_span == true</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="s1">| filter complaint.urgency &lt;= 2</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="s1">| makeTimeseries</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="s1">    total = count(),</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="s1">    challenger = countIf(feature_flag.variant == "challenger"),</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="s1">    interval: 1m</span>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="s1">| fieldsAdd challenger_pct = challenger[] / total[] * 100</span>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="s1">| fields interval, challenger_pct'</span>
+</span></code></pre></div>
+<h3 id="latency-by-model-over-time">Latency by model over time<a class="headerlink" href="#latency-by-model-over-time" title="Permanent link">&para;</a></h3>
+<p>Use a line chart with one line per model. Compare how fast each answers.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dtctl<span class="w"> </span>query<span class="w"> </span><span class="s1">'fetch spans</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="s1">| filter service.name == "support-model-selection"</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="s1">| filter gen_ai.operation.name == "chat"</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="s1">| filter isNull(gen_ai.agent.name)</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="s1">| makeTimeseries avg_latency = avg(duration), by: {gen_ai.request.model}, interval: 1m'</span>
+</span></code></pre></div>
+<h3 id="output-tokens-by-model-over-time">Output tokens by model over time<a class="headerlink" href="#output-tokens-by-model-over-time" title="Permanent link">&para;</a></h3>
+<p>Use a line chart. This is your cost signal: fewer output tokens per answer is cheaper.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dtctl<span class="w"> </span>query<span class="w"> </span><span class="s1">'fetch spans</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="s1">| filter service.name == "support-model-selection"</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="s1">| filter gen_ai.operation.name == "chat"</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="s1">| filter isNull(gen_ai.agent.name)</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="s1">| makeTimeseries avg_output_tokens = avg(gen_ai.usage.output_tokens), by: {gen_ai.request.model}, interval: 1m'</span>
+</span></code></pre></div>
+<h3 id="side-by-side-comparison-table">Side-by-side comparison table<a class="headerlink" href="#side-by-side-comparison-table" title="Permanent link">&para;</a></h3>
+<p>Use a table. This produces the numbers for <a href="#the-report">the report</a>.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>dtctl<span class="w"> </span>query<span class="w"> </span><span class="s1">'fetch spans</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="s1">| filter service.name == "support-model-selection"</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="s1">| filter gen_ai.operation.name == "chat"</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="s1">| filter isNull(gen_ai.agent.name)</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="s1">| summarize</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="s1">    requests = count(),</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="s1">    avg_input_tokens = round(avg(gen_ai.usage.input_tokens), decimals:0),</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="s1">    avg_output_tokens = round(avg(gen_ai.usage.output_tokens), decimals:0),</span>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="s1">    avg_latency_s = round(avg(toLong(duration)) / 1000000000, decimals:2),</span>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="s1">    by: {gen_ai.request.model}'</span>
+</span></code></pre></div>
+<p>The control row also includes the high-urgency complaints, which never reach the challenger, so its numbers are not a like-for-like comparison. For a fair comparison, filter the control traces to <code>complaint.urgency &lt;= 2</code> in the Traces view, as described in <a href="#the-report">the report</a>.</p>
+<h3 id="verify-the-split-with-the-routing-counter">Verify the split with the routing counter<a class="headerlink" href="#verify-the-split-with-the-routing-counter" title="Permanent link">&para;</a></h3>
+<p>The same split from the metric rather than the spans. Use this to confirm that the metric and the traces agree.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dtctl<span class="w"> </span>query<span class="w"> </span><span class="s1">'timeseries requests = sum(gen_ai.model_selection.requests), by: {feature_flag.variant}, interval: 30s'</span>
+</span></code></pre></div>
+<h3 id="build-the-dashboard">Build the dashboard<a class="headerlink" href="#build-the-dashboard" title="Permanent link">&para;</a></h3>
+<p>Create a new dashboard called <strong>Model migration</strong> with these tiles, in this order, so the story reads from top to bottom:</p>
+<table>
+<thead>
+<tr>
+<th>Tile</th>
+<th>Query</th>
+<th>Visualization</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Traffic split over time</td>
+<td>Traffic split over time</td>
+<td>Stacked area</td>
+</tr>
+<tr>
+<td>Challenger share (%)</td>
+<td>Challenger share (%) over time</td>
+<td>Line</td>
+</tr>
+<tr>
+<td>Latency by model</td>
+<td>Latency by model over time</td>
+<td>Line</td>
+</tr>
+<tr>
+<td>Output tokens by model</td>
+<td>Output tokens by model over time</td>
+<td>Line</td>
+</tr>
+<tr>
+<td>Comparison</td>
+<td>Side-by-side comparison table</td>
+<td>Table</td>
+</tr>
+</tbody>
+</table>
+<p>Set the dashboard refresh to 10 seconds and the timeframe to the last 30 minutes before you start the run. Then run <code>python app-instrumented.py</code>, and save each <code>flags.json</code> edit at its checkpoint. The first tile makes the shift visible to anyone watching.</p>
 <h2 id="the-report">The report<a class="headerlink" href="#the-report" title="Permanent link">&para;</a></h2>
-<p>After phase 4, you have the data to make the call. The comparison in Dynatrace looks something like this:</p>
+<p>At the end of the run, you have the data to make the call. The comparison in Dynatrace looks something like this:</p>
 <table>
 <thead>
 <tr>
@@ -1867,8 +2172,8 @@
 </tr>
 <tr>
 <td>Requests</td>
-<td>70</td>
-<td>30</td>
+<td>78</td>
+<td>22</td>
 </tr>
 </tbody>
 </table>
