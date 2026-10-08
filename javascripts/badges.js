@@ -495,7 +495,7 @@
         answer: 1
       },
       {
-        text: 'A sudden spike in gen_ai.guardrail.blocked_requests could indicate two very different problems. What are they?',
+        text: 'A sudden spike in app.guardrail.blocked_requests could indicate two very different problems. What are they?',
         options: [
           'A model version change, or a networking timeout between the app and Bedrock',
           'Users submitting invalid JSON, or the model generating malformed responses',

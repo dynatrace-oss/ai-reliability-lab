@@ -997,6 +997,78 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#query-it-with-dtctl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Query it with dtctl
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Query it with dtctl">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#find-the-blocked-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Find the blocked requests
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-what-the-user-sent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read what the user sent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compare-blocked-and-allowed-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compare blocked and allowed requests
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-the-block-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check the block rate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-the-counter-metric" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check the counter metric
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#two-things-guardrail-observability-tells-you" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1427,6 +1499,78 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#query-it-with-dtctl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Query it with dtctl
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Query it with dtctl">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#find-the-blocked-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Find the blocked requests
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-what-the-user-sent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read what the user sent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compare-blocked-and-allowed-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compare blocked and allowed requests
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-the-block-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check the block rate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-the-counter-metric" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check the counter metric
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#two-things-guardrail-observability-tells-you" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1560,17 +1704,14 @@
 </table>
 <p>Two legitimate questions go through. One prompt-injection attempt is blocked by the guardrail. One off-topic question passes the guardrail, but the model refuses it because of the system prompt.</p>
 <h2 id="running-it">Running it<a class="headerlink" href="#running-it" title="Permanent link">&para;</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>code/monitor-production/step3-guardrails
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_REGION</span><span class="o">=</span>us-east-2
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">OTEL_EXPORTER_OTLP_ENDPOINT</span><span class="o">=</span>http://localhost:4318
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nb">export</span><span class="w"> </span><span class="nv">GUARDRAIL_ID</span><span class="o">=</span>abc123def456<span class="w">   </span><span class="c1"># replace with your guardrail ID from the AWS Console</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>python<span class="w"> </span>app-instrumented.py<span class="w">      </span><span class="c1"># run all four queries</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>python<span class="w"> </span>app-instrumented.py<span class="w"> </span><span class="m">0</span><span class="w">   </span><span class="c1"># index 0: allowed</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>python<span class="w"> </span>app-instrumented.py<span class="w"> </span><span class="m">1</span><span class="w">   </span><span class="c1"># index 1: blocked (prompt injection)</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>python<span class="w"> </span>app-instrumented.py<span class="w"> </span><span class="m">2</span><span class="w">   </span><span class="c1"># index 2: allowed</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>python<span class="w"> </span>app-instrumented.py<span class="w"> </span><span class="m">3</span><span class="w">   </span><span class="c1"># index 3: allowed — model refused via system prompt</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>/workspace/code/monitor-production/step3-guardrails
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">OTEL_EXPORTER_OTLP_ENDPOINT</span><span class="o">=</span>http://localhost:4318
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>python<span class="w"> </span>app-instrumented.py<span class="w">      </span><span class="c1"># run all four queries</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>python<span class="w"> </span>app-instrumented.py<span class="w"> </span><span class="m">0</span><span class="w">   </span><span class="c1"># index 0: allowed</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>python<span class="w"> </span>app-instrumented.py<span class="w"> </span><span class="m">1</span><span class="w">   </span><span class="c1"># index 1: blocked (prompt injection)</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>python<span class="w"> </span>app-instrumented.py<span class="w"> </span><span class="m">2</span><span class="w">   </span><span class="c1"># index 2: allowed</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>python<span class="w"> </span>app-instrumented.py<span class="w"> </span><span class="m">3</span><span class="w">   </span><span class="c1"># index 3: allowed — model refused via system prompt</span>
 </span></code></pre></div>
 <h2 id="the-app-without-instrumentation-before">The app without instrumentation (before)<a class="headerlink" href="#the-app-without-instrumentation-before" title="Permanent link">&para;</a></h2>
 <div class="language-python highlight"><span class="filename">code/monitor-production/step3-guardrails/app.py</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="sd">"""Customer support chatbot with an AWS Bedrock Guardrail configured.</span>
@@ -1645,8 +1786,8 @@
 <h2 id="the-instrumented-app-after">The instrumented app (after)<a class="headerlink" href="#the-instrumented-app-after" title="Permanent link">&para;</a></h2>
 <p>The instrumented version wraps each call in a span and adds two things:</p>
 <ol>
-<li>A <code>gen_ai.guardrail.blocked</code> attribute on the span, set to <code>True</code> when <code>stop_reason == "guardrail_intervened"</code>. This makes every blocked call visible in Dynatrace distributed traces.</li>
-<li>A <code>gen_ai.guardrail.blocked_requests</code> counter metric that increments each time a request is blocked. This is what you use to build dashboards and alerts.</li>
+<li>An <code>app.guardrail.blocked</code> attribute on the span, set to <code>True</code> when <code>stop_reason == "guardrail_intervened"</code>. This makes every blocked call visible in Dynatrace distributed traces.</li>
+<li>An <code>app.guardrail.blocked_requests</code> counter metric that increments each time a request is blocked. This is what you use to build dashboards and alerts.</li>
 </ol>
 <div class="language-python highlight"><span class="filename">code/monitor-production/step3-guardrails/app-instrumented.py</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Customer support chatbot with AWS Bedrock Guardrail and OTel instrumentation.</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># Uses the native Bedrock converse API (boto3) so that guardrailConfig is</span>
@@ -1697,7 +1838,7 @@
 </span><span id="__span-2-47"><a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a><span class="c1"># Counter that increments every time the guardrail blocks a request.</span>
 </span><span id="__span-2-48"><a id="__codelineno-2-48" name="__codelineno-2-48" href="#__codelineno-2-48"></a><span class="c1"># Use this in Dynatrace to track guardrail intervention rate over time.</span>
 </span><span id="__span-2-49"><a id="__codelineno-2-49" name="__codelineno-2-49" href="#__codelineno-2-49"></a><span class="n">guardrail_blocks</span> <span class="o">=</span> <span class="n">meter</span><span class="o">.</span><span class="n">create_counter</span><span class="p">(</span>
-</span><span id="__span-2-50"><a id="__codelineno-2-50" name="__codelineno-2-50" href="#__codelineno-2-50"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">"gen_ai.guardrail.blocked_requests"</span><span class="p">,</span>
+</span><span id="__span-2-50"><a id="__codelineno-2-50" name="__codelineno-2-50" href="#__codelineno-2-50"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">"app.guardrail.blocked_requests"</span><span class="p">,</span>
 </span><span id="__span-2-51"><a id="__codelineno-2-51" name="__codelineno-2-51" href="#__codelineno-2-51"></a>    <span class="n">unit</span><span class="o">=</span><span class="s2">"</span><span class="si">{request}</span><span class="s2">"</span><span class="p">,</span>
 </span><span id="__span-2-52"><a id="__codelineno-2-52" name="__codelineno-2-52" href="#__codelineno-2-52"></a>    <span class="n">description</span><span class="o">=</span><span class="s2">"Number of requests blocked by the AWS Bedrock Guardrail"</span><span class="p">,</span>
 </span><span id="__span-2-53"><a id="__codelineno-2-53" name="__codelineno-2-53" href="#__codelineno-2-53"></a><span class="p">)</span>
@@ -1729,7 +1870,7 @@
 </span><span id="__span-2-79"><a id="__codelineno-2-79" name="__codelineno-2-79" href="#__codelineno-2-79"></a>        <span class="n">span</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">"gen_ai.provider.name"</span><span class="p">,</span>  <span class="s2">"aws.bedrock"</span><span class="p">)</span>
 </span><span id="__span-2-80"><a id="__codelineno-2-80" name="__codelineno-2-80" href="#__codelineno-2-80"></a>        <span class="n">span</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">"gen_ai.operation.name"</span><span class="p">,</span> <span class="s2">"chat"</span><span class="p">)</span>
 </span><span id="__span-2-81"><a id="__codelineno-2-81" name="__codelineno-2-81" href="#__codelineno-2-81"></a>        <span class="n">span</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">"gen_ai.request.model"</span><span class="p">,</span>  <span class="n">MODEL</span><span class="p">)</span>
-</span><span id="__span-2-82"><a id="__codelineno-2-82" name="__codelineno-2-82" href="#__codelineno-2-82"></a>        <span class="n">span</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">"gen_ai.guardrail.id"</span><span class="p">,</span>   <span class="n">GUARDRAIL_ID</span><span class="p">)</span>
+</span><span id="__span-2-82"><a id="__codelineno-2-82" name="__codelineno-2-82" href="#__codelineno-2-82"></a>        <span class="n">span</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">"aws.bedrock.guardrail.id"</span><span class="p">,</span>   <span class="n">GUARDRAIL_ID</span><span class="p">)</span>
 </span><span id="__span-2-83"><a id="__codelineno-2-83" name="__codelineno-2-83" href="#__codelineno-2-83"></a>
 </span><span id="__span-2-84"><a id="__codelineno-2-84" name="__codelineno-2-84" href="#__codelineno-2-84"></a>        <span class="n">span</span><span class="o">.</span><span class="n">add_event</span><span class="p">(</span><span class="s2">"gen_ai.system.message"</span><span class="p">,</span>
 </span><span id="__span-2-85"><a id="__codelineno-2-85" name="__codelineno-2-85" href="#__codelineno-2-85"></a>                       <span class="p">{</span><span class="s2">"gen_ai.event.content"</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"system"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="n">SYSTEM_PROMPT</span><span class="p">})})</span>
@@ -1763,7 +1904,7 @@
 </span><span id="__span-2-113"><a id="__codelineno-2-113" name="__codelineno-2-113" href="#__codelineno-2-113"></a>
 </span><span id="__span-2-114"><a id="__codelineno-2-114" name="__codelineno-2-114" href="#__codelineno-2-114"></a>        <span class="n">span</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">"gen_ai.response.model"</span><span class="p">,</span>          <span class="n">MODEL</span><span class="p">)</span>
 </span><span id="__span-2-115"><a id="__codelineno-2-115" name="__codelineno-2-115" href="#__codelineno-2-115"></a>        <span class="n">span</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">"gen_ai.response.finish_reasons"</span><span class="p">,</span> <span class="p">[</span><span class="n">stop_reason</span><span class="p">])</span>
-</span><span id="__span-2-116"><a id="__codelineno-2-116" name="__codelineno-2-116" href="#__codelineno-2-116"></a>        <span class="n">span</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">"gen_ai.guardrail.blocked"</span><span class="p">,</span>       <span class="n">blocked</span><span class="p">)</span>
+</span><span id="__span-2-116"><a id="__codelineno-2-116" name="__codelineno-2-116" href="#__codelineno-2-116"></a>        <span class="n">span</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">"app.guardrail.blocked"</span><span class="p">,</span>       <span class="n">blocked</span><span class="p">)</span>
 </span><span id="__span-2-117"><a id="__codelineno-2-117" name="__codelineno-2-117" href="#__codelineno-2-117"></a>
 </span><span id="__span-2-118"><a id="__codelineno-2-118" name="__codelineno-2-118" href="#__codelineno-2-118"></a>        <span class="n">usage</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"usage"</span><span class="p">,</span> <span class="p">{})</span>
 </span><span id="__span-2-119"><a id="__codelineno-2-119" name="__codelineno-2-119" href="#__codelineno-2-119"></a>        <span class="k">if</span> <span class="n">usage</span><span class="p">:</span>
@@ -1786,7 +1927,7 @@
 </span><span id="__span-2-136"><a id="__codelineno-2-136" name="__codelineno-2-136" href="#__codelineno-2-136"></a>            <span class="c1"># the intervention rate spikes — a sign of a coordinated injection</span>
 </span><span id="__span-2-137"><a id="__codelineno-2-137" name="__codelineno-2-137" href="#__codelineno-2-137"></a>            <span class="c1"># attempt or an over-tuned guardrail rejecting legitimate traffic.</span>
 </span><span id="__span-2-138"><a id="__codelineno-2-138" name="__codelineno-2-138" href="#__codelineno-2-138"></a>            <span class="n">guardrail_blocks</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">{</span><span class="s2">"gen_ai.request.model"</span><span class="p">:</span> <span class="n">MODEL</span><span class="p">,</span>
-</span><span id="__span-2-139"><a id="__codelineno-2-139" name="__codelineno-2-139" href="#__codelineno-2-139"></a>                                     <span class="s2">"gen_ai.guardrail.id"</span><span class="p">:</span>  <span class="n">GUARDRAIL_ID</span><span class="p">})</span>
+</span><span id="__span-2-139"><a id="__codelineno-2-139" name="__codelineno-2-139" href="#__codelineno-2-139"></a>                                     <span class="s2">"aws.bedrock.guardrail.id"</span><span class="p">:</span>  <span class="n">GUARDRAIL_ID</span><span class="p">})</span>
 </span><span id="__span-2-140"><a id="__codelineno-2-140" name="__codelineno-2-140" href="#__codelineno-2-140"></a>
 </span><span id="__span-2-141"><a id="__codelineno-2-141" name="__codelineno-2-141" href="#__codelineno-2-141"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Q: </span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </span><span id="__span-2-142"><a id="__codelineno-2-142" name="__codelineno-2-142" href="#__codelineno-2-142"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"A: </span><span class="si">{</span><span class="n">content</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="s1">'(blocked by guardrail)'</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
@@ -1800,28 +1941,73 @@
 <p>Two additions on top of the standard span pattern from earlier steps:</p>
 <p><strong>The guardrail block attribute:</strong></p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">blocked</span> <span class="o">=</span> <span class="n">stop_reason</span> <span class="o">==</span> <span class="s2">"guardrail_intervened"</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">span</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">"gen_ai.guardrail.blocked"</span><span class="p">,</span> <span class="n">blocked</span><span class="p">)</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">span</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">"app.guardrail.blocked"</span><span class="p">,</span> <span class="n">blocked</span><span class="p">)</span>
 </span></code></pre></div>
-<p>Every span now carries whether this request was blocked. In Dynatrace, you can filter traces by <code>gen_ai.guardrail.blocked = true</code> to see only the blocked calls, read what the user sent, and decide whether the guardrail is tuned correctly.</p>
+<p>Every span now carries whether this request was blocked. In Dynatrace, you can filter traces by <code>app.guardrail.blocked = true</code> to see only the blocked calls, read what the user sent, and decide whether the guardrail is tuned correctly.</p>
 <p><strong>The counter metric:</strong></p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">guardrail_blocks</span> <span class="o">=</span> <span class="n">meter</span><span class="o">.</span><span class="n">create_counter</span><span class="p">(</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">"gen_ai.guardrail.blocked_requests"</span><span class="p">,</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">"app.guardrail.blocked_requests"</span><span class="p">,</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">unit</span><span class="o">=</span><span class="s2">"</span><span class="si">{request}</span><span class="s2">"</span><span class="p">,</span>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="n">description</span><span class="o">=</span><span class="s2">"Number of requests blocked by the AWS Bedrock Guardrail"</span><span class="p">,</span>
 </span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">)</span>
 </span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
 </span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="k">if</span> <span class="n">blocked</span><span class="p">:</span>
 </span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="n">guardrail_blocks</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">{</span><span class="s2">"gen_ai.request.model"</span><span class="p">:</span> <span class="n">MODEL</span><span class="p">,</span>
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>                             <span class="s2">"gen_ai.guardrail.id"</span><span class="p">:</span>  <span class="n">GUARDRAIL_ID</span><span class="p">})</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>                             <span class="s2">"aws.bedrock.guardrail.id"</span><span class="p">:</span>  <span class="n">GUARDRAIL_ID</span><span class="p">})</span>
 </span></code></pre></div>
 <p>The counter goes up by one every time a request is blocked. Over time, you can chart this metric in Dynatrace to see your guardrail intervention rate.</p>
 <h2 id="what-youll-see-in-dynatrace">What you'll see in Dynatrace<a class="headerlink" href="#what-youll-see-in-dynatrace" title="Permanent link">&para;</a></h2>
-<p><strong>In traces:</strong> Filter spans by <code>gen_ai.guardrail.blocked = true</code>. You will see exactly which requests were blocked. Each span also carries <code>gen_ai.guardrail.id</code> so if you run multiple guardrails across different bots, you can tell them apart.</p>
-<p><strong>In metrics:</strong> Chart <code>gen_ai.guardrail.blocked_requests</code> over time. A flat line close to zero is what you want. A sudden spike means something changed: either users discovered an injection pattern and are trying it repeatedly, or a recent guardrail configuration change started blocking requests it should not.</p>
-<p><strong>Setting an alert:</strong> In Dynatrace, create a metric alert on <code>gen_ai.guardrail.blocked_requests</code>. Set the threshold relative to your normal traffic volume. If the block rate rises above a certain percentage of total requests, alert your team. A spike is either a security incident or a misconfigured guardrail. Either way, you want to know about it.</p>
+<p><strong>In traces:</strong> Filter spans by <code>app.guardrail.blocked = true</code>. You will see exactly which requests were blocked. Each span also carries <code>aws.bedrock.guardrail.id</code> so if you run multiple guardrails across different bots, you can tell them apart.</p>
+<p><strong>In metrics:</strong> Chart <code>app.guardrail.blocked_requests</code> over time. A flat line close to zero is what you want. A sudden spike means something changed: either users discovered an injection pattern and are trying it repeatedly, or a recent guardrail configuration change started blocking requests it should not.</p>
+<p><strong>Setting an alert:</strong> In Dynatrace, create a metric alert on <code>app.guardrail.blocked_requests</code>. Set the threshold relative to your normal traffic volume. If the block rate rises above a certain percentage of total requests, alert your team. A spike is either a security incident or a misconfigured guardrail. Either way, you want to know about it.</p>
+<h2 id="query-it-with-dtctl">Query it with dtctl<a class="headerlink" href="#query-it-with-dtctl" title="Permanent link">&para;</a></h2>
+<p>After running <code>python app-instrumented.py</code>, confirm the guardrail telemetry arrived.</p>
+<h3 id="find-the-blocked-requests">Find the blocked requests<a class="headerlink" href="#find-the-blocked-requests" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dtctl<span class="w"> </span>query<span class="w"> </span><span class="s1">'fetch spans</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="s1">| filter service.name == "anycloud-support-bot"</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="s1">| filter app.guardrail.blocked == true</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="s1">| fields start_time, span.name, aws.bedrock.guardrail.id, gen_ai.response.finish_reasons</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="s1">| sort start_time desc</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="s1">| limit 10'</span>
+</span></code></pre></div>
+<p>You should see one row per blocked call (the tic-tac-toe injection) with <code>finish_reasons</code> of <code>guardrail_intervened</code>.</p>
+<h3 id="read-what-the-user-sent">Read what the user sent<a class="headerlink" href="#read-what-the-user-sent" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dtctl<span class="w"> </span>query<span class="w"> </span><span class="s1">'fetch spans</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="s1">| filter service.name == "anycloud-support-bot"</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="s1">| filter app.guardrail.blocked == true</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="s1">| expand span.events</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="s1">| filter span.events[span_event.name] == "gen_ai.user.message"</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="s1">| fields start_time, aws.bedrock.guardrail.id, prompt = span.events[gen_ai.event.content]</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="s1">| sort start_time desc</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="s1">| limit 10'</span>
+</span></code></pre></div>
+<p>The <code>prompt</code> column holds the blocked user message. Use this to decide whether the guardrail caught a real attack or over-blocked a legitimate question.</p>
+<h3 id="compare-blocked-and-allowed-requests">Compare blocked and allowed requests<a class="headerlink" href="#compare-blocked-and-allowed-requests" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dtctl<span class="w"> </span>query<span class="w"> </span><span class="s1">'fetch spans</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="s1">| filter service.name == "anycloud-support-bot"</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="s1">| summarize requests = count(), by: {app.guardrail.blocked}'</span>
+</span></code></pre></div>
+<p>With the four demo queries you should see three <code>false</code> and one <code>true</code> for each run.</p>
+<h3 id="check-the-block-rate">Check the block rate<a class="headerlink" href="#check-the-block-rate" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dtctl<span class="w"> </span>query<span class="w"> </span><span class="s1">'fetch spans</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="s1">| filter service.name == "anycloud-support-bot"</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="s1">| summarize total = count(), blocked = countIf(app.guardrail.blocked == true)</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="s1">| fieldsAdd block_rate_pct = 100.0 * blocked / total'</span>
+</span></code></pre></div>
+<p>With the four demo queries the block rate is 25%. In production, this is the number to alert on.</p>
+<h3 id="check-the-counter-metric">Check the counter metric<a class="headerlink" href="#check-the-counter-metric" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dtctl<span class="w"> </span>query<span class="w"> </span><span class="s1">'timeseries blocked = sum(app.guardrail.blocked_requests), by: {aws.bedrock.guardrail.id, gen_ai.request.model}</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="s1">| fieldsAdd total = arraySum(blocked)</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="s1">| fields aws.bedrock.guardrail.id, gen_ai.request.model, total'</span>
+</span></code></pre></div>
+<p>You should see one row with the total number of blocked requests. If you have not yet triggered a block, the metric does not exist and the query returns no rows.</p>
+<details class="info" open="open">
+<summary>Event attribute names</summary>
+<p>The user-message query reads the span event that the instrumented app adds with <code>span.add_event("gen_ai.user.message", ...)</code>. If your tenant returns no <code>prompt</code> values, run <code>fetch spans | filter app.guardrail.blocked == true | limit 1</code> and inspect the <code>span.events</code> field to see how events are shaped in your environment.</p>
+</details>
 <h2 id="two-things-guardrail-observability-tells-you">Two things guardrail observability tells you<a class="headerlink" href="#two-things-guardrail-observability-tells-you" title="Permanent link">&para;</a></h2>
 <p><strong>1. Is the guardrail doing its job?</strong></p>
-<p>If <code>gen_ai.guardrail.blocked_requests</code> stays at zero, either no one is trying injection attacks (good), or the guardrail is not triggering when it should (bad). Looking at the traces for blocked requests lets you verify that the real injection attempts are being caught.</p>
+<p>If <code>app.guardrail.blocked_requests</code> stays at zero, either no one is trying injection attacks (good), or the guardrail is not triggering when it should (bad). Looking at the traces for blocked requests lets you verify that the real injection attempts are being caught.</p>
 <p><strong>2. Is the guardrail over-blocking?</strong></p>
 <p>If the block rate is unusually high, look at what queries are being blocked. It is possible the guardrail's denied topic definition is too broad and it is rejecting legitimate questions. For example, a support bot question like "can you write up a summary of my support ticket?" might accidentally match an off-topic rule about generating content. Without the traces, you would not catch this: users would just stop getting answers and you would have no idea why.</p>
 <div id="dt-quiz-anchor"></div>
@@ -1841,7 +2027,7 @@
 </tr>
 <tr>
 <td><strong>Step 3</strong></td>
-<td>Guardrail intervention detection via <code>gen_ai.guardrail.blocked</code> span attribute and <code>gen_ai.guardrail.blocked_requests</code> counter metric</td>
+<td>Guardrail intervention detection via <code>app.guardrail.blocked</code> span attribute and <code>app.guardrail.blocked_requests</code> counter metric</td>
 </tr>
 </tbody>
 </table>

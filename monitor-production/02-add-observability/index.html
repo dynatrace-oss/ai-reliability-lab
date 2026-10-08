@@ -1642,7 +1642,7 @@
 <p>The OTel Collector starts automatically alongside your Codespace. You don't need to run anything.</p>
 <p>To point it at your Dynatrace tenant, follow the <a href="../../foundation/environment-setup/#adding-your-dynatrace-token">Adding your Dynatrace token</a> steps in Environment Setup if you haven't already.</p>
 <h2 id="running-it">Running it<a class="headerlink" href="#running-it" title="Permanent link">&para;</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>code/monitor-production/step1and2-basic-app
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>/workspace/code/monitor-production/step1and2-basic-app
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">OTEL_EXPORTER_OTLP_ENDPOINT</span><span class="o">=</span>http://localhost:4318
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>python<span class="w"> </span>app-instrumented.py
 </span></code></pre></div>
@@ -1803,8 +1803,8 @@
 <h3 id="check-the-trace">Check the trace<a class="headerlink" href="#check-the-trace" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dtctl<span class="w"> </span>query<span class="w"> </span><span class="s1">'fetch spans</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="s1">| filter service.name == "bedrock-chat-client"</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="s1">| fields timestamp, span.name, duration, gen_ai.request.model, gen_ai.usage.input_tokens, gen_ai.usage.output_tokens</span>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="s1">| sort timestamp desc</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="s1">| fields start_time, span.name, duration, gen_ai.request.model, gen_ai.usage.input_tokens, gen_ai.usage.output_tokens</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="s1">| sort start_time desc</span>
 </span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="s1">| limit 5'</span>
 </span></code></pre></div>
 <p>You should see a row with <code>span.name = chat openai.gpt-oss-120b</code>, the actual duration of the AI call, and your token counts.</p>
