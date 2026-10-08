@@ -1558,7 +1558,7 @@
 </tr>
 </tbody>
 </table>
-<p>Two legitimate questions go through. Two prompt-injection attempts are blocked by the guardrail.</p>
+<p>Two legitimate questions go through. One prompt-injection attempt is blocked by the guardrail. One off-topic question passes the guardrail, but the model refuses it because of the system prompt.</p>
 <h2 id="running-it">Running it<a class="headerlink" href="#running-it" title="Permanent link">&para;</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>code/monitor-production/step3-guardrails
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
@@ -1634,7 +1634,7 @@
 </span><span id="__span-1-59"><a id="__codelineno-1-59" name="__codelineno-1-59" href="#__codelineno-1-59"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"   stop_reason=</span><span class="si">{</span><span class="n">stop_reason</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </span><span id="__span-1-60"><a id="__codelineno-1-60" name="__codelineno-1-60" href="#__codelineno-1-60"></a>    <span class="nb">print</span><span class="p">()</span>
 </span><span id="__span-1-61"><a id="__codelineno-1-61" name="__codelineno-1-61" href="#__codelineno-1-61"></a>
-</span><span id="__span-1-62"><a id="__codelineno-1-62" name="__codelineno-1-62" href="#__codelineno-1-62"></a><span class="c1"># Two of these four requests were blocked by the guardrail — but that fact is</span>
+</span><span id="__span-1-62"><a id="__codelineno-1-62" name="__codelineno-1-62" href="#__codelineno-1-62"></a><span class="c1"># One of these four requests was blocked by the guardrail — but that fact is</span>
 </span><span id="__span-1-63"><a id="__codelineno-1-63" name="__codelineno-1-63" href="#__codelineno-1-63"></a><span class="c1"># invisible to any monitoring system. You would not know without reading the</span>
 </span><span id="__span-1-64"><a id="__codelineno-1-64" name="__codelineno-1-64" href="#__codelineno-1-64"></a><span class="c1"># application logs line by line.</span>
 </span></code></pre></div>
@@ -1645,7 +1645,7 @@
 <h2 id="the-instrumented-app-after">The instrumented app (after)<a class="headerlink" href="#the-instrumented-app-after" title="Permanent link">&para;</a></h2>
 <p>The instrumented version wraps each call in a span and adds two things:</p>
 <ol>
-<li>A <code>gen_ai.guardrail.blocked</code> attribute on the span, set to <code>True</code> when <code>finish_reason == "guardrail_intervened"</code>. This makes every blocked call visible in Dynatrace distributed traces.</li>
+<li>A <code>gen_ai.guardrail.blocked</code> attribute on the span, set to <code>True</code> when <code>stop_reason == "guardrail_intervened"</code>. This makes every blocked call visible in Dynatrace distributed traces.</li>
 <li>A <code>gen_ai.guardrail.blocked_requests</code> counter metric that increments each time a request is blocked. This is what you use to build dashboards and alerts.</li>
 </ol>
 <div class="language-python highlight"><span class="filename">code/monitor-production/step3-guardrails/app-instrumented.py</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Customer support chatbot with AWS Bedrock Guardrail and OTel instrumentation.</span>
